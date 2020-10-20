@@ -1,13 +1,46 @@
 import React from 'react';
-import logo from './logo.svg';
+import Loadable from "react-loadable";
+import { withStyles } from "@material-ui/core/styles";
+import theme from "./utils/theme";
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import CircularProgress from "@material-ui/core/CircularProgress";
 import './App.css';
+import LazyLoader from "./common/loader";
+
+const styles = () => ({
+	root: {
+		padding: "5%",
+		
+  }
+});
+
 
 function App() {
+  
+	const loader = () => (
+		<div stlye={{ height: "100%" }}>
+			<div
+				style={{
+					justifyContent: "center",
+					alignItems: "center",
+					display: "flex",
+					flexDirection: "column",
+					height: "100vh"
+				}}
+			>
+				<CircularProgress />
+			</div>
+		</div>
+  );
+  const AsyncProfile = Loadable({
+    loader: () => import("./views/Kousik"),
+    loading: LazyLoader
+  });
   return (
-    <div>
-      <h2>Kousik</h2>
-    </div>
+    <MuiThemeProvider theme={theme}>
+    <AsyncProfile/>
+    </MuiThemeProvider>
   );
 }
 
-export default App;
+export default withStyles(styles, { withTheme: true }) ( App);
