@@ -183,6 +183,7 @@ export default createMuiTheme({
       },
       root: {
         color: '#FFFFFF',
+        backgroundColor: '#2d3547',
       },
     },
     MuiAppBar: {
@@ -199,12 +200,14 @@ export default createMuiTheme({
     MuiListItemIcon: {
       root: {
         marginRight: pxToRem(16),
+        color: '#FFFFFF',
       },
     },
     MuiListItem: {
       root: {
         paddingTop: pxToRem(11),
         paddingBottom: pxToRem(11),
+        color: '#FFFFFF',
       },
       gutters: {
         paddingLeft: pxToRem(16),
