@@ -1,7 +1,7 @@
 import React from 'react';
 import ListItem from '@material-ui/core/ListItem';
 import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
+import MenuIcon from '@material-ui/icons/Menu';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
@@ -10,9 +10,10 @@ import ContactsIcon from '@material-ui/icons/Contacts';
 import ListItemText from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-
+import { useDispatch } from 'react-redux';
+import { drawerAction } from '../../Redux/actions/DrawerAction';
 import { pxToRem, pxToVh, pxToVw } from './../../utils/theme';
-import { Drawer } from '../../utils/Drawer';
+import { CustomDrawer } from '../../utils/CustomDrawer';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,7 +22,6 @@ const useStyles = makeStyles((theme) => ({
     padding: `0 ${theme.typography.pxToRem(10)}`,
     fontFamily: 'Roboto',
     width: '100%',
-    height: '15vh',
   },
   logoImg: {
     position: 'relative',
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: '#3f5570',
+    backgroundColor: '#141414',
     filter: 'drop-shadow(3px 0px 6px rgba(0, 0, 0, 0.2))',
   },
   list: {
@@ -77,8 +77,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   hamBurgerIcon: {
-    height: theme.typography.pxToRem(48),
-    width: theme.typography.pxToRem(48),
+    height: theme.typography.pxToRem(58),
+    width: theme.typography.pxToRem(58),
+    position: 'relative',
+    top: pxToVh(22),
   },
   closedDivider: {
     width: '100%',
@@ -115,11 +117,31 @@ const useStyles = makeStyles((theme) => ({
 }));
 function Header() {
   const classes = useStyles();
-
+  const dispatch = useDispatch();
   const sideList = (
     <div className={classes.list}>
-      <Divider className={classes.divider} />
       <List style={{ padding: '0px' }}>
+        <ListItem
+          button
+          classes={{ button: classes.actionListItemButton }}
+          style={{ padding: '0.5rem 1.696rem' }}
+          onClick={() => {
+            dispatch(drawerAction({ open: false }));
+          }}
+        >
+          <ListItemIcon>
+            <MenuIcon className={classes.backIcon} />
+          </ListItemIcon>
+          <ListItemText
+            classes={{
+              root: classes.listItemTextRoot,
+            }}
+          >
+            <div className={classes.menuOptionsText}>
+              <Typography variant='h4'> Kousik Sen</Typography>
+            </div>
+          </ListItemText>
+        </ListItem>
         <ListItem
           button
           classes={{ button: classes.actionListItemButton }}
@@ -135,7 +157,7 @@ function Header() {
             </div>
           </ListItemText>
         </ListItem>
-        <Divider className={classes.divider} />
+
         <ListItem
           button
           classes={{ button: classes.actionListItemButton }}
@@ -151,7 +173,7 @@ function Header() {
             </div>
           </ListItemText>
         </ListItem>
-        <Divider className={classes.divider} />
+
         <ListItem
           button
           classes={{ button: classes.actionListItemButton }}
@@ -167,7 +189,7 @@ function Header() {
             </div>
           </ListItemText>
         </ListItem>
-        <Divider className={classes.divider} />
+
         <ListItem
           button
           classes={{ button: classes.actionListItemButton }}
@@ -188,7 +210,7 @@ function Header() {
   );
   return (
     <div className={classes.root}>
-      <Drawer
+      <CustomDrawer
         drawerAvatarSize='2.1333rem'
         swipeAreaWidth={0}
         openDrawerContents={sideList}

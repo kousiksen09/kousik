@@ -183,7 +183,7 @@ export default createMuiTheme({
       },
       root: {
         color: '#FFFFFF',
-        backgroundColor: '#2d3547',
+        backgroundColor: '#141414',
       },
     },
     MuiAppBar: {

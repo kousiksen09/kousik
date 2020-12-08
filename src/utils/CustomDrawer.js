@@ -1,24 +1,16 @@
 import React from 'react';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import Drawer from '@material-ui/core/Drawer';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import MenuIcon from '@material-ui/icons/Menu';
-import ListItem from '@material-ui/core/ListItem';
-import List from '@material-ui/core/List';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
+
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+
 import { useTheme } from '@material-ui/core/styles';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import MenuBookIcon from '@material-ui/icons/MenuBook';
-import ComputerIcon from '@material-ui/icons/Computer';
-import ContactsIcon from '@material-ui/icons/Contacts';
-import Divider from '@material-ui/core/Divider';
-import Avatar from './Avatar';
 import { useSelector, useDispatch } from 'react-redux';
 import { pxToVh } from './theme';
-import { Tooltip } from '@material-ui/core';
 import { drawerAction } from './../Redux/actions/DrawerAction';
+import { Button } from '@material-ui/core';
 
 const styles = (theme) => ({
   leftBar: {
@@ -29,7 +21,7 @@ const styles = (theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: '#141414',
     filter: 'drop-shadow(3px 0px 6px rgba(0, 0, 0, 0.2))',
     position: 'fixed',
     [theme.breakpoints.between('sm', 'xl')]: {},
@@ -82,7 +74,7 @@ const styles = (theme) => ({
     },
   },
   openDrawer: {
-    backgroundColor: '#2d3547',
+    backgroundColor: '#141414',
     [theme.breakpoints.between('sm', 'xl')]: {
       width: '338px',
     },
@@ -121,16 +113,14 @@ const styles = (theme) => ({
   },
   listItemTextRoot: {
     padding: 0,
+    fontSize: '1.4 rem',
+    color: '#FFFFFF',
   },
   closedDivider: {
     backgroundColor: theme.palette.common.white,
     opacity: 0.5,
   },
 });
-
-const LeftClosedBar = (props) => (
-  <div className={props.classes.leftBar}>{props.children}</div>
-);
 
 const emptyFunction = () => {};
 const propTypes = {
@@ -194,132 +184,39 @@ const defaultProps = {
   swipeAreaWidth: 20,
 };
 
-export const Drawer = (props) => {
+export const CustomDrawer = (props) => {
   const {
     classes,
 
     openDrawerContents,
-
-    username,
-    drawerAvatarSize,
-    drawerAvatarFontSize,
     swipeAreaWidth,
   } = props;
 
   const theme = useTheme();
-  const hideNavBar = useMediaQuery(theme.breakpoints.up('lg'));
+  const hideNavBar = useMediaQuery(theme.breakpoints.up('md'));
   const open = useSelector((state) => state.DrawerReducer.open);
   const dispatch = useDispatch();
+
   const Navigator = (props) => {
     const { classes } = props;
+
     return (
-      <LeftClosedBar classes={classes}>
+      <>
         <div className={classes.topItems}>
-          <ListItem
-            button
-            aria-label='Open drawer'
+          <Button
             classes={{
               root: classes.hamBurgerIconButton,
             }}
             onClick={() => {
               dispatch(drawerAction({ open: true }));
             }}
-            disableRipple={true}
-            disableTouchRipple={true}
           >
             <MenuIcon className={classes.hamBurgerIcon} fontSize='large' />
-          </ListItem>
-          <Divider className={classes.closedDivider} />
-          <ListItem
-            button
-            classes={{
-              root: classes.hamBurgerIconButton,
-            }}
-            onClick={() => {
-              dispatch(drawerAction({ open: true }));
-            }}
-            disableRipple={true}
-            disableTouchRipple={true}
-          >
-            <Tooltip title='About Me'>
-              <AccountCircleIcon
-                className={classes.hamBurgerIcon}
-                fontSize='large'
-              />
-            </Tooltip>
-          </ListItem>
-          <Divider className={classes.closedDivider} />
-          <ListItem
-            button
-            classes={{
-              root: classes.hamBurgerIconButton,
-            }}
-            onClick={() => {
-              dispatch(drawerAction({ open: true }));
-            }}
-            disableRipple={true}
-            disableTouchRipple={true}
-          >
-            <Tooltip title='Education'>
-              <MenuBookIcon
-                className={classes.hamBurgerIcon}
-                fontSize='large'
-              />
-            </Tooltip>
-          </ListItem>
-          <Divider className={classes.closedDivider} />
-          <ListItem
-            button
-            classes={{
-              root: classes.hamBurgerIconButton,
-            }}
-            onClick={() => {
-              //drawerOpen({ open: true });
-            }}
-            disableRipple={true}
-            disableTouchRipple={true}
-          >
-            <Tooltip title='Project'>
-              <ComputerIcon
-                className={classes.hamBurgerIcon}
-                fontSize='large'
-              />
-            </Tooltip>
-          </ListItem>
-          <Divider className={classes.closedDivider} />
-          <ListItem
-            button
-            classes={{
-              root: classes.hamBurgerIconButton,
-            }}
-            onClick={() => {
-              //drawerOpen({ open: true });
-            }}
-            disableRipple={true}
-            disableTouchRipple={true}
-          >
-            <Tooltip title='Contact'>
-              <ContactsIcon
-                className={classes.hamBurgerIcon}
-                fontSize='large'
-              />
-            </Tooltip>
-          </ListItem>
+          </Button>
         </div>
-        <div className={classes.closedLogo}>
-          <Avatar
-            fontColor='#5daae0'
-            color='white'
-            size={drawerAvatarSize}
-            fontSize={drawerAvatarFontSize}
-          >
-            {username}
-          </Avatar>
-        </div>
-      </LeftClosedBar>
+      </>
     );
   };
-
   return (
     <div
       style={{
@@ -327,11 +224,9 @@ export const Drawer = (props) => {
       }}
     >
       {!hideNavBar ? (
-        <Navigator classes={classes} />
-      ) : (
         <>
           <Navigator classes={classes} />
-          <SwipeableDrawer
+          <Drawer
             disableEnforceFocus
             BackdropProps={{ invisible: true }}
             swipeAreaWidth={swipeAreaWidth}
@@ -341,12 +236,12 @@ export const Drawer = (props) => {
               paper: classes.openDrawer,
             }}
             open={open}
-            // onClose={() => {
-            //   toggleDrawer(false);
-            // }}
-            // onOpen={() => {
-            //   toggleDrawer(true);
-            // }}
+            onClose={() => {
+              dispatch(drawerAction({ open: false }));
+            }}
+            onOpen={() => {
+              dispatch(drawerAction({ open: true }));
+            }}
           >
             <div
               style={{
@@ -357,46 +252,52 @@ export const Drawer = (props) => {
                 // onClick={this.toggleDrawer(false)}
                 onKeyDown={() => dispatch(drawerAction({ open: false }))}
               >
-                <List
-                  style={{
-                    paddingBottom: '0px',
-                    paddingTop: '0px',
-                    height: '3.5556rem',
-                  }}
-                >
-                  <ListItem
-                    button
-                    style={{
-                      paddingLeft: '1.696rem',
-                      height: '100%',
-                    }}
-                    onClick={() => {
-                      dispatch(drawerAction({ open: false }));
-                    }}
-                    classes={{ button: classes.actionListItemButton }}
-                  >
-                    <ListItemIcon>
-                      <MenuIcon className={classes.hamBurgerIcon} />
-                    </ListItemIcon>
-                    <ListItemText
-                      classes={{
-                        root: classes.listItemTextRoot,
-                      }}
-                    ></ListItemText>
-                  </ListItem>
-                </List>
                 {openDrawerContents}
               </div>
             </div>
-          </SwipeableDrawer>
+          </Drawer>
+        </>
+      ) : (
+        <>
+          <Navigator classes={classes} />
+          <Drawer
+            disableEnforceFocus
+            BackdropProps={{ invisible: true }}
+            swipeAreaWidth={swipeAreaWidth}
+            transitionDuration={500}
+            classes={{
+              root: classes.openDrawerRoot,
+              paper: classes.openDrawer,
+            }}
+            open={open}
+            onClose={() => {
+              dispatch(drawerAction({ open: false }));
+            }}
+            onOpen={() => {
+              dispatch(drawerAction({ open: true }));
+            }}
+          >
+            <div
+              style={{
+                justifyContent: 'space-between',
+              }}
+            >
+              <div
+                // onClick={this.toggleDrawer(false)}
+                onKeyDown={() => dispatch(drawerAction({ open: false }))}
+              >
+                {openDrawerContents}
+              </div>
+            </div>
+          </Drawer>
         </>
       )}
     </div>
   );
 };
 
-Drawer.defaultProps = defaultProps;
-Drawer.propTypes = propTypes;
+CustomDrawer.defaultProps = defaultProps;
+CustomDrawer.propTypes = propTypes;
 const DrawerNative = Drawer;
 export { DrawerNative };
-export default withStyles(styles, { withTheme: true })(Drawer);
+export default withStyles(styles, { withTheme: true })(CustomDrawer);

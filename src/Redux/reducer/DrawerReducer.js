@@ -1,7 +1,7 @@
 import { DRAWER_ACTION } from '../actionTypes';
 
 const initialState = {
-  open: true,
+  open: false,
 };
 const DraweReducer = (state = initialState, action) => {
   switch (action.type) {
