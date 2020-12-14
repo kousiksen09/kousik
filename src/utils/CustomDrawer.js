@@ -28,11 +28,13 @@ const styles = (theme) => ({
     [theme.breakpoints.up('xl')]: {},
   },
   hamBurgerIconButton: {
-    height: '3.55rem',
+    height: '4rem',
     paddingLeft: '0px',
     paddingRight: '0px',
     color: '#fff',
     justifyContent: 'center',
+    position: 'relative',
+    top: '2vh',
     // width: '80%',
     '&:hover': {
       opacity: 1,

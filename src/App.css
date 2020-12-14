@@ -12,9 +12,10 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
 html {
   background: transparent
-    radial-gradient(closest-side at 50% 50%, #2d3547 0%, #171c28 100%) 0% 0%
+    radial-gradient(closest-side at 50% 50%, #1f2831 0%, #20232b 100%) 0% 0%
     no-repeat padding-box;
   height: 100vh;
 

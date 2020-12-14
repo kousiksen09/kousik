@@ -46,8 +46,8 @@ export default createMuiTheme({
       secondary: '#5DAAE0',
     },
     background: {
-      default: '#273D49',
-      main: 'radial-gradient(#58687E, #39495E)',
+      default: '#2C3E50',
+      main: 'radial-gradient(#2C3E50, #000000)',
     },
     divider: 'rgb(255,255,255,0.5)',
     grey: {

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ListItem from '@material-ui/core/ListItem';
 import List from '@material-ui/core/List';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -157,23 +158,23 @@ function Header() {
             </div>
           </ListItemText>
         </ListItem>
-
-        <ListItem
-          button
-          classes={{ button: classes.actionListItemButton }}
-          style={{ padding: '0.5rem 1.696rem' }}
-        >
-          <ListItemIcon>
-            {' '}
-            <MenuBookIcon className={classes.backIcon} />
-          </ListItemIcon>
-          <ListItemText classes={{ root: classes.menutext }}>
-            <div className={classes.menuOptionsText}>
-              <Typography variant='h4'>Education</Typography>
-            </div>
-          </ListItemText>
-        </ListItem>
-
+        <Link to='/education'>
+          <ListItem
+            button
+            classes={{ button: classes.actionListItemButton }}
+            style={{ padding: '0.5rem 1.696rem' }}
+          >
+            <ListItemIcon>
+              {' '}
+              <MenuBookIcon className={classes.backIcon} />
+            </ListItemIcon>
+            <ListItemText classes={{ root: classes.menutext }}>
+              <div className={classes.menuOptionsText}>
+                <Typography variant='h4'>Education</Typography>
+              </div>
+            </ListItemText>
+          </ListItem>
+        </Link>
         <ListItem
           button
           classes={{ button: classes.actionListItemButton }}
