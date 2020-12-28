@@ -8,6 +8,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import ComputerIcon from '@material-ui/icons/Computer';
 import ContactsIcon from '@material-ui/icons/Contacts';
+import WebIcon from '@material-ui/icons/Web';
 import ListItemText from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -187,6 +188,22 @@ function Header() {
           <ListItemText classes={{ root: classes.menutext }}>
             <div className={classes.menuOptionsText}>
               <Typography variant='h4'>Projects </Typography>
+            </div>
+          </ListItemText>
+        </ListItem>
+
+        <ListItem
+          button
+          classes={{ button: classes.actionListItemButton }}
+          style={{ padding: '0.5rem 1.696rem' }}
+        >
+          <ListItemIcon>
+            {' '}
+            <WebIcon className={classes.backIcon} />
+          </ListItemIcon>
+          <ListItemText classes={{ root: classes.menutext }}>
+            <div className={classes.menuOptionsText}>
+              <Typography variant='h4'>Training & Internship </Typography>
             </div>
           </ListItemText>
         </ListItem>

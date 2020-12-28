@@ -61,6 +61,7 @@ class MyHistogram extends React.Component {
           'CSS',
           'JavaScript',
           'React Js',
+          'My SQL',
           'Python',
           'Asterisk',
         ],
@@ -123,7 +124,7 @@ class MyHistogram extends React.Component {
 
       series: [
         {
-          data: [60, 40, 90, 92, 85, 88, 71, 54],
+          data: [60, 46, 90, 92, 85, 88, 88, 71, 54],
         },
       ],
     });

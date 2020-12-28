@@ -8,6 +8,7 @@ import { baseStyle } from './styles/baseStyle';
 const styles = (theme) => ({
   root: {
     boxShadow: theme.shadows[0],
+    cursor: 'pointer',
   },
 });
 

@@ -51,38 +51,40 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     display: 'flex',
     justifyContent: 'center',
+    height: '30vh',
   },
   prImg: {
     marginTop: pxToRem(50),
-
-    height: pxToVh(230),
+    cursor: 'pointer',
+    height: '25vh',
     borderRadius: '50%',
     border: '0.3rem solid #3d3b3b',
-    transition: 'all .5s',
+    transition: 'all ease 1s',
   },
   zoomImageDiv: {
     position: 'relative',
     display: 'flex',
     flexGrow: 1,
-    width: '82vw',
+    height: '80%',
+    width: '82%',
     left: '11vw',
-    top: pxToVh(-30),
     justifyContent: 'center',
   },
   zoomImage: {
+    position: 'absolute',
     margin: pxToRem(20),
-    height: '100vh',
-    width: '80vw',
+    height: '100%',
     border: '0.3rem solid #3d3b3b',
   },
   closeIcon: {
     position: 'relative',
+    cursor: 'pointer',
     height: '4vh',
     width: '4vw',
     top: pxToVh(22),
     right: pxToVw(22),
     color: '#fff',
-    border: '0.2rem solid red',
+    border: '0.2rem solid #fff',
   },
   rightSection: {
     display: 'flex',
@@ -226,7 +228,7 @@ function About() {
           </div>
         </div>
         <div className={classes.nextPage}>
-          <Link to='/education'>
+          <Link to='/education' style={{ textDecoration: 'none' }}>
             <Button
               endIcon={
                 <ArrowForwardIcon style={{ height: '2rem', width: '2rem' }} />

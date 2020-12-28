@@ -4,6 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import About from './component/About';
 import Education from './component/Education';
+import Project from './component/Project';
+import Training from './component/Training';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,6 +25,8 @@ function Kousik() {
           <Switch>
             <Route exact path='/' component={About} />
             <Route path='/education' component={Education} />
+            <Route path='/project' component={Project} />
+            <Route path='/training' component={Training} />
           </Switch>
         </BrowserRouter>
       </div>

@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
-import { Link } from 'react-router-dom';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography, Grid, Button } from '@material-ui/core';
+import { Typography, Grid } from '@material-ui/core';
 import Header from './Header';
 import Timeline from '../../utils/Timeline';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import NonClickableCard from '../../utils/NonClickableCard';
 import MyHistogram from '../../utils/component/Histogram';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import Footer from './Footer';
 
 const xAxisLabelStyles = {
   color: 'white',
@@ -36,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   education: {
     position: 'relative',
     boxSizing: 'border-box',
-    height: '100%',
+    height: '82vh',
     width: '100%',
   },
 
@@ -352,35 +350,13 @@ function Education(props) {
             </div>
           </Grid>
         </Grid>
-        <div className={classes.pageRoute}>
-          <div className={classes.prevPage}>
-            <Link to='/' style={{ textDecoration: 'none' }}>
-              <Button
-                startIcon={
-                  <ArrowBackIcon style={{ height: '2rem', width: '2rem' }} />
-                }
-                className={classes.nextPageBtn}
-                classes={{ label: classes.btnTxt }}
-              >
-                About Me
-              </Button>
-            </Link>
-          </div>
-          <div className={classes.nextPage}>
-            <Link to='/project' style={{ textDecoration: 'none' }}>
-              <Button
-                endIcon={
-                  <ArrowForwardIcon style={{ height: '2rem', width: '2rem' }} />
-                }
-                className={classes.nextPageBtn}
-                classes={{ label: classes.btnTxt }}
-              >
-                Project
-              </Button>
-            </Link>
-          </div>
-        </div>
       </div>
+      <Footer
+        prevPage='About Me'
+        nextPage='Project'
+        prevLink='/'
+        nextLink='/project'
+      />
     </div>
   );
 }
