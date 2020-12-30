@@ -14,6 +14,7 @@ import GetAppIcon from '@material-ui/icons/GetApp';
 import Resume from '../../assets/Kousik_Resume.pdf';
 import { currPageAction } from './../../Redux/actions/CurrPageAction';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import Footer from './Footer';
 
 const useStyles = makeStyles((theme) => ({
   drawerOpenCon: {
@@ -26,14 +27,23 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
   },
   about: {
-    backgroundImage: `url(${bgOne})`,
     height: '100vh',
     width: '100%',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center center',
-    backgroundAttachment: 'fixed',
+
     position: 'absolute',
-    background: 'rgba(0,0,0,0.1)',
+
+    '&:before': {
+      content: `""`,
+      background:
+        'linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://image.freepik.com/free-photo/abstract-communication-technology-network-concept_34629-641.jpg)',
+      height: '100%',
+      width: '100%',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center center',
+      backgroundAttachment: 'fixed',
+      position: 'absolute',
+      opacity: '0.75',
+    },
   },
   titleText: {
     fontFamily: "'Fondamento', cursive",
@@ -45,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     textAlign: 'center',
     fontSize: '4rem',
-    color: '#e2dae6',
+    color: '#FFFFFF',
   },
   imgPr: {
     position: 'relative',
@@ -104,7 +114,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: '500',
     textAlign: 'center',
     fontSize: '3rem',
-    color: '#e2dae6',
+    color: '#FFFFFF',
   },
   tagLine: {
     fontFamily: " 'Yeon Sung', cursive",
@@ -114,7 +124,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: '500',
     textAlign: 'center',
     fontSize: '1.8rem',
-    color: '#e2dae6',
+    color: '#FFFFFF',
   },
   resumeButton: {
     top: '22vh',
@@ -227,19 +237,7 @@ function About() {
             </Button>
           </div>
         </div>
-        <div className={classes.nextPage}>
-          <Link to='/education' style={{ textDecoration: 'none' }}>
-            <Button
-              endIcon={
-                <ArrowForwardIcon style={{ height: '2rem', width: '2rem' }} />
-              }
-              className={classes.nextPageBtn}
-              classes={{ label: classes.btnTxt }}
-            >
-              Education
-            </Button>
-          </Link>
-        </div>
+        <Footer nextPage='Education & Skill' nextLink='/education' />
       </div>
     )
   );

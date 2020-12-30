@@ -62,6 +62,7 @@ const useStyles = makeStyles((theme) => ({
     width: '93%',
     padding: '0.5rem',
     marginBottom: '4vh',
+    backdropFilter: 'blur(0.6rem)',
   },
   projectHeader: {
     display: 'flex',
@@ -112,7 +113,8 @@ const useStyles = makeStyles((theme) => ({
     width: 'auto',
     height: '3rem',
     borderRadius: '2rem',
-    backgroundColor: '#0b7285',
+    backgroundColor: '#20A4F3',
+    backgroundImage: 'linear-gradient(147deg, #20A4F3 0%, #182B3A 74%)',
   },
 }));
 
@@ -306,7 +308,7 @@ function Training() {
         prevPage='Project'
         nextPage='Contact'
         prevLink='/project'
-        nextLink='/'
+        nextLink='/contact'
       />
     </div>
   );

@@ -13,7 +13,10 @@ const styles = (theme) => ({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
+    position: 'absolute',
     paddingTop: '0',
+    background: 'inherit',
+    overflow: 'hidden',
   },
 
   cardContent: {

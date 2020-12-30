@@ -6,14 +6,15 @@ import About from './component/About';
 import Education from './component/Education';
 import Project from './component/Project';
 import Training from './component/Training';
+import Contact from './component/Contact';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    padding: `0 ${theme.typography.pxToRem(10)}`,
     fontFamily: 'Roboto',
     width: '100%',
+    height: '100%',
   },
 }));
 function Kousik() {
@@ -27,6 +28,7 @@ function Kousik() {
             <Route path='/education' component={Education} />
             <Route path='/project' component={Project} />
             <Route path='/training' component={Training} />
+            <Route path='/contact' component={Contact} />
           </Switch>
         </BrowserRouter>
       </div>

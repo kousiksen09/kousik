@@ -1,7 +1,9 @@
+import rcpl from '../assets/rcpl.png';
+
 export const trainingData = [
   {
     title: 'IoT From RCPL',
-    traingIns: 'https://rcplindia.in/media/2020/09/rcpl-logo.png',
+    traingIns: rcpl,
     name: 'RCPL',
     duration: '19th Jan, 2019 - 12 Feb, 2019',
     skills: 'IoT',

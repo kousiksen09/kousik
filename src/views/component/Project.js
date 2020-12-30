@@ -24,13 +24,32 @@ const useStyles = makeStyles((theme) => ({
     height: '100vh',
     position: 'absolute',
   },
+  projectBg: {
+    height: '100vh',
+    width: '100%',
+    position: 'relative',
+
+    '&:before': {
+      content: `""`,
+      background:
+        'linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://i.pinimg.com/originals/a8/65/28/a86528f02aecc26d016a9d6152f07c60.jpg)',
+      height: '100%',
+      width: '100%',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center center',
+      backgroundAttachment: 'fixed',
+      position: 'absolute',
+      opacity: '0.75',
+    },
+  },
   projectContainer: {
     position: 'relative',
     display: 'flex',
     justifyContent: 'center',
     boxSizing: 'border-box',
     height: '77vh',
-    width: '98%',
+    width: '100%',
+    padding: '0.444rem',
     overflowX: 'hidden',
     overflowY: 'auto',
     '&::-webkit-scrollbar': {
@@ -54,16 +73,19 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     display: 'flex',
     justifyContent: 'center',
-    height: '57vh',
+    height: '59vh',
     width: '93%',
     padding: '0.5rem',
     marginBottom: '2vh',
+    backgroundColor: 'rgba(255, 255, 255, .12)',
+    backdropFilter: 'blur(0.6rem)',
+    overflow: 'hidden',
   },
   projectHeader: {
     position: 'relative',
-    height: '5vh',
+    height: '4vh',
     width: '100%',
-    lineHeight: 2.5,
+    top: '-2vh',
   },
   headerTxt: {
     display: 'inline-block',
@@ -126,186 +148,192 @@ function Project(props) {
     <div
       className={clsx(open ? classes.drawerOpenCon : classes.drawerNotOpenCon)}
     >
-      <Header />
+      <div className={classes.projectBg}>
+        <Header />
 
-      <div className={classes.title} style={{ marginBottom: '1rem' }}>
-        <Typography variant='h3' className={classes.titleText}>
-          My Projects
-        </Typography>
+        <div className={classes.title} style={{ marginBottom: '1rem' }}>
+          <Typography variant='h3' className={classes.titleText}>
+            My Projects
+          </Typography>
+        </div>
+        <div className={classes.projectContainer}>
+          <Grid container justify='space-evenly' spacing={3}>
+            <Grid xs={12} sm={12} md={4} lg={4} xl={4}>
+              <NonClickableCard
+                classes={{ root: classes.projectCard }}
+                onClick={() => window.open('https://ic3s.kiit.ac.in/')}
+              >
+                <div className={classes.projectHeader}>
+                  <Typography className={classes.headerTxt}>
+                    IC3S 2020
+                  </Typography>
+                </div>
+                <div className={classes.cardContent}>
+                  <img
+                    src={iccs}
+                    alt='ic3s.kiit.ac.in'
+                    className={classes.projectImg}
+                  />
+                </div>
+                <div className={classes.cardBody}>
+                  <Typography className={classes.crdBdyTxt}>
+                    Ic3s.kiit.ac.in , is an anual science conference website of
+                    School Of Electronics, KIIT.
+                    <br /> <b style={{ color: '#b8cc99' }}>Skills used </b>-
+                    HTML, CSS, Javascript, PHP, SQL
+                  </Typography>
+                </div>
+              </NonClickableCard>
+            </Grid>
+
+            <Grid xs={12} sm={12} md={4} lg={4} xl={4}>
+              {' '}
+              <NonClickableCard
+                classes={{ root: classes.projectCard }}
+                onClick={() => window.open('https://skillcrux.com/')}
+              >
+                <div className={classes.projectHeader}>
+                  <Typography className={classes.headerTxt}>
+                    SKILLCRUX
+                  </Typography>
+                </div>
+                <div className={classes.cardContent}>
+                  <img
+                    src={skillcrux}
+                    alt='skillcrux.com'
+                    className={classes.projectImg}
+                  />
+                </div>
+                <div className={classes.cardBody}>
+                  <Typography className={classes.crdBdyTxt}>
+                    skillcrux.com is a freelancer based website. Their mission
+                    is to curate individual skills and build a passive income
+                    stream bridging the gap between companies and individuals. I
+                    design the front end of this website.
+                    <br /> <b style={{ color: '#b8cc99' }}>Skills used </b>-
+                    HTML, CSS, Javascript, PHP, SQL
+                  </Typography>
+                </div>
+              </NonClickableCard>
+            </Grid>
+
+            <Grid xs={12} sm={12} md={4} lg={4} xl={4}>
+              <NonClickableCard
+                classes={{ root: classes.projectCard }}
+                onClick={() => window.open('https://kiitfest.org/')}
+              >
+                <div className={classes.projectHeader}>
+                  <Typography className={classes.headerTxt}>
+                    KIITFEST 6.0
+                  </Typography>
+                </div>
+                <div className={classes.cardContent}>
+                  <img
+                    src={kiitfest}
+                    alt='kiitfest'
+                    className={classes.projectImg}
+                  />
+                </div>
+                <div className={classes.cardBody}>
+                  <Typography className={classes.crdBdyTxt}>
+                    KIIT FEST is a three day Annual techno-cultural college fest
+                    of KIIT University, Bhubaneswar. It is one of the largest
+                    Festivals of the Eastern paradise of India. I contribute in
+                    the web team of this event.
+                    <br /> <b style={{ color: '#b8cc99' }}>Skills used </b>-
+                    HTML, CSS, Javascript.
+                  </Typography>
+                </div>
+              </NonClickableCard>
+            </Grid>
+
+            <Grid xs={12} sm={12} md={4} lg={4} xl={4}>
+              <NonClickableCard classes={{ root: classes.projectCard }}>
+                <div className={classes.projectHeader}>
+                  <Typography className={classes.headerTxt}>DETECTO</Typography>
+                </div>
+                <div className={classes.cardContent}>
+                  <iframe
+                    src='https://drive.google.com/file/d/130d2ck3lKwZDwq9RxJdHmAbZOBFw14yO/preview'
+                    frameborder='0'
+                    allowfullscreen=''
+                    allow='autoplay'
+                    title='Embedded post'
+                    className={classes.projectImg}
+                  />
+                </div>
+                <div className={classes.cardBody}>
+                  <Typography className={classes.crdBdyTxt}>
+                    This is a web app which can detect diseases and predict
+                    medicine with accuracy of 91 percent. I connect the ML model
+                    to a web application.
+                    <br /> <b style={{ color: '#b8cc99' }}>Skills used </b>-
+                    HTML, CSS, Javascript, PHP, SQL, Flusk.
+                  </Typography>
+                </div>
+              </NonClickableCard>
+            </Grid>
+
+            <Grid xs={12} sm={12} md={4} lg={4} xl={4}>
+              <NonClickableCard classes={{ root: classes.projectCard }}>
+                <div className={classes.projectHeader}>
+                  <Typography className={classes.headerTxt}>
+                    Automotive Car Model
+                  </Typography>
+                </div>
+                <div className={classes.cardContent}>
+                  <img
+                    src={automotive}
+                    alt='Automotive car'
+                    className={classes.projectImg}
+                  />
+                </div>
+                <div className={classes.cardBody}>
+                  <Typography className={classes.crdBdyTxt}>
+                    The automotive car build using opencv can detect lane,
+                    obstacles, traffic signal using our powerful image
+                    processing and ml algorithm.
+                    <br /> <b style={{ color: '#b8cc99' }}>Skills used </b>-
+                    Machine Learning, Opencv, C++, IOT, Raspberry PI
+                  </Typography>
+                </div>
+              </NonClickableCard>
+            </Grid>
+
+            <Grid xs={12} sm={12} md={4} lg={4} xl={4}>
+              <NonClickableCard
+                classes={{ root: classes.projectCard }}
+                onClick={() =>
+                  window.open('https://github.com/kousiksen09?tab=repositories')
+                }
+              >
+                <img
+                  src={github}
+                  alt='github'
+                  style={{
+                    position: 'absolute',
+                    display: 'flex',
+                    height: '100%',
+                    width: '100%',
+                    justifyContent: 'center',
+                  }}
+                />
+                <div className={classes.moreProject}>
+                  <Typography className={classes.showMore}>
+                    More Projects in my Github.
+                  </Typography>
+                </div>
+              </NonClickableCard>
+            </Grid>
+          </Grid>
+        </div>
+        <Footer
+          prevPage='Education'
+          nextPage='Training & Internship'
+          prevLink='/education'
+          nextLink='/training'
+        />
       </div>
-      <div className={classes.projectContainer}>
-        <Grid container justify='space-evenly' spacing={3}>
-          <Grid xs={12} sm={12} md={4} lg={4} xl={4}>
-            <NonClickableCard
-              classes={{ root: classes.projectCard }}
-              onClick={() => window.open('https://ic3s.kiit.ac.in/')}
-            >
-              <div className={classes.projectHeader}>
-                <Typography className={classes.headerTxt}>IC3S 2020</Typography>
-              </div>
-              <div className={classes.cardContent}>
-                <img
-                  src={iccs}
-                  alt='ic3s.kiit.ac.in'
-                  className={classes.projectImg}
-                />
-              </div>
-              <div className={classes.cardBody}>
-                <Typography className={classes.crdBdyTxt}>
-                  Ic3s.kiit.ac.in , is an anual science conference website of
-                  School Of Electronics, KIIT.
-                  <br /> <b style={{ color: '#b8cc99' }}>Skills used </b>- HTML,
-                  CSS, Javascript, PHP, SQL
-                </Typography>
-              </div>
-            </NonClickableCard>
-          </Grid>
-
-          <Grid xs={12} sm={12} md={4} lg={4} xl={4}>
-            {' '}
-            <NonClickableCard
-              classes={{ root: classes.projectCard }}
-              onClick={() => window.open('https://skillcrux.com/')}
-            >
-              <div className={classes.projectHeader}>
-                <Typography className={classes.headerTxt}>SKILLCRUX</Typography>
-              </div>
-              <div className={classes.cardContent}>
-                <img
-                  src={skillcrux}
-                  alt='skillcrux.com'
-                  className={classes.projectImg}
-                />
-              </div>
-              <div className={classes.cardBody}>
-                <Typography className={classes.crdBdyTxt}>
-                  skillcrux.com is a freelancer based website. Their mission is
-                  to curate individual skills and build a passive income stream
-                  bridging the gap between companies and individuals. I design
-                  the front end of this website.
-                  <br /> <b style={{ color: '#b8cc99' }}>Skills used </b>- HTML,
-                  CSS, Javascript, PHP, SQL
-                </Typography>
-              </div>
-            </NonClickableCard>
-          </Grid>
-
-          <Grid xs={12} sm={12} md={4} lg={4} xl={4}>
-            <NonClickableCard
-              classes={{ root: classes.projectCard }}
-              onClick={() => window.open('https://kiitfest.org/')}
-            >
-              <div className={classes.projectHeader}>
-                <Typography className={classes.headerTxt}>
-                  KIITFEST 6.0
-                </Typography>
-              </div>
-              <div className={classes.cardContent}>
-                <img
-                  src={kiitfest}
-                  alt='kiitfest'
-                  className={classes.projectImg}
-                />
-              </div>
-              <div className={classes.cardBody}>
-                <Typography className={classes.crdBdyTxt}>
-                  KIIT FEST is a three day Annual techno-cultural college fest
-                  of KIIT University, Bhubaneswar. It is one of the largest
-                  Festivals of the Eastern paradise of India. I contribute in
-                  the web team of this event.
-                  <br /> <b style={{ color: '#b8cc99' }}>Skills used </b>- HTML,
-                  CSS, Javascript.
-                </Typography>
-              </div>
-            </NonClickableCard>
-          </Grid>
-
-          <Grid xs={12} sm={12} md={4} lg={4} xl={4}>
-            <NonClickableCard classes={{ root: classes.projectCard }}>
-              <div className={classes.projectHeader}>
-                <Typography className={classes.headerTxt}>DETECTO</Typography>
-              </div>
-              <div className={classes.cardContent}>
-                <iframe
-                  src='https://drive.google.com/file/d/130d2ck3lKwZDwq9RxJdHmAbZOBFw14yO/preview'
-                  frameborder='0'
-                  allowfullscreen=''
-                  allow='autoplay'
-                  title='Embedded post'
-                  className={classes.projectImg}
-                />
-              </div>
-              <div className={classes.cardBody}>
-                <Typography className={classes.crdBdyTxt}>
-                  This is a web app which can detect diseases and predict
-                  medicine with accuracy of 91 percent. I connect the ML model
-                  to a web application.
-                  <br /> <b style={{ color: '#b8cc99' }}>Skills used </b>- HTML,
-                  CSS, Javascript, PHP, SQL, Flusk.
-                </Typography>
-              </div>
-            </NonClickableCard>
-          </Grid>
-
-          <Grid xs={12} sm={12} md={4} lg={4} xl={4}>
-            <NonClickableCard classes={{ root: classes.projectCard }}>
-              <div className={classes.projectHeader}>
-                <Typography className={classes.headerTxt}>
-                  Automotive Car Model
-                </Typography>
-              </div>
-              <div className={classes.cardContent}>
-                <img
-                  src={automotive}
-                  alt='Automotive car'
-                  className={classes.projectImg}
-                />
-              </div>
-              <div className={classes.cardBody}>
-                <Typography className={classes.crdBdyTxt}>
-                  The automotive car build using opencv can detect lane,
-                  obstacles, traffic signal using our powerful image processing
-                  and ml algorithm.
-                  <br /> <b style={{ color: '#b8cc99' }}>Skills used </b>-
-                  Machine Learning, Opencv, C++, IOT, Raspberry PI
-                </Typography>
-              </div>
-            </NonClickableCard>
-          </Grid>
-
-          <Grid xs={12} sm={12} md={4} lg={4} xl={4}>
-            <NonClickableCard
-              classes={{ root: classes.projectCard }}
-              onClick={() =>
-                window.open('https://github.com/kousiksen09?tab=repositories')
-              }
-            >
-              <img
-                src={github}
-                alt='github'
-                style={{
-                  position: 'absolute',
-                  display: 'flex',
-                  height: '100%',
-                  width: '100%',
-                  justifyContent: 'center',
-                }}
-              />
-              <div className={classes.moreProject}>
-                <Typography className={classes.showMore}>
-                  More Projects in my Github.
-                </Typography>
-              </div>
-            </NonClickableCard>
-          </Grid>
-        </Grid>
-      </div>
-      <Footer
-        prevPage='Education'
-        nextPage='Training & Internship'
-        prevLink='/education'
-        nextLink='/training'
-      />
     </div>
   );
 }
