@@ -1,19 +1,19 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import { pxToVw, pxToRem, pxToVh } from '../../utils/theme';
 import clsx from 'clsx';
 import { Typography, Button } from '@material-ui/core';
 import prc from '../../assets/prc.jpg';
-import bgOne from '../../assets/bgOne.jfif';
+
 import CloseIcon from '@material-ui/icons/Close';
 import Header from './Header';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import Resume from '../../assets/Kousik_Resume.pdf';
 import { currPageAction } from './../../Redux/actions/CurrPageAction';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+
 import Footer from './Footer';
 
 const useStyles = makeStyles((theme) => ({
