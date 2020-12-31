@@ -1,5 +1,8 @@
 import React from 'react';
+import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { Button, Typography } from '@material-ui/core';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
@@ -8,19 +11,26 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
+    height: '8vh',
+    position: 'absolute',
+    top: '92vh',
+  },
+  mobileRoot: {
+    width: '100%',
     height: '9vh',
     position: 'absolute',
-    top: '89vh',
+    top: '84vh',
   },
   footerContainer: {
     position: 'relative',
     alignItems: 'center',
     height: '100%',
     width: '100%',
+    backgroundColor: 'transparent',
 
-    backgroundColor: 'rgba(255, 255, 255, .12)',
-    // borderTop: '0.1rem solid #e38c44',
-    backdropFilter: 'blur(0.6rem)',
+    // backgroundColor: 'rgba(255, 255, 255, .12)',
+    // // borderTop: '0.1rem solid #e38c44',
+    // backdropFilter: 'blur(0.6rem)',
   },
   nextPage: {
     display: 'flex',
@@ -91,9 +101,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 function Footer(props) {
   const classes = useStyles();
+  const theme = useTheme();
+  const screenChange = useMediaQuery(theme.breakpoints.up('md'));
 
   return (
-    <div className={classes.root}>
+    <div className={clsx(screenChange ? classes.root : classes.mobileRoot)}>
       <div className={classes.footerContainer}>
         <div className={classes.pageRoute}>
           <div className={classes.prevPage}>
