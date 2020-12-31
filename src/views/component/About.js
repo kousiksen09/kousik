@@ -19,6 +19,7 @@ import { pageVariants, pageTransition } from '../../common/pageTrasition';
 const useStyles = makeStyles((theme) => ({
   drawerOpenCon: {
     width: '82vw',
+    height: '100vh',
     left: '17vw',
     position: 'absolute',
   },

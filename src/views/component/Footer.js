@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '9vh',
     position: 'absolute',
-    top: '84vh',
+    top: '85vh',
   },
   footerContainer: {
     position: 'relative',
