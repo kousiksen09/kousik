@@ -244,7 +244,7 @@ function About() {
             </Button>
           </div>
         </motion.div>
-        <div style={{ marginTop: '-13vh' }}>
+        <div style={{ marginTop: '-11vh' }}>
           <Footer nextPage='Education & Skill' nextLink='/education' />
         </div>
       </div>

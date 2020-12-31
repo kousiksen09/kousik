@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     boxSizing: 'border-box',
-    height: '80vh',
+    height: '83vh',
     width: '100%',
     overflowX: 'hidden',
     overflowY: 'auto',

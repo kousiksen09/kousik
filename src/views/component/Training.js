@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     boxSizing: 'border-box',
-    height: '72vh',
+    height: '74vh',
     width: '100%',
     overflowX: 'hidden',
     overflowY: 'auto',
@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
     height: '99%',
     width: '93%',
     padding: '0.5rem',
-    marginBottom: '4vh',
+    marginBottom: '2vh',
     backdropFilter: 'blur(0.6rem)',
   },
   projectHeader: {
@@ -313,6 +313,7 @@ function Training() {
           </Grid>
         </Grid>
       </motion.div>
+
       <Footer
         prevPage='Project'
         nextPage='Contact'

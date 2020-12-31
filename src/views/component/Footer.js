@@ -9,13 +9,15 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     height: '100%',
-    position: 'relative',
+    position: 'absolute',
+    top: '89vh',
   },
   footerContainer: {
     position: 'absolute',
+    alignItems: 'center',
     top: '3vh',
     width: '100%',
-    height: '10vh',
+    height: '8vh',
     backgroundColor: 'rgba(255, 255, 255, .12)',
     // borderTop: '0.1rem solid #e38c44',
     backdropFilter: 'blur(0.6rem)',
@@ -25,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     flexGrow: 1,
     justifyContent: 'flex-end',
-    top: '1vh',
+
     right: '1vw',
   },
   pageRoute: {
@@ -38,7 +40,6 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     flexGrow: 1,
     justifyContent: 'flex-start',
-    top: '1vh',
     left: '1vw',
   },
   nextPageBtn: {
@@ -78,7 +79,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     position: 'relative',
-    top: '2vh',
   },
   copyrightTxt: {
     display: 'inline-block',
