@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     boxSizing: 'border-box',
-    height: '82vh',
+    height: '80vh',
     width: '100%',
     overflowX: 'hidden',
     overflowY: 'auto',
@@ -152,47 +152,12 @@ const useStyles = makeStyles((theme) => ({
 
   mobileHeight: {
     position: 'relative',
-    height: '40vh',
+    height: '34vh',
     width: '95%',
     marginRight: '1rem',
     borderRadius: '0.4rem',
 
     boxShadow: 'none',
-  },
-  nextPage: {
-    display: 'flex',
-    position: 'relative',
-    flexGrow: 1,
-    justifyContent: 'flex-end',
-    top: '3vh',
-    right: '4vw',
-  },
-  pageRoute: {
-    position: 'relative',
-    display: 'flex',
-    top: '7vh',
-  },
-  prevPage: {
-    display: 'flex',
-    position: 'relative',
-    flexGrow: 1,
-    justifyContent: 'flex-start',
-    top: '3vh',
-  },
-  nextPageBtn: {
-    height: '3rem',
-    width: '10rem',
-    background: '#9e1c66',
-    textDecoration: 'none',
-    color: '#FFFFFF',
-    borderRadius: '2rem',
-    '&:hover': {
-      opacity: 1,
-      backgroundColor: '#a80f4a',
-    },
-  },
-  btnTxt: {
-    fontSize: '1.2rem',
   },
 }));
 

@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
   },
   about: {
-    height: '86vh',
+    height: '100%',
     width: '100%',
     position: 'relative',
 
@@ -244,7 +244,9 @@ function About() {
             </Button>
           </div>
         </motion.div>
-        <Footer nextPage='Education & Skill' nextLink='/education' />
+        <div style={{ marginTop: '-13vh' }}>
+          <Footer nextPage='Education & Skill' nextLink='/education' />
+        </div>
       </div>
     )
   );
