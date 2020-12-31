@@ -10,14 +10,14 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '100%',
     position: 'absolute',
-    top: '89vh',
+    top: '93vh',
   },
   footerContainer: {
     position: 'absolute',
     alignItems: 'center',
-    top: '3vh',
+
     width: '100%',
-    height: '8vh',
+
     backgroundColor: 'rgba(255, 255, 255, .12)',
     // borderTop: '0.1rem solid #e38c44',
     backdropFilter: 'blur(0.6rem)',
