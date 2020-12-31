@@ -10,6 +10,7 @@ import skillcrux from '../../assets/skillcrux.png';
 import kiitfest from '../../assets/kiitfest.jpg';
 import automotive from '../../assets/automotive.png';
 import github from '../../assets/github.png';
+import projectBg from '../../assets/projectBg.jpg';
 import Footer from './Footer';
 
 const useStyles = makeStyles((theme) => ({
@@ -31,8 +32,7 @@ const useStyles = makeStyles((theme) => ({
 
     '&:before': {
       content: `""`,
-      background:
-        'linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://i.pinimg.com/originals/a8/65/28/a86528f02aecc26d016a9d6152f07c60.jpg)',
+      background: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(${projectBg})`,
       height: '100%',
       width: '100%',
       backgroundSize: 'cover',

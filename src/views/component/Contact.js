@@ -12,6 +12,7 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import InstagramIcon from '@material-ui/icons/Instagram';
+import contactBg from '../../assets/contactBg.jpg';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -34,8 +35,7 @@ const useStyles = makeStyles((theme) => ({
 
     '&:before': {
       content: `""`,
-      background:
-        'linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),  url(https://image.freepik.com/free-vector/gradient-background-with-different-shapes_23-2148800691.jpg)',
+      background: `linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),  url(${contactBg})`,
       height: '100%',
       width: '100%',
       backgroundSize: 'cover',

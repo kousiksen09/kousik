@@ -13,7 +13,7 @@ import Header from './Header';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import Resume from '../../assets/Kousik_Resume.pdf';
 import { currPageAction } from './../../Redux/actions/CurrPageAction';
-
+import aboutBg from '../../assets/aboutBg.jpg';
 import Footer from './Footer';
 
 const useStyles = makeStyles((theme) => ({
@@ -34,8 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
     '&:before': {
       content: `""`,
-      background:
-        'linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://image.freepik.com/free-photo/abstract-communication-technology-network-concept_34629-641.jpg)',
+      background: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(${aboutBg})`,
       height: '100%',
       width: '100%',
       backgroundSize: 'cover',
