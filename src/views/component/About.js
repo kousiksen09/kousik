@@ -243,9 +243,8 @@ function About() {
               Resume
             </Button>
           </div>
+          <Footer nextPage='Education & Skill' nextLink='/education' />
         </motion.div>
-
-        <Footer nextPage='Education & Skill' nextLink='/education' />
       </div>
     )
   );

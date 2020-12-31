@@ -281,7 +281,6 @@ function Contact() {
             </ul>
           </div>
         </motion.div>
-
         <Footer prevPage='Training' prevLink='/training' />
       </div>
     </div>

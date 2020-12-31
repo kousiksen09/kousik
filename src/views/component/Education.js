@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     boxSizing: 'border-box',
-    height: '83vh',
+    height: '100%',
     width: '100%',
     overflowX: 'hidden',
     overflowY: 'auto',
@@ -152,7 +152,7 @@ const useStyles = makeStyles((theme) => ({
 
   mobileHeight: {
     position: 'relative',
-    height: '34vh',
+    height: '38vh',
     width: '95%',
     marginRight: '1rem',
     borderRadius: '0.4rem',
@@ -332,6 +332,7 @@ function Education(props) {
           </Grid>
         </Grid>
       </motion.div>
+
       <Footer
         prevPage='About Me'
         nextPage='Project'

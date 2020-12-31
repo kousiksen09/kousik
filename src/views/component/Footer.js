@@ -8,14 +8,14 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    height: '100%',
+    height: '9vh',
     position: 'absolute',
-    top: '93vh',
+    top: '91vh',
   },
   footerContainer: {
-    position: 'absolute',
+    position: 'relative',
     alignItems: 'center',
-
+    height: '100%',
     width: '100%',
 
     backgroundColor: 'rgba(255, 255, 255, .12)',

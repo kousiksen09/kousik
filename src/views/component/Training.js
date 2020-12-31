@@ -313,7 +313,6 @@ function Training() {
           </Grid>
         </Grid>
       </motion.div>
-
       <Footer
         prevPage='Project'
         nextPage='Contact'
