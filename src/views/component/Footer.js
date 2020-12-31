@@ -10,13 +10,13 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '100%',
     position: 'absolute',
-    top: '89vh',
+    top: '90vh',
   },
   footerContainer: {
     position: 'absolute',
-    top: '1vh',
+    top: '2vh',
     width: '100%',
-    height: '11vh',
+    height: '10vh',
     backgroundColor: 'rgba(255, 255, 255, .12)',
     // borderTop: '0.1rem solid #e38c44',
     backdropFilter: 'blur(0.6rem)',
@@ -72,6 +72,8 @@ const useStyles = makeStyles((theme) => ({
   },
   btnTxt: {
     fontSize: '1.2rem',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
   },
   copyright: {
     display: 'flex',

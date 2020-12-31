@@ -9,7 +9,9 @@ import Kousik from './views/Kousik';
 
 const styles = () => ({
   root: {
-    padding: '5%',
+    position: 'relative',
+    width: '100vw',
+    height: '100vh',
   },
 });
 

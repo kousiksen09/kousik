@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'row',
-    padding: `0 ${theme.typography.pxToRem(10)}`,
     fontFamily: 'Roboto',
     width: '100%',
   },
