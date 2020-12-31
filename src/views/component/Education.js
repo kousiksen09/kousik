@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
+import { motion } from 'framer-motion';
+import { pageVariants, pageTransition } from '../../common/pageTrasition';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import { useSelector } from 'react-redux';
@@ -33,9 +35,16 @@ const useStyles = makeStyles((theme) => ({
   },
   education: {
     position: 'relative',
+    display: 'flex',
+    justifyContent: 'center',
     boxSizing: 'border-box',
     height: '82vh',
     width: '100%',
+    overflowX: 'hidden',
+    overflowY: 'auto',
+    '&::-webkit-scrollbar': {
+      width: '0',
+    },
   },
 
   title: {
@@ -227,7 +236,14 @@ function Education(props) {
       className={clsx(open ? classes.drawerOpenCon : classes.drawerNotOpenCon)}
     >
       <Header />
-      <div className={classes.education}>
+      <motion.div
+        className={classes.education}
+        initial='initial'
+        animate='in'
+        exit='out'
+        variants={pageVariants}
+        transition={pageTransition}
+      >
         <Grid container spacing={3}>
           <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
             <div
@@ -350,7 +366,7 @@ function Education(props) {
             </div>
           </Grid>
         </Grid>
-      </div>
+      </motion.div>
       <Footer
         prevPage='About Me'
         nextPage='Project'

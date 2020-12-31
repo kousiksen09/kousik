@@ -9,12 +9,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     height: '100%',
-    position: 'absolute',
-    top: '90vh',
+    position: 'relative',
   },
   footerContainer: {
     position: 'absolute',
-    top: '2vh',
+    top: '3vh',
     width: '100%',
     height: '10vh',
     backgroundColor: 'rgba(255, 255, 255, .12)',

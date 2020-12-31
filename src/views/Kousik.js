@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-
+import { AnimatePresence } from 'framer-motion';
 import About from './component/About';
 import Education from './component/Education';
 import Project from './component/Project';
@@ -24,13 +24,15 @@ function Kousik() {
     <div className={classes.appFrame}>
       <div className={classes.root}>
         <BrowserRouter>
-          <Switch>
-            <Route exact path='/' component={About} />
-            <Route path='/education' component={Education} />
-            <Route path='/project' component={Project} />
-            <Route path='/training' component={Training} />
-            <Route path='/contact' component={Contact} />
-          </Switch>
+          <AnimatePresence exitBeforeEnter>
+            <Switch>
+              <Route exact path='/' component={About} />
+              <Route path='/education' component={Education} />
+              <Route path='/project' component={Project} />
+              <Route path='/training' component={Training} />
+              <Route path='/contact' component={Contact} />
+            </Switch>
+          </AnimatePresence>
         </BrowserRouter>
       </div>
     </div>

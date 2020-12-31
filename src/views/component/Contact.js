@@ -1,5 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
+import { motion } from 'framer-motion';
+import { pageVariants, pageTransition } from '../../common/pageTrasition';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Button } from '@material-ui/core';
@@ -48,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   contactContainer: {
     position: 'relative',
     boxSizing: 'border-box',
-    height: '74vh',
+    height: '72vh',
     width: '100%',
     overflowX: 'hidden',
     overflowY: 'auto',
@@ -166,7 +168,14 @@ function Contact() {
             Contact Me
           </Typography>
         </div>
-        <div className={classes.contactContainer}>
+        <motion.div
+          className={classes.contactContainer}
+          initial='initial'
+          animate='in'
+          exit='out'
+          variants={pageVariants}
+          transition={pageTransition}
+        >
           <div className={classes.contactDetails}>
             <div className={classes.contacts}>
               <PersonPinCircleIcon className={classes.contactIcon} />
@@ -271,7 +280,7 @@ function Contact() {
               </li>
             </ul>
           </div>
-        </div>
+        </motion.div>
 
         <Footer prevPage='Training' prevLink='/training' />
       </div>

@@ -1,5 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
+import { motion } from 'framer-motion';
+import { pageVariants, pageTransition } from '../../common/pageTrasition';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Grid } from '@material-ui/core';
@@ -47,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     boxSizing: 'border-box',
-    height: '77vh',
+    height: '72vh',
     width: '100%',
     padding: '0.444rem',
     overflowX: 'hidden',
@@ -156,7 +158,14 @@ function Project(props) {
             My Projects
           </Typography>
         </div>
-        <div className={classes.projectContainer}>
+        <motion.div
+          className={classes.projectContainer}
+          initial='initial'
+          animate='in'
+          exit='out'
+          variants={pageVariants}
+          transition={pageTransition}
+        >
           <Grid container justify='space-evenly' spacing={3}>
             <Grid xs={12} sm={12} md={4} lg={4} xl={4}>
               <NonClickableCard
@@ -326,7 +335,7 @@ function Project(props) {
               </NonClickableCard>
             </Grid>
           </Grid>
-        </div>
+        </motion.div>
         <Footer
           prevPage='Education'
           nextPage='Training & Internship'

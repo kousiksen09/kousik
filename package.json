@@ -1,6 +1,5 @@
 {
   "name": "kousik-portfolio",
-  
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,6 +9,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "clsx": "^1.1.1",
+    "framer-motion": "^3.1.1",
     "highcharts": "^8.2.2",
     "history": "^5.0.0",
     "jquery": "^3.5.1",

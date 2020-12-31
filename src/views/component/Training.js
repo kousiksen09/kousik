@@ -1,5 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
+import { motion } from 'framer-motion';
+import { pageVariants, pageTransition } from '../../common/pageTrasition';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Grid, Button } from '@material-ui/core';
@@ -26,8 +28,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     boxSizing: 'border-box',
-    height: '74vh',
-    width: '98%',
+    height: '72vh',
+    width: '100%',
     overflowX: 'hidden',
     overflowY: 'auto',
     '&::-webkit-scrollbar': {
@@ -132,7 +134,14 @@ function Training() {
           Training & Internship
         </Typography>
       </div>
-      <div className={classes.trainingContainer}>
+      <motion.div
+        className={classes.trainingContainer}
+        initial='initial'
+        animate='in'
+        exit='out'
+        variants={pageVariants}
+        transition={pageTransition}
+      >
         <Grid container justify='space-evenly' spacing={3}>
           {trainingData.map((data, key) => (
             <Grid
@@ -303,7 +312,7 @@ function Training() {
             </NonClickableCard>
           </Grid>
         </Grid>
-      </div>
+      </motion.div>
       <Footer
         prevPage='Project'
         nextPage='Contact'

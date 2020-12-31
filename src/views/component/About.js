@@ -1,13 +1,12 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
+import { motion } from 'framer-motion';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import { pxToVw, pxToRem, pxToVh } from '../../utils/theme';
 import clsx from 'clsx';
 import { Typography, Button } from '@material-ui/core';
 import prc from '../../assets/prc.jpg';
-
 import CloseIcon from '@material-ui/icons/Close';
 import Header from './Header';
 import GetAppIcon from '@material-ui/icons/GetApp';
@@ -15,6 +14,7 @@ import Resume from '../../assets/Kousik_Resume.pdf';
 import { currPageAction } from './../../Redux/actions/CurrPageAction';
 import aboutBg from '../../assets/aboutBg.jpg';
 import Footer from './Footer';
+import { pageVariants, pageTransition } from '../../common/pageTrasition';
 
 const useStyles = makeStyles((theme) => ({
   drawerOpenCon: {
@@ -23,15 +23,14 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
   },
   drawerNotOpenCon: {
-    width: '100%',
-    height: '100%',
+    width: '100vw',
+    height: '100vh',
     position: 'absolute',
   },
   about: {
-    height: '100vh',
+    height: '86vh',
     width: '100%',
-
-    position: 'absolute',
+    position: 'relative',
 
     '&:before': {
       content: `""`,
@@ -161,6 +160,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '1.4rem',
   },
 }));
+
 function About() {
   const open = useSelector((state) => state.DrawerReducer.open);
   const [modalOpen, setModalOpen] = React.useState(false);
@@ -182,7 +182,14 @@ function About() {
           open ? classes.drawerOpenCon : classes.drawerNotOpenCon
         )}
       >
-        <div className={classes.about}>
+        <motion.div
+          className={classes.about}
+          initial={false}
+          animate='in'
+          exit='out'
+          variants={pageVariants}
+          transition={pageTransition}
+        >
           <Header />
           <div className={classes.imgPr}>
             <img
@@ -236,7 +243,7 @@ function About() {
               Resume
             </Button>
           </div>
-        </div>
+        </motion.div>
         <Footer nextPage='Education & Skill' nextLink='/education' />
       </div>
     )
