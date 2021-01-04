@@ -46,6 +46,11 @@ const useStyles = makeStyles((theme) => ({
       width: '0',
     },
   },
+  heightManager: {
+    position: 'relative',
+    height: '92vh',
+    width: '100%',
+  },
 
   title: {
     position: 'relative',
@@ -200,7 +205,7 @@ function Education(props) {
     <div
       className={clsx(open ? classes.drawerOpenCon : classes.drawerNotOpenCon)}
     >
-      <div style={{ height: '92vh' }}>
+      <div className={classes.heightManager}>
         <Header />
         <motion.div
           className={classes.education}

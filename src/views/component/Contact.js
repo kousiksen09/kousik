@@ -59,6 +59,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 
+  heightManager: {
+    position: 'relative',
+    height: '92vh',
+    width: '100%',
+  },
+
   title: {
     position: 'relative',
     display: 'flex',
@@ -162,7 +168,7 @@ function Contact() {
       className={clsx(open ? classes.drawerOpenCon : classes.drawerNotOpenCon)}
     >
       <div className={classes.conatctBg}>
-        <div style={{ height: '92vh' }}>
+        <div className={classes.heightManager}>
           <Header />
           <div className={classes.title} style={{ marginBottom: '1rem' }}>
             <Typography variant='h3' className={classes.titleText}>

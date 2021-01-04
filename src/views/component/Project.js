@@ -111,6 +111,11 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     fontSize: 'clamp(1.8rem, 5.3vw, 2rem)',
   },
+  heightManager: {
+    position: 'relative',
+    height: '92vh',
+    width: '100%',
+  },
   cardContent: {
     position: 'absolute',
     top: '8vh',
@@ -163,7 +168,7 @@ function Project(props) {
       className={clsx(open ? classes.drawerOpenCon : classes.drawerNotOpenCon)}
     >
       <div className={classes.projectBg}>
-        <div style={{ height: '92vh' }}>
+        <div className={classes.heightManager}>
           <Header />
 
           <div className={classes.title} style={{ marginBottom: '1rem' }}>

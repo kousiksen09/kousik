@@ -50,6 +50,11 @@ const useStyles = makeStyles((theme) => ({
       border: '0.1rem solid #229db3',
     },
   },
+  heightManager: {
+    position: 'relative',
+    height: '92vh',
+    width: '100%',
+  },
 
   titleText: {
     fontFamily: "'Fondamento', cursive",
@@ -128,7 +133,7 @@ function Training() {
     <div
       className={clsx(open ? classes.drawerOpenCon : classes.drawerNotOpenCon)}
     >
-      <div style={{ height: '92vh' }}>
+      <div className={classes.heightManager}>
         <Header />
         <div className={classes.title} style={{ marginBottom: '1rem' }}>
           <Typography variant='h3' className={classes.titleText}>

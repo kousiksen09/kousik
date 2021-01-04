@@ -161,6 +161,11 @@ const useStyles = makeStyles((theme) => ({
   btnTxt: {
     fontSize: 'clamp(1.4rem, 4vw, 1.8rem)',
   },
+  heightManager: {
+    position: 'relative',
+    height: '92vh',
+    width: '100%',
+  },
 }));
 
 function About() {
@@ -192,7 +197,7 @@ function About() {
           variants={pageVariants}
           transition={pageTransition}
         >
-          <div style={{ height: '92vh' }}>
+          <div className={classes.heightManager}>
             <Header />
             <div className={classes.imgPr}>
               <img

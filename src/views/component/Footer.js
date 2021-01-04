@@ -1,8 +1,7 @@
 import React from 'react';
-// import clsx from 'clsx';
+
 import { makeStyles } from '@material-ui/core/styles';
-// import useMediaQuery from '@material-ui/core/useMediaQuery';
-// import { useTheme } from '@material-ui/core/styles';
+
 import { Link } from 'react-router-dom';
 import { Button, Typography } from '@material-ui/core';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
@@ -105,7 +104,6 @@ function Footer(props) {
   // const screenChange = useMediaQuery(theme.breakpoints.up('md'));
 
   return (
-    // <div className={clsx(screenChange ? classes.root : classes.mobileRoot)}>
     <div className={classes.root}>
       <div className={classes.footerContainer}>
         <div className={classes.pageRoute}>
