@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     textAlign: 'center',
-    fontSize: '4rem',
+    fontSize: 'clamp(3rem, 10vw, 3.8rem)',
     color: '#FFFFFF',
   },
   imgPr: {
@@ -106,14 +106,14 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexGrow: 1,
     justifyContent: 'center',
-    margin: pxToRem(12),
+    height: '40vh',
   },
   subTitle: {
     fontFamily: " 'Yeon Sung', cursive",
     position: 'absolute',
     fontWeight: '500',
     textAlign: 'center',
-    fontSize: '3rem',
+    fontSize: 'clamp(2rem, 6vw, 2.8rem)',
     color: '#FFFFFF',
   },
   tagLine: {
@@ -123,13 +123,14 @@ const useStyles = makeStyles((theme) => ({
     margin: '0 2rem 2rem 0',
     fontWeight: '500',
     textAlign: 'center',
-    fontSize: '1.8rem',
+    fontSize: 'clamp(1.8rem, 12vw, 2.5rem)',
     color: '#FFFFFF',
   },
   resumeButton: {
-    top: '22vh',
+    position: 'absolute',
+    marginTop: '25vh',
     height: '3rem',
-    width: '10rem',
+    width: 'auto',
     background: '#ed8728',
     color: '#FFFFFF',
     borderRadius: '2rem',
@@ -158,7 +159,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   btnTxt: {
-    fontSize: '1.4rem',
+    fontSize: 'clamp(1.4rem, 4vw, 1.8rem)',
   },
 }));
 
@@ -191,58 +192,64 @@ function About() {
           variants={pageVariants}
           transition={pageTransition}
         >
-          <Header />
-          <div className={classes.imgPr}>
-            <img
-              src={prc}
-              alt='Kousik Sen'
-              className={classes.prImg}
-              onClick={() => handleModalOpen()}
-            />
-          </div>
-          <Modal
-            open={modalOpen}
-            onClose={handleModalClose}
-            aria-labelledby='simple-modal-title'
-            aria-describedby='simple-modal-description'
-          >
-            <>
-              <div className={classes.rightSection}>
-                <CloseIcon
-                  onClick={() => handleModalClose()}
-                  className={classes.closeIcon}
-                />
-              </div>
-              <div className={classes.zoomImageDiv}>
-                <img src={prc} alt='Kousik Sen' className={classes.zoomImage} />
-              </div>
-            </>
-          </Modal>
-
-          <Typography variant='h3' className={classes.titleText}>
-            KOUSIK SEN
-          </Typography>
-
-          <div className={classes.objective}>
-            <Typography variant='h3' className={classes.subTitle}>
-              WEB DEVELOPER | IoT Architect
-            </Typography>
-            <Typography variant='h3' className={classes.tagLine}>
-              Inovation + Design + Develop make the world beautiful. Have 3
-              years of experience in responsive UI Design and 2 years of
-              experience in IoT.
-            </Typography>
-            <Button
-              variant='contained'
-              className={classes.resumeButton}
-              classes={{ label: classes.btnTxt }}
-              onClick={() => window.open(Resume)}
-              startIcon={
-                <GetAppIcon style={{ height: '2rem', width: '2rem' }} />
-              }
+          <div style={{ height: '92vh' }}>
+            <Header />
+            <div className={classes.imgPr}>
+              <img
+                src={prc}
+                alt='Kousik Sen'
+                className={classes.prImg}
+                onClick={() => handleModalOpen()}
+              />
+            </div>
+            <Modal
+              open={modalOpen}
+              onClose={handleModalClose}
+              aria-labelledby='simple-modal-title'
+              aria-describedby='simple-modal-description'
             >
-              Resume
-            </Button>
+              <>
+                <div className={classes.rightSection}>
+                  <CloseIcon
+                    onClick={() => handleModalClose()}
+                    className={classes.closeIcon}
+                  />
+                </div>
+                <div className={classes.zoomImageDiv}>
+                  <img
+                    src={prc}
+                    alt='Kousik Sen'
+                    className={classes.zoomImage}
+                  />
+                </div>
+              </>
+            </Modal>
+
+            <Typography variant='h3' className={classes.titleText}>
+              KOUSIK SEN
+            </Typography>
+
+            <div className={classes.objective}>
+              <Typography variant='h3' className={classes.subTitle}>
+                WEB DEVELOPER | IoT Architect
+              </Typography>
+              <Typography variant='h3' className={classes.tagLine}>
+                Inovation + Design + Develop make the world beautiful. Have 3
+                years of experience in responsive UI Design and 2 years of
+                experience in IoT.
+              </Typography>
+              <Button
+                variant='contained'
+                className={classes.resumeButton}
+                classes={{ label: classes.btnTxt }}
+                onClick={() => window.open(Resume)}
+                startIcon={
+                  <GetAppIcon style={{ height: '2rem', width: '2rem' }} />
+                }
+              >
+                Resume
+              </Button>
+            </div>
           </div>
           <Footer nextPage='Education & Skill' nextLink='/education' />
         </motion.div>

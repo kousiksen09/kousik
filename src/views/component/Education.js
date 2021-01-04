@@ -16,7 +16,7 @@ import Footer from './Footer';
 
 const xAxisLabelStyles = {
   color: 'white',
-  fontSize: '.83rem',
+  fontSize: 'clamp(0.83rem, 2vw, 1rem)',
   fontFamily: 'Roboto',
   opacity: 0.6,
 };
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     boxSizing: 'border-box',
-    height: '80vh',
+    height: '82vh',
     width: '100%',
     overflowX: 'hidden',
     overflowY: 'auto',
@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
   },
   titleText: {
     fontFamily: "'Fondamento', cursive",
-    fontSize: '2rem',
+    fontSize: 'clamp(1.8rem, 5vw, 2rem)',
     color: '#e2dae6',
     fontWeight: '600',
   },
@@ -107,7 +107,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   eduLabel: {
-    fontSize: '1.8rem',
+    fontSize: 'clamp(1.8rem, 6vw, 2rem)',
     color: '#e2dae6',
     fontWeight: '600',
     fontFamily: " 'Yeon Sung', cursive",
@@ -128,7 +128,7 @@ const useStyles = makeStyles((theme) => ({
     opacity: 0.9,
     color: '#f5f4f2',
     fontFamily: 'Roboto',
-    fontSize: '1.3rem',
+    fontSize: 'clamp(1.3rem, 4vw, 1.6rem)',
     fontWeight: 500,
     textAlign: 'justify',
   },
@@ -152,7 +152,7 @@ const useStyles = makeStyles((theme) => ({
 
   mobileHeight: {
     position: 'relative',
-    height: '38vh',
+    height: '34vh',
     width: '95%',
     marginRight: '1rem',
     borderRadius: '0.4rem',
@@ -200,138 +200,140 @@ function Education(props) {
     <div
       className={clsx(open ? classes.drawerOpenCon : classes.drawerNotOpenCon)}
     >
-      <Header />
-      <motion.div
-        className={classes.education}
-        initial='initial'
-        animate='in'
-        exit='out'
-        variants={pageVariants}
-        transition={pageTransition}
-      >
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-            <div
-              className={clsx(
-                screenChange ? classes.eduDetails : classes.mobileHeight
-              )}
-            >
+      <div style={{ height: '92vh' }}>
+        <Header />
+        <motion.div
+          className={classes.education}
+          initial='initial'
+          animate='in'
+          exit='out'
+          variants={pageVariants}
+          transition={pageTransition}
+        >
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
               <div
-                className={classes.title}
-                style={{ marginTop: '1rem', marginBottom: '1rem' }}
+                className={clsx(
+                  screenChange ? classes.eduDetails : classes.mobileHeight
+                )}
               >
-                <Typography variant='h3' className={classes.titleText}>
-                  Education
-                </Typography>
+                <div
+                  className={classes.title}
+                  style={{ marginTop: '1rem', marginBottom: '1rem' }}
+                >
+                  <Typography variant='h3' className={classes.titleText}>
+                    Education
+                  </Typography>
+                </div>
+                <NonClickableCard
+                  classes={{ root: classes.contentArea }}
+                  style={{ border: '0.2rem dotted #375970' }}
+                >
+                  <div className={classes.eduTimeline}>
+                    <Timeline
+                      classes={{
+                        connectorLine: classes.connect,
+                        connectorLineRoot: classes.coonectRoot,
+                      }}
+                      labelIcon={<MenuBookIcon className={classes.eduIcon} />}
+                      label={
+                        <div className={classes.flex}>
+                          <Typography className={classes.eduLabel}>
+                            B.Tech in Elelctronics and Communication
+                          </Typography>
+                        </div>
+                      }
+                      body={
+                        <div className={classes.eduBody}>
+                          <Typography className={classes.eduBodytxt}>
+                            Kalinga Institute of Industrial Technology, Deemed
+                            to be University. <br /> Bhubneswar, Patia, Odisha,
+                            751024 <br /> (2017 - Present)
+                          </Typography>
+                        </div>
+                      }
+                    />
+                  </div>
+
+                  <div className={classes.eduTimeline}>
+                    <Timeline
+                      classes={{
+                        connectorLine: classes.connect,
+                        connectorLineRoot: classes.coonectRoot,
+                      }}
+                      labelIcon={<MenuBookIcon className={classes.eduIcon} />}
+                      label={
+                        <div className={classes.flex}>
+                          <Typography className={classes.eduLabel}>
+                            Higher Secondary Education
+                          </Typography>
+                        </div>
+                      }
+                      body={
+                        <div className={classes.eduBody}>
+                          <Typography className={classes.eduBodytxt}>
+                            Kotulpur High School. <br /> Kotulpur, Bankura, West
+                            Bengal, 722141. <br /> (2014-2016)
+                          </Typography>
+                        </div>
+                      }
+                    />
+                  </div>
+
+                  <div className={classes.eduTimeline}>
+                    <Timeline
+                      classes={{
+                        connectorLine: classes.connect,
+                        connectorLineRoot: classes.coonectRoot,
+                      }}
+                      labelIcon={<MenuBookIcon className={classes.eduIcon} />}
+                      label={
+                        <div className={classes.flex}>
+                          <Typography className={classes.eduLabel}>
+                            Secondary Education
+                          </Typography>
+                        </div>
+                      }
+                      body={
+                        <div className={classes.eduBody}>
+                          <Typography className={classes.eduBodytxt}>
+                            Ramakrishna Mission Boys' Home. <br /> Rahara,
+                            Khardaha, West Bengal 700118 <br /> (2007-2014)
+                          </Typography>
+                        </div>
+                      }
+                    />
+                  </div>
+                </NonClickableCard>
               </div>
-              <NonClickableCard
-                classes={{ root: classes.contentArea }}
-                style={{ border: '0.2rem dotted #375970' }}
+            </Grid>
+
+            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+              <div
+                className={clsx(
+                  screenChange ? classes.skillsArea : classes.mobileHeight
+                )}
               >
-                <div className={classes.eduTimeline}>
-                  <Timeline
-                    classes={{
-                      connectorLine: classes.connect,
-                      connectorLineRoot: classes.coonectRoot,
-                    }}
-                    labelIcon={<MenuBookIcon className={classes.eduIcon} />}
-                    label={
-                      <div className={classes.flex}>
-                        <Typography className={classes.eduLabel}>
-                          B.Tech in Elelctronics and Communication
-                        </Typography>
-                      </div>
-                    }
-                    body={
-                      <div className={classes.eduBody}>
-                        <Typography className={classes.eduBodytxt}>
-                          Kalinga Institute of Industrial Technology, Deemed to
-                          be University. <br /> Bhubneswar, Patia, Odisha,
-                          751024 <br /> (2017 - Present)
-                        </Typography>
-                      </div>
-                    }
-                  />
+                <div className={classes.title}>
+                  <Typography variant='h3' className={classes.titleText}>
+                    Skills
+                  </Typography>
                 </div>
-
-                <div className={classes.eduTimeline}>
-                  <Timeline
-                    classes={{
-                      connectorLine: classes.connect,
-                      connectorLineRoot: classes.coonectRoot,
-                    }}
-                    labelIcon={<MenuBookIcon className={classes.eduIcon} />}
-                    label={
-                      <div className={classes.flex}>
-                        <Typography className={classes.eduLabel}>
-                          Higher Secondary Education
-                        </Typography>
-                      </div>
-                    }
-                    body={
-                      <div className={classes.eduBody}>
-                        <Typography className={classes.eduBodytxt}>
-                          Kotulpur High School. <br /> Kotulpur, Bankura, West
-                          Bengal, 722141. <br /> (2014-2016)
-                        </Typography>
-                      </div>
-                    }
+                <NonClickableCard style={{ border: '0.2rem dotted #375970' }}>
+                  <MyHistogram
+                    xAxisLabelStyles={xAxisLabelStyles}
+                    xPadding={xPadding}
+                    chartMargin={chartMargin}
+                    animation={animation}
+                    pointWidth={size}
+                    chartHeight='68vh'
                   />
-                </div>
-
-                <div className={classes.eduTimeline}>
-                  <Timeline
-                    classes={{
-                      connectorLine: classes.connect,
-                      connectorLineRoot: classes.coonectRoot,
-                    }}
-                    labelIcon={<MenuBookIcon className={classes.eduIcon} />}
-                    label={
-                      <div className={classes.flex}>
-                        <Typography className={classes.eduLabel}>
-                          Secondary Education
-                        </Typography>
-                      </div>
-                    }
-                    body={
-                      <div className={classes.eduBody}>
-                        <Typography className={classes.eduBodytxt}>
-                          Ramakrishna Mission Boys' Home. <br /> Rahara,
-                          Khardaha, West Bengal 700118 <br /> (2007-2014)
-                        </Typography>
-                      </div>
-                    }
-                  />
-                </div>
-              </NonClickableCard>
-            </div>
-          </Grid>
-
-          <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-            <div
-              className={clsx(
-                screenChange ? classes.skillsArea : classes.mobileHeight
-              )}
-            >
-              <div className={classes.title}>
-                <Typography variant='h3' className={classes.titleText}>
-                  Skills
-                </Typography>
+                </NonClickableCard>
               </div>
-              <NonClickableCard style={{ border: '0.2rem dotted #375970' }}>
-                <MyHistogram
-                  xAxisLabelStyles={xAxisLabelStyles}
-                  xPadding={xPadding}
-                  chartMargin={chartMargin}
-                  animation={animation}
-                  pointWidth={size}
-                  chartHeight='68vh'
-                />
-              </NonClickableCard>
-            </div>
+            </Grid>
           </Grid>
-        </Grid>
-      </motion.div>
+        </motion.div>
+      </div>
       <Footer
         prevPage='About Me'
         nextPage='Project'

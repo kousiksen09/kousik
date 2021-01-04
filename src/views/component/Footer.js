@@ -1,8 +1,8 @@
 import React from 'react';
-import clsx from 'clsx';
+// import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
+// import useMediaQuery from '@material-ui/core/useMediaQuery';
+// import { useTheme } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { Button, Typography } from '@material-ui/core';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
@@ -10,10 +10,9 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    position: 'relative',
     width: '100%',
     height: '8vh',
-    position: 'absolute',
-    top: '92vh',
   },
   mobileRoot: {
     width: '100%',
@@ -81,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   btnTxt: {
-    fontSize: '1.2rem',
+    fontSize: 'clamp(1.2rem, 3vw, 1.25rem)',
     whiteSpace: 'nowrap',
     overflow: 'hidden',
   },
@@ -89,11 +88,12 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     position: 'relative',
+    top: '1vh',
   },
   copyrightTxt: {
     display: 'inline-block',
     position: 'relative',
-    fontSize: '1.2rem',
+    fontSize: 'clamp(1.2rem, 7vw, 1.35rem)',
     color: '#e4ecf2',
     textAlign: 'center',
     overflow: 'hidden',
@@ -101,11 +101,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 function Footer(props) {
   const classes = useStyles();
-  const theme = useTheme();
-  const screenChange = useMediaQuery(theme.breakpoints.up('md'));
+  // const theme = useTheme();
+  // const screenChange = useMediaQuery(theme.breakpoints.up('md'));
 
   return (
-    <div className={clsx(screenChange ? classes.root : classes.mobileRoot)}>
+    // <div className={clsx(screenChange ? classes.root : classes.mobileRoot)}>
+    <div className={classes.root}>
       <div className={classes.footerContainer}>
         <div className={classes.pageRoute}>
           <div className={classes.prevPage}>

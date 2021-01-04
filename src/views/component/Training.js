@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     boxSizing: 'border-box',
-    height: '74vh',
+    height: '76vh',
     width: '100%',
     overflowX: 'hidden',
     overflowY: 'auto',
@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 
   titleText: {
     fontFamily: "'Fondamento', cursive",
-    fontSize: '2.4rem',
+    fontSize: 'clamp(2.4rem, 4.3vw, 2.5rem)',
     color: '#e2dae6',
     fontWeight: '600',
   },
@@ -81,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
     textOverflow: 'ellipsis',
     padding: '0 0 0 1.9rem',
     width: '100%',
-    fontSize: '1.3rem',
+    fontSize: 'clamp(1.3rem, 12vw, 1.5rem)',
   },
   trainingIns: {
     display: 'inline-block',
@@ -101,7 +101,7 @@ const useStyles = makeStyles((theme) => ({
     textOverflow: 'ellipsis',
     padding: '0 0 0 0.5rem',
     width: '100%',
-    fontSize: '1.2rem',
+    fontSize: 'clamp(1.2rem, 18vw, 1.35rem)',
     color: '#e2dae6',
   },
   viewCertificate: {
@@ -128,37 +128,122 @@ function Training() {
     <div
       className={clsx(open ? classes.drawerOpenCon : classes.drawerNotOpenCon)}
     >
-      <Header />
-      <div className={classes.title} style={{ marginBottom: '1rem' }}>
-        <Typography variant='h3' className={classes.titleText}>
-          Training & Internship
-        </Typography>
-      </div>
-      <motion.div
-        className={classes.trainingContainer}
-        initial='initial'
-        animate='in'
-        exit='out'
-        variants={pageVariants}
-        transition={pageTransition}
-      >
-        <Grid container justify='space-evenly' spacing={3}>
-          {trainingData.map((data, key) => (
+      <div style={{ height: '92vh' }}>
+        <Header />
+        <div className={classes.title} style={{ marginBottom: '1rem' }}>
+          <Typography variant='h3' className={classes.titleText}>
+            Training & Internship
+          </Typography>
+        </div>
+        <motion.div
+          className={classes.trainingContainer}
+          initial='initial'
+          animate='in'
+          exit='out'
+          variants={pageVariants}
+          transition={pageTransition}
+        >
+          <Grid container justify='space-evenly' spacing={3}>
+            {trainingData.map((data, key) => (
+              <Grid
+                xs={6}
+                sm={16}
+                md={3}
+                lg={3}
+                xl={3}
+                key={key}
+                style={{ marginBottom: '4vh' }}
+              >
+                <NonClickableCard classes={{ root: classes.projectCard }}>
+                  <div className={classes.projectHeader}>
+                    <div className={classes.trainingIns}>
+                      <img
+                        src={data.traingIns}
+                        alt={data.name}
+                        style={{
+                          height: '3rem',
+                          width: '3rem',
+                          borderRadius: '50%',
+                        }}
+                      />
+                    </div>
+                    <Typography className={classes.headerTxt}>
+                      {data.title}
+                    </Typography>
+                  </div>
+                  <div className={classes.cardBody}>
+                    <Typography className={classes.crdBdyTxt}>
+                      <span
+                        style={{
+                          fontSize: 'clamp(1.4rem, 18vw, 1.5rem)',
+                          fontWeight: '600',
+                          color: '#c29415',
+                        }}
+                      >
+                        Skill Learn :{' '}
+                      </span>{' '}
+                      {data.skills}
+                    </Typography>
+                    <Typography className={classes.crdBdyTxt}>
+                      <span
+                        style={{
+                          fontSize: 'clamp(1.4rem, 18vw, 1.5rem)',
+                          fontWeight: '600',
+                          color: '#c29415',
+                        }}
+                      >
+                        Trainer :{' '}
+                      </span>{' '}
+                      {data.trainer}
+                    </Typography>
+                    <Typography className={classes.crdBdyTxt}>
+                      <span
+                        style={{
+                          fontSize: 'clamp(1.4rem, 18vw, 1.5rem)',
+                          fontWeight: '600',
+                          color: '#c29415',
+                        }}
+                      >
+                        Duration :{' '}
+                      </span>{' '}
+                      {data.duration}
+                    </Typography>
+                    <div className={classes.viewCertificate}>
+                      <Button
+                        startIcon={
+                          <VisibilityIcon
+                            style={{
+                              height: '1.5rem',
+                              width: '1.5rem',
+                              position: 'relative',
+                              left: '0.4rem',
+                            }}
+                          />
+                        }
+                        className={classes.showBtn}
+                      >
+                        View Certificate
+                      </Button>
+                    </div>
+                  </div>
+                </NonClickableCard>
+              </Grid>
+            ))}
+
             <Grid
               xs={6}
               sm={16}
               md={3}
               lg={3}
               xl={3}
-              key={key}
               style={{ marginBottom: '4vh' }}
             >
               <NonClickableCard classes={{ root: classes.projectCard }}>
                 <div className={classes.projectHeader}>
                   <div className={classes.trainingIns}>
                     <img
-                      src={data.traingIns}
-                      alt={data.name}
+                      src='https://zenprospect-production.s3.amazonaws.com/uploads/pictures/5f5fbc084df8500001b65083/picture'
+                      alt='hrc'
                       style={{
                         height: '3rem',
                         width: '3rem',
@@ -167,45 +252,45 @@ function Training() {
                     />
                   </div>
                   <Typography className={classes.headerTxt}>
-                    {data.title}
+                    Internship at Highradius
                   </Typography>
                 </div>
                 <div className={classes.cardBody}>
                   <Typography className={classes.crdBdyTxt}>
                     <span
                       style={{
-                        fontSize: '1.4rem',
+                        fontSize: 'clamp(1.4rem, 18vw, 1.5rem)',
                         fontWeight: '600',
                         color: '#c29415',
                       }}
                     >
-                      Skill Learn :{' '}
+                      Role :
                     </span>{' '}
-                    {data.skills}
+                    Autonomous UI Developer
                   </Typography>
                   <Typography className={classes.crdBdyTxt}>
                     <span
                       style={{
-                        fontSize: '1.4rem',
+                        fontSize: 'clamp(1.4rem, 18vw, 1.5rem)',
                         fontWeight: '600',
                         color: '#c29415',
                       }}
                     >
-                      Trainer :{' '}
+                      Technology used :
                     </span>{' '}
-                    {data.trainer}
+                    React Js, Redux, Saga, Asterisk
                   </Typography>
                   <Typography className={classes.crdBdyTxt}>
                     <span
                       style={{
-                        fontSize: '1.4rem',
+                        fontSize: 'clamp(1.4rem, 18vw, 1.5rem)',
                         fontWeight: '600',
                         color: '#c29415',
                       }}
                     >
                       Duration :{' '}
                     </span>{' '}
-                    {data.duration}
+                    1 st June, 2020 - Present
                   </Typography>
                   <div className={classes.viewCertificate}>
                     <Button
@@ -227,92 +312,9 @@ function Training() {
                 </div>
               </NonClickableCard>
             </Grid>
-          ))}
-
-          <Grid
-            xs={6}
-            sm={16}
-            md={3}
-            lg={3}
-            xl={3}
-            style={{ marginBottom: '4vh' }}
-          >
-            <NonClickableCard classes={{ root: classes.projectCard }}>
-              <div className={classes.projectHeader}>
-                <div className={classes.trainingIns}>
-                  <img
-                    src='https://zenprospect-production.s3.amazonaws.com/uploads/pictures/5f5fbc084df8500001b65083/picture'
-                    alt='hrc'
-                    style={{
-                      height: '3rem',
-                      width: '3rem',
-                      borderRadius: '50%',
-                    }}
-                  />
-                </div>
-                <Typography className={classes.headerTxt}>
-                  Internship at Highradius
-                </Typography>
-              </div>
-              <div className={classes.cardBody}>
-                <Typography className={classes.crdBdyTxt}>
-                  <span
-                    style={{
-                      fontSize: '1.4rem',
-                      fontWeight: '600',
-                      color: '#c29415',
-                    }}
-                  >
-                    Role :
-                  </span>{' '}
-                  Autonomous UI Developer
-                </Typography>
-                <Typography className={classes.crdBdyTxt}>
-                  <span
-                    style={{
-                      fontSize: '1.4rem',
-                      fontWeight: '600',
-                      color: '#c29415',
-                    }}
-                  >
-                    Technology used :
-                  </span>{' '}
-                  React Js, Redux, Saga, Asterisk
-                </Typography>
-                <Typography className={classes.crdBdyTxt}>
-                  <span
-                    style={{
-                      fontSize: '1.4rem',
-                      fontWeight: '600',
-                      color: '#c29415',
-                    }}
-                  >
-                    Duration :{' '}
-                  </span>{' '}
-                  1 st June, 2020 - Present
-                </Typography>
-                <div className={classes.viewCertificate}>
-                  <Button
-                    startIcon={
-                      <VisibilityIcon
-                        style={{
-                          height: '1.5rem',
-                          width: '1.5rem',
-                          position: 'relative',
-                          left: '0.4rem',
-                        }}
-                      />
-                    }
-                    className={classes.showBtn}
-                  >
-                    View Certificate
-                  </Button>
-                </div>
-              </div>
-            </NonClickableCard>
           </Grid>
-        </Grid>
-      </motion.div>
+        </motion.div>
+      </div>
       <Footer
         prevPage='Project'
         nextPage='Contact'
