@@ -145,6 +145,11 @@ const useStyles = makeStyles((theme) => ({
     right: '1%',
     borderLeft: '0.2rem dotted #375970',
   },
+  mobileHeightManager: {
+    position: 'relative',
+    height: '86vh',
+    width: '100%',
+  },
   skillsArea: {
     position: 'relative',
     height: '68vh',
@@ -205,7 +210,11 @@ function Education(props) {
     <div
       className={clsx(open ? classes.drawerOpenCon : classes.drawerNotOpenCon)}
     >
-      <div className={classes.heightManager}>
+      <div
+        className={clsx(
+          screenChange ? classes.heightManager : classes.mobileHeightManager
+        )}
+      >
         <Header />
         <motion.div
           className={classes.education}

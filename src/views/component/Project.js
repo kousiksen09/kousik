@@ -1,5 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 import { motion } from 'framer-motion';
 import { pageVariants, pageTransition } from '../../common/pageTrasition';
 import { useSelector } from 'react-redux';
@@ -116,6 +118,11 @@ const useStyles = makeStyles((theme) => ({
     height: '92vh',
     width: '100%',
   },
+  mobileHeightManager: {
+    position: 'relative',
+    height: '86vh',
+    width: '100%',
+  },
   cardContent: {
     position: 'absolute',
     top: '8vh',
@@ -163,12 +170,18 @@ const useStyles = makeStyles((theme) => ({
 function Project(props) {
   const classes = useStyles();
   const open = useSelector((state) => state.DrawerReducer.open);
+  const theme = useTheme();
+  const screenChange = useMediaQuery(theme.breakpoints.up('md'));
   return (
     <div
       className={clsx(open ? classes.drawerOpenCon : classes.drawerNotOpenCon)}
     >
       <div className={classes.projectBg}>
-        <div className={classes.heightManager}>
+        <div
+          className={clsx(
+            screenChange ? classes.heightManager : classes.mobileHeightManager
+          )}
+        >
           <Header />
 
           <div className={classes.title} style={{ marginBottom: '1rem' }}>

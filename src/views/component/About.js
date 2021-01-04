@@ -5,6 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import { pxToVw, pxToRem, pxToVh } from '../../utils/theme';
 import clsx from 'clsx';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 import { Typography, Button } from '@material-ui/core';
 import prc from '../../assets/prc.jpg';
 import CloseIcon from '@material-ui/icons/Close';
@@ -166,6 +168,11 @@ const useStyles = makeStyles((theme) => ({
     height: '92vh',
     width: '100%',
   },
+  mobileHeightManager: {
+    position: 'relative',
+    height: '86vh',
+    width: '100%',
+  },
 }));
 
 function About() {
@@ -180,6 +187,8 @@ function About() {
     setModalOpen(false);
   };
   const classes = useStyles();
+  const theme = useTheme();
+  const screenChange = useMediaQuery(theme.breakpoints.up('md'));
 
   return (
     dispatch(currPageAction({ currPage: 'About' })),
@@ -197,7 +206,11 @@ function About() {
           variants={pageVariants}
           transition={pageTransition}
         >
-          <div className={classes.heightManager}>
+          <div
+            className={clsx(
+              screenChange ? classes.heightManager : classes.mobileHeightManager
+            )}
+          >
             <Header />
             <div className={classes.imgPr}>
               <img
