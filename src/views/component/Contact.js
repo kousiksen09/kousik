@@ -4,7 +4,8 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import { motion } from 'framer-motion';
 import { pageVariants, pageTransition } from '../../common/pageTrasition';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { currPageAction } from '../../Redux/actions/CurrPageAction';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Button } from '@material-ui/core';
 import PersonPinCircleIcon from '@material-ui/icons/PersonPinCircle';
@@ -169,143 +170,148 @@ const useStyles = makeStyles((theme) => ({
 function Contact() {
   const classes = useStyles();
   const open = useSelector((state) => state.DrawerReducer.open);
-
+  const dispatch = useDispatch();
   const theme = useTheme();
   const screenChange = useMediaQuery(theme.breakpoints.up('md'));
 
   return (
-    <div
-      className={clsx(open ? classes.drawerOpenCon : classes.drawerNotOpenCon)}
-    >
-      <div className={classes.conatctBg}>
-        <div
-          className={clsx(
-            screenChange ? classes.heightManager : classes.mobileHeightManager
-          )}
-        >
-          <Header />
-          <div className={classes.title} style={{ marginBottom: '1rem' }}>
-            <Typography variant='h3' className={classes.titleText}>
-              Contact Me
-            </Typography>
-          </div>
-          <motion.div
-            className={classes.contactContainer}
-            initial='initial'
-            animate='in'
-            exit='out'
-            variants={pageVariants}
-            transition={pageTransition}
+    dispatch(currPageAction({ currPage: 'Contact' })),
+    (
+      <div
+        className={clsx(
+          open ? classes.drawerOpenCon : classes.drawerNotOpenCon
+        )}
+      >
+        <div className={classes.conatctBg}>
+          <div
+            className={clsx(
+              screenChange ? classes.heightManager : classes.mobileHeightManager
+            )}
           >
-            <div className={classes.contactDetails}>
-              <div className={classes.contacts}>
-                <PersonPinCircleIcon className={classes.contactIcon} />
-                <Typography className={classes.contactTxt}>
-                  Kotulpur, Bankura, West Bengal, 722154
-                </Typography>
-              </div>
-              <div className={classes.contacts}>
-                <CallIcon className={classes.contactIcon} />
-                <Typography className={classes.contactTxt}>
-                  +91-9382117960
-                </Typography>
-              </div>
-              <div className={classes.contacts}>
-                <EmailIcon className={classes.contactIcon} />
-                <Typography className={classes.contactTxt}>
-                  kousiksen09@gmail.com
-                </Typography>
-              </div>
-              <div className={classes.contacts}>
-                <WhatsAppIcon className={classes.contactIcon} />
-                <Typography className={classes.contactTxt}>
-                  +91-8768106645
-                </Typography>
-              </div>
-            </div>
-            <div className={classes.title} style={{ marginBottom: '2rem' }}>
+            <Header />
+            <div className={classes.title} style={{ marginBottom: '1rem' }}>
               <Typography variant='h3' className={classes.titleText}>
-                Follow Me
+                Contact Me
               </Typography>
             </div>
-            <div className={classes.socialMedia}>
-              <ul className={classes.ulluSocial}>
-                <li className={classes.liicSocial}>
-                  <div
-                    className={classes.iconSocial}
-                    style={{ backgroundColor: '#4267B2' }}
-                  >
-                    <Button
-                      onClick={() =>
-                        window.open('https://www.facebook.com/kousik.sen.09')
-                      }
+            <motion.div
+              className={classes.contactContainer}
+              initial='initial'
+              animate='in'
+              exit='out'
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <div className={classes.contactDetails}>
+                <div className={classes.contacts}>
+                  <PersonPinCircleIcon className={classes.contactIcon} />
+                  <Typography className={classes.contactTxt}>
+                    Kotulpur, Bankura, West Bengal, 722154
+                  </Typography>
+                </div>
+                <div className={classes.contacts}>
+                  <CallIcon className={classes.contactIcon} />
+                  <Typography className={classes.contactTxt}>
+                    +91-9382117960
+                  </Typography>
+                </div>
+                <div className={classes.contacts}>
+                  <EmailIcon className={classes.contactIcon} />
+                  <Typography className={classes.contactTxt}>
+                    kousiksen09@gmail.com
+                  </Typography>
+                </div>
+                <div className={classes.contacts}>
+                  <WhatsAppIcon className={classes.contactIcon} />
+                  <Typography className={classes.contactTxt}>
+                    +91-8768106645
+                  </Typography>
+                </div>
+              </div>
+              <div className={classes.title} style={{ marginBottom: '2rem' }}>
+                <Typography variant='h3' className={classes.titleText}>
+                  Follow Me
+                </Typography>
+              </div>
+              <div className={classes.socialMedia}>
+                <ul className={classes.ulluSocial}>
+                  <li className={classes.liicSocial}>
+                    <div
+                      className={classes.iconSocial}
+                      style={{ backgroundColor: '#4267B2' }}
                     >
-                      <FacebookIcon className={classes.socialIconBtn} />
-                    </Button>
-                  </div>
-                </li>
-                <li className={classes.liicSocial}>
-                  <div
-                    className={classes.iconSocial}
-                    style={{
-                      background:
-                        'linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)',
-                    }}
-                  >
-                    <Button
-                      onClick={() =>
-                        window.open('https://www.instagram.com/kousiksen09/')
-                      }
+                      <Button
+                        onClick={() =>
+                          window.open('https://www.facebook.com/kousik.sen.09')
+                        }
+                      >
+                        <FacebookIcon className={classes.socialIconBtn} />
+                      </Button>
+                    </div>
+                  </li>
+                  <li className={classes.liicSocial}>
+                    <div
+                      className={classes.iconSocial}
+                      style={{
+                        background:
+                          'linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)',
+                      }}
                     >
-                      <InstagramIcon className={classes.socialIconBtn} />
-                    </Button>
-                  </div>
-                </li>
-                <li className={classes.liicSocial}>
-                  <div
-                    className={classes.iconSocial}
-                    style={{ backgroundColor: '#1DA1F2' }}
-                  >
-                    <TwitterIcon className={classes.socialIconBtn} />
-                  </div>
-                </li>
-                <li className={classes.liicSocial}>
-                  <div
-                    className={classes.iconSocial}
-                    style={{ backgroundColor: '#171515 ' }}
-                  >
-                    <Button
-                      onClick={() =>
-                        window.open('https://github.com/kousiksen09')
-                      }
+                      <Button
+                        onClick={() =>
+                          window.open('https://www.instagram.com/kousiksen09/')
+                        }
+                      >
+                        <InstagramIcon className={classes.socialIconBtn} />
+                      </Button>
+                    </div>
+                  </li>
+                  <li className={classes.liicSocial}>
+                    <div
+                      className={classes.iconSocial}
+                      style={{ backgroundColor: '#1DA1F2' }}
                     >
-                      <GitHubIcon className={classes.socialIconBtn} />
-                    </Button>
-                  </div>
-                </li>
-                <li className={classes.liicSocial}>
-                  <div
-                    className={classes.iconSocial}
-                    style={{ backgroundColor: '#2867B2' }}
-                  >
-                    <Button
-                      onClick={() =>
-                        window.open(
-                          'https://www.linkedin.com/in/kousik-sen-26b391187/'
-                        )
-                      }
+                      <TwitterIcon className={classes.socialIconBtn} />
+                    </div>
+                  </li>
+                  <li className={classes.liicSocial}>
+                    <div
+                      className={classes.iconSocial}
+                      style={{ backgroundColor: '#171515 ' }}
                     >
-                      <LinkedInIcon className={classes.socialIconBtn} />
-                    </Button>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </motion.div>
+                      <Button
+                        onClick={() =>
+                          window.open('https://github.com/kousiksen09')
+                        }
+                      >
+                        <GitHubIcon className={classes.socialIconBtn} />
+                      </Button>
+                    </div>
+                  </li>
+                  <li className={classes.liicSocial}>
+                    <div
+                      className={classes.iconSocial}
+                      style={{ backgroundColor: '#2867B2' }}
+                    >
+                      <Button
+                        onClick={() =>
+                          window.open(
+                            'https://www.linkedin.com/in/kousik-sen-26b391187/'
+                          )
+                        }
+                      >
+                        <LinkedInIcon className={classes.socialIconBtn} />
+                      </Button>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+          </div>
+          <Footer prevPage='Training' prevLink='/training' />
         </div>
-        <Footer prevPage='Training' prevLink='/training' />
       </div>
-    </div>
+    )
   );
 }
 

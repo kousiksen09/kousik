@@ -1,34 +1,28 @@
 import React from 'react';
 // import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button, Typography } from '@material-ui/core';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import { currPageAction } from '../../Redux/actions/CurrPageAction';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    position: 'relative',
+    position: 'absolute',
+    top: '92vh',
     width: '100%',
     height: '8vh',
   },
-  mobileRoot: {
-    width: '100%',
-    height: '9vh',
-    position: 'absolute',
-    top: '85vh',
-  },
+
   footerContainer: {
     position: 'relative',
     alignItems: 'center',
+
     height: '100%',
     width: '100%',
     backgroundColor: 'transparent',
-
-    // backgroundColor: 'rgba(255, 255, 255, .12)',
-    // // borderTop: '0.1rem solid #e38c44',
-    // backdropFilter: 'blur(0.6rem)',
   },
   nextPage: {
     display: 'flex',
@@ -40,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
   pageRoute: {
     position: 'relative',
-    display: 'flex',
+
     top: 0,
   },
   prevPage: {
@@ -100,17 +94,23 @@ const useStyles = makeStyles((theme) => ({
 }));
 function Footer(props) {
   const classes = useStyles();
-  // const theme = useTheme();
-  // const screenChange = useMediaQuery(theme.breakpoints.up('md'));
+  const dispatch = useDispatch();
+  function prevPageClick(props) {
+    console.log('prev calleed', props);
+    dispatch(currPageAction({ currPage: `${props.prevPage}` }));
+  }
 
+  function nextPageClick(props) {
+    dispatch(currPageAction({ currPage: `${props.nextPage}` }));
+  }
   return (
     <div className={classes.root}>
       <div className={classes.footerContainer}>
-        <div className={classes.pageRoute}>
-          <div className={classes.prevPage}>
+        {/* <div className={classes.prevPage}>
             {props.prevPage ? (
               <Link to={props.prevLink} style={{ textDecoration: 'none' }}>
                 <Button
+                  onClick={() => prevPageClick(props)}
                   startIcon={
                     <ArrowBackIcon style={{ height: '2rem', width: '2rem' }} />
                   }
@@ -123,17 +123,18 @@ function Footer(props) {
             ) : (
               ''
             )}
-          </div>
-          <div className={classes.copyright}>
-            <Typography className={classes.copyrightTxt}>
-              © Copyright 2021 Kousik Sen. All Rights Reserved
-            </Typography>
-          </div>
-
+          </div> */}
+        <div className={classes.copyright}>
+          <Typography className={classes.copyrightTxt}>
+            © Copyright 2021 Kousik Sen. All Rights Reserved
+          </Typography>
+        </div>
+        {/* 
           <div className={classes.nextPage}>
             {props.nextPage ? (
               <Link to={props.nextLink} style={{ textDecoration: 'none' }}>
                 <Button
+                  onClick={() => nextPageClick(props)}
                   endIcon={
                     <ArrowForwardIcon
                       style={{
@@ -152,8 +153,7 @@ function Footer(props) {
             ) : (
               ''
             )}
-          </div>
-        </div>
+          </div> */}
       </div>
     </div>
   );

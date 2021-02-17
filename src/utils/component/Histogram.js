@@ -49,7 +49,13 @@ class MyHistogram extends React.Component {
         },
       },
       title: {
-        text: '',
+        text: 'Skills',
+        style: {
+          fontFamily: "'Fondamento', cursive",
+          fontSize: 'clamp(1.8rem, 5vw, 2rem)',
+          color: '#e2dae6',
+          fontWeight: '600',
+        },
       },
       xAxis: {
         lineWidth: 0,

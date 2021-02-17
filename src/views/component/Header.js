@@ -1,247 +1,341 @@
 import React from 'react';
+import clsx from 'clsx';
 import { Link } from 'react-router-dom';
-import ListItem from '@material-ui/core/ListItem';
-import List from '@material-ui/core/List';
-import MenuIcon from '@material-ui/icons/Menu';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
+import { useSelector } from 'react-redux';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import ComputerIcon from '@material-ui/icons/Computer';
 import ContactsIcon from '@material-ui/icons/Contacts';
 import WebIcon from '@material-ui/icons/Web';
-import ListItemText from '@material-ui/core/ListItemText';
-import Typography from '@material-ui/core/Typography';
+import prc from '../../assets/prc.jpg';
+import {
+  Typography,
+  AppBar,
+  Toolbar,
+  useMediaQuery,
+  useTheme,
+  Avatar,
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { useDispatch } from 'react-redux';
-import { drawerAction } from '../../Redux/actions/DrawerAction';
 import { pxToRem, pxToVh, pxToVw } from './../../utils/theme';
-import { CustomDrawer } from '../../utils/CustomDrawer';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'row',
+    flexGrow: 1,
     fontFamily: 'Roboto',
     width: '100%',
   },
-  logoImg: {
+  headerRoot: {
     position: 'relative',
-    height: '15vh',
-    width: '12vw',
-  },
-  rightSection: {
-    display: 'flex',
-    position: 'relative',
-    flexGrow: 1,
-    justifyContent: 'center',
-    right: pxToVw(90),
-  },
-  leftBar: {
-    height: '100vh',
-    width: `calc(3% + ${theme.typography.pxToRem(32)})`,
-    position: 'absolute',
-    left: '0',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    backgroundColor: '#141414',
-    filter: 'drop-shadow(3px 0px 6px rgba(0, 0, 0, 0.2))',
-  },
-  list: {
-    display: 'flex',
-    flexDirection: 'column',
-    paddingTop: pxToVh(8),
-    justifyContent: 'space-between',
-    color: theme.palette?.secondary.main,
-  },
-  menuOptionsText: {
-    color: theme.palette?.secondary.main,
-    fontSize: pxToRem(38),
-  },
-  menutext: {
-    padding: 0,
-  },
-  backIcon: {
-    height: theme.typography.pxToRem(44),
-    width: theme.typography.pxToRem(44),
-    color: theme.palette?.secondary.main,
-  },
-  openDrawer: {
-    paddingLeft: '0',
-    width: '18vw',
-  },
-  actionListItemButton: {
-    '&:hover': {
-      opacity: 1,
-      backgroundColor: '#3f5570',
-    },
-  },
-  hamBurgerIcon: {
-    height: theme.typography.pxToRem(58),
-    width: theme.typography.pxToRem(58),
-    position: 'relative',
-    top: pxToVh(22),
-  },
-  closedDivider: {
     width: '100%',
-    height: `${theme.typography.pxToRem(1)}`,
+    height: pxToVh(82),
+    padding: pxToRem(12),
+    alignItems: 'center',
   },
-  menuText: {
-    fontSize: theme.typography?.h3.fontSize,
+  appBar: {
+    width: '100%',
+    height: pxToVh(90),
+    lineHeight: pxToVh(60),
+    // boxShadow: `rgba(60, 60, 103, 0.65) ${pxToRem(0)}  ${pxToRem(
+    //   13
+    // )}  ${pxToRem(27)}  ${pxToRem(-5)}, rgba(0, 0, 0, 0.3) 0rem  ${pxToRem(
+    //   8
+    // )}  ${pxToRem(16)}  ${pxToRem(-8)}`,
   },
-  closedLogo: {
-    marginBottom: theme.typography.pxToRem(20),
+  headerDesk: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
   },
-  divider: {
-    backgroundColor: theme.palette.secondary.main,
-    opacity: 0.5,
-    marginLeft: theme.typography.pxToRem(1),
+  large: {
+    position: 'relative',
+    alignItems: 'center',
+    width: pxToRem(48),
+    height: pxToRem(48),
   },
-  linkTxt: {
-    padding: pxToRem(24),
-    fontSize: '1.4rem',
-    cursor: 'pointer',
-    textDecoration: 'none',
-    color: '#FFFFFF',
-    '&:hover': {
-      color: '#b338b5',
-      transform: 'translateY(-0.2rem)',
-    },
+  largeOn: {
+    position: 'relative',
+    alignItems: 'center',
+    width: pxToRem(48),
+    height: pxToRem(48),
+    color: '#F8BBD0',
   },
-
-  navbar__link: {
-    color: '#d69c4b',
-    //borderBottom: '0.1rem solid #29b6f6',
-    transition: 'border-bottom .5s ease-in-out',
+  deskTab: {
+    display: 'flex',
+    flexDirection: 'row',
+    height: '100%',
+    width: '30%',
+    padding: pxToRem(32),
+    position: 'relative',
+    bottom: '0.4rem',
+  },
+  mobileTab: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%',
+    width: '20%',
+    position: 'relative',
+    left: pxToVw(40),
+    top: pxToVh(15),
+    padding: pxToRem(32),
+    alignItems: 'center',
+  },
+  headerText: {
+    position: 'relative',
+    alignItems: 'center',
+    fontSize: pxToRem(38),
+    paddingLeft: '1rem',
+    // height: pxToVh(77),
+    // minWidth: pxToVw(72),
+    textAlign: 'center',
+  },
+  headerTextOn: {
+    position: 'relative',
+    alignItems: 'center',
+    fontSize: pxToRem(38),
+    paddingLeft: '1rem',
+    color: '#F8BBD0',
+    textAlign: 'center',
+  },
+  trayList: {
+    position: 'relative',
+    display: 'flex',
+    width: '80%',
   },
 }));
+
+const desktopView = (classes, currentPage) => {
+  console.log('cuur page about', currentPage === 'About Me');
+  return (
+    <Toolbar className={classes.headerDesk}>
+      <div
+        className={classes.deskTab}
+        style={{ position: 'relative', top: '0.6rem', left: '1rem' }}
+      >
+        <Avatar alt='Kousik' src={prc} className={classes.large} />
+        <Typography className={classes.headerText}>Kousik Sen</Typography>
+      </div>
+      <div className={classes.trayList}>
+        <Link to='/'>
+          <div className={classes.deskTab}>
+            <AccountCircleIcon
+              className={clsx(
+                currentPage === 'About Me' ? classes.largeOn : classes.large
+              )}
+            />
+            <Typography
+              className={clsx(
+                currentPage === 'About Me'
+                  ? classes.headerTextOn
+                  : classes.headerText
+              )}
+            >
+              About
+            </Typography>
+          </div>
+        </Link>
+        <Link to='/education'>
+          <div className={classes.deskTab}>
+            <MenuBookIcon
+              className={clsx(
+                currentPage === 'Education & Skill'
+                  ? classes.largeOn
+                  : classes.large
+              )}
+            />
+            <Typography
+              className={clsx(
+                currentPage === 'Education & Skill'
+                  ? classes.headerTextOn
+                  : classes.headerText
+              )}
+            >
+              Education
+            </Typography>
+          </div>
+        </Link>
+        <Link to='/project'>
+          <div className={classes.deskTab}>
+            <ComputerIcon
+              className={clsx(
+                currentPage === 'Project' ? classes.largeOn : classes.large
+              )}
+            />
+            <Typography
+              className={clsx(
+                currentPage === 'Project'
+                  ? classes.headerTextOn
+                  : classes.headerText
+              )}
+            >
+              Project
+            </Typography>
+          </div>
+        </Link>
+        <Link to='/training'>
+          <div className={classes.deskTab}>
+            <WebIcon
+              className={clsx(
+                currentPage === 'Training & Internship'
+                  ? classes.largeOn
+                  : classes.large
+              )}
+            />
+            <Typography
+              className={clsx(
+                currentPage === 'Training & Internship'
+                  ? classes.headerTextOn
+                  : classes.headerText
+              )}
+            >
+              Training
+            </Typography>
+          </div>
+        </Link>
+        <Link to='/contact'>
+          <div className={classes.deskTab}>
+            <ContactsIcon
+              className={clsx(
+                currentPage === 'Contact' ? classes.largeOn : classes.large
+              )}
+            />
+            <Typography
+              className={clsx(
+                currentPage === 'Contact'
+                  ? classes.headerTextOn
+                  : classes.headerText
+              )}
+            >
+              Contact
+            </Typography>
+          </div>
+        </Link>
+      </div>
+    </Toolbar>
+  );
+};
+
+const mobileView = (classes, currentPage) => {
+  return (
+    <Toolbar className={classes.headerDesk}>
+      <Link to='/'>
+        <div className={classes.mobileTab}>
+          <AccountCircleIcon
+            className={clsx(
+              currentPage === 'About Me' ? classes.largeOn : classes.large
+            )}
+          />
+          <Typography
+            className={clsx(
+              currentPage === 'About Me'
+                ? classes.headerTextOn
+                : classes.headerText
+            )}
+          >
+            About
+          </Typography>
+        </div>
+      </Link>
+      <Link to='/education'>
+        <div className={classes.mobileTab}>
+          <MenuBookIcon
+            className={clsx(
+              currentPage === 'Education & Skill'
+                ? classes.largeOn
+                : classes.large
+            )}
+          />
+          <Typography
+            className={clsx(
+              currentPage === 'Education & Skill'
+                ? classes.headerTextOn
+                : classes.headerText
+            )}
+          >
+            Education
+          </Typography>
+        </div>
+      </Link>
+      <Link to='/project'>
+        <div className={classes.mobileTab}>
+          <ComputerIcon
+            className={clsx(
+              currentPage === 'Project' ? classes.largeOn : classes.large
+            )}
+          />
+          <Typography
+            className={clsx(
+              currentPage === 'Project'
+                ? classes.headerTextOn
+                : classes.headerText
+            )}
+          >
+            Project
+          </Typography>
+        </div>
+      </Link>
+      <Link to='/training'>
+        <div className={classes.mobileTab}>
+          <WebIcon
+            className={clsx(
+              currentPage === 'Training & Internship'
+                ? classes.largeOn
+                : classes.large
+            )}
+          />
+          <Typography
+            className={clsx(
+              currentPage === 'Training & Internship'
+                ? classes.headerTextOn
+                : classes.headerText
+            )}
+          >
+            Training
+          </Typography>
+        </div>
+      </Link>
+      <Link to='/contact'>
+        <div className={classes.mobileTab}>
+          <ContactsIcon
+            className={clsx(
+              currentPage === 'Contact' ? classes.largeOn : classes.large
+            )}
+          />
+          <Typography
+            className={clsx(
+              currentPage === 'Contact'
+                ? classes.headerTextOn
+                : classes.headerText
+            )}
+          >
+            Contact
+          </Typography>
+        </div>
+      </Link>
+    </Toolbar>
+  );
+};
+
 function Header() {
   const classes = useStyles();
-  const dispatch = useDispatch();
-  const sideList = (
-    <div className={classes.list}>
-      <List style={{ padding: '0px' }}>
-        <ListItem
-          button
-          classes={{ button: classes.actionListItemButton }}
-          style={{ padding: '0.5rem 1.696rem' }}
-          onClick={() => {
-            dispatch(drawerAction({ open: false }));
-          }}
-        >
-          <ListItemIcon>
-            <MenuIcon className={classes.backIcon} />
-          </ListItemIcon>
-          <ListItemText
-            classes={{
-              root: classes.listItemTextRoot,
-            }}
-          >
-            <div className={classes.menuOptionsText}>
-              <Typography variant='h4'> Kousik Sen</Typography>
-            </div>
-          </ListItemText>
-        </ListItem>
-        <ListItem
-          button
-          classes={{ button: classes.actionListItemButton }}
-          style={{ padding: '0.5rem 1.696rem' }}
-        >
-          <ListItemIcon>
-            {' '}
-            <AccountCircleIcon className={classes.backIcon} />
-          </ListItemIcon>
-          <ListItemText classes={{ root: classes.menutext }}>
-            <div className={classes.menuOptionsText}>
-              <Typography variant='h4'>About Me</Typography>
-            </div>
-          </ListItemText>
-        </ListItem>
-        <Link to='/education'>
-          <ListItem
-            button
-            classes={{ button: classes.actionListItemButton }}
-            style={{ padding: '0.5rem 1.696rem' }}
-          >
-            <ListItemIcon>
-              {' '}
-              <MenuBookIcon className={classes.backIcon} />
-            </ListItemIcon>
-            <ListItemText classes={{ root: classes.menutext }}>
-              <div className={classes.menuOptionsText}>
-                <Typography variant='h4'>Education</Typography>
-              </div>
-            </ListItemText>
-          </ListItem>
-        </Link>
-        <ListItem
-          button
-          classes={{ button: classes.actionListItemButton }}
-          style={{ padding: '0.5rem 1.696rem' }}
-        >
-          <ListItemIcon>
-            {' '}
-            <ComputerIcon className={classes.backIcon} />
-          </ListItemIcon>
-          <ListItemText classes={{ root: classes.menutext }}>
-            <div className={classes.menuOptionsText}>
-              <Typography variant='h4'>Projects </Typography>
-            </div>
-          </ListItemText>
-        </ListItem>
 
-        <ListItem
-          button
-          classes={{ button: classes.actionListItemButton }}
-          style={{ padding: '0.5rem 1.696rem' }}
-        >
-          <ListItemIcon>
-            {' '}
-            <WebIcon className={classes.backIcon} />
-          </ListItemIcon>
-          <ListItemText classes={{ root: classes.menutext }}>
-            <div className={classes.menuOptionsText}>
-              <Typography variant='h4'>Training & Internship </Typography>
-            </div>
-          </ListItemText>
-        </ListItem>
+  const currentPage = useSelector((state) => state.CurrPageReducer.currPage);
+  const theme = useTheme();
+  const screenChange = useMediaQuery(theme.breakpoints.up('md'));
 
-        <ListItem
-          button
-          classes={{ button: classes.actionListItemButton }}
-          style={{ padding: '0.5rem 1.696rem' }}
-        >
-          <ListItemIcon>
-            {' '}
-            <ContactsIcon className={classes.backIcon} />
-          </ListItemIcon>
-          <ListItemText classes={{ root: classes.menutext }}>
-            <div className={classes.menuOptionsText}>
-              <Typography variant='h4'>Contact</Typography>
-            </div>
-          </ListItemText>
-        </ListItem>
-      </List>
-    </div>
-  );
   return (
     <div className={classes.root}>
-      <CustomDrawer
-        drawerAvatarSize='2.1333rem'
-        swipeAreaWidth={0}
-        openDrawerContents={sideList}
-        drawerAvatarFontSize='0.88888rem'
-        username={'KS'}
-        classes={{
-          openDrawer: classes.openDrawer,
-          leftBar: classes.leftBar,
-          hamBurgerIcon: classes.hamBurgerIcon,
-          closedDivider: classes.closedDivider,
-          menuText: classes.menuText,
-          closedLogo: classes.closedLogo,
-        }}
-      />
+      <div className={classes.headerRoot}>
+        <AppBar position='fixed' className={classes.appBar}>
+          {screenChange
+            ? desktopView(classes, currentPage)
+            : mobileView(classes, currentPage)}
+        </AppBar>
+      </div>
     </div>
   );
 }

@@ -4,8 +4,9 @@ import { motion } from 'framer-motion';
 import { pageVariants, pageTransition } from '../../common/pageTrasition';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
+import { currPageAction } from '../../Redux/actions/CurrPageAction';
 import { Typography, Grid } from '@material-ui/core';
 import Header from './Header';
 import Timeline from '../../utils/Timeline';
@@ -13,6 +14,7 @@ import MenuBookIcon from '@material-ui/icons/MenuBook';
 import NonClickableCard from '../../utils/NonClickableCard';
 import MyHistogram from '../../utils/component/Histogram';
 import Footer from './Footer';
+import { pxToRem } from '../../utils/theme';
 
 const xAxisLabelStyles = {
   color: 'white',
@@ -38,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     boxSizing: 'border-box',
-    height: '82vh',
+    height: '84vh',
     width: '100%',
     overflowX: 'hidden',
     overflowY: 'auto',
@@ -52,20 +54,6 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
   },
 
-  title: {
-    position: 'relative',
-    display: 'flex',
-    justifyContent: 'flex-start',
-    textAlign: 'center',
-    left: '3%',
-    marginBottom: '2rem',
-  },
-  titleText: {
-    fontFamily: "'Fondamento', cursive",
-    fontSize: 'clamp(1.8rem, 5vw, 2rem)',
-    color: '#e2dae6',
-    fontWeight: '600',
-  },
   eduIcon: {
     width: '2.6rem',
     height: '2.6rem',
@@ -76,7 +64,6 @@ const useStyles = makeStyles((theme) => ({
   },
   connect: {
     marginLeft: '2rem',
-
     marginTop: '1rem',
   },
   coonectRoot: {
@@ -96,10 +83,11 @@ const useStyles = makeStyles((theme) => ({
   },
   eduDetails: {
     position: 'relative',
-    height: '68vh',
+    height: '80vh',
     width: '95%',
     marginRight: '1rem',
     borderRadius: '0.4rem',
+    left: '1vw',
   },
   contentArea: {
     position: 'relative',
@@ -129,13 +117,13 @@ const useStyles = makeStyles((theme) => ({
     marginBlockEnd: '0vh',
   },
   eduBodytxt: {
-    lineHeight: '1.4rem',
     opacity: 0.9,
     color: '#f5f4f2',
     fontFamily: 'Roboto',
-    fontSize: 'clamp(1.3rem, 4vw, 1.6rem)',
+    fontSize: pxToRem(24),
     fontWeight: 500,
     textAlign: 'justify',
+    lineHeight: pxToRem(48),
   },
   verticalDivider: {
     position: 'relative',
@@ -147,12 +135,12 @@ const useStyles = makeStyles((theme) => ({
   },
   mobileHeightManager: {
     position: 'relative',
-    height: '86vh',
+    height: '92vh',
     width: '100%',
   },
   skillsArea: {
     position: 'relative',
-    height: '68vh',
+    height: '80vh',
     width: '95%',
     marginRight: '1rem',
     borderRadius: '0.4rem',
@@ -162,10 +150,8 @@ const useStyles = makeStyles((theme) => ({
 
   mobileHeight: {
     position: 'relative',
-    height: '34vh',
-    width: '95%',
-    marginRight: '1rem',
-    borderRadius: '0.4rem',
+    height: '40vh',
+    width: '99%',
 
     boxShadow: 'none',
   },
@@ -174,8 +160,9 @@ const useStyles = makeStyles((theme) => ({
 function Education(props) {
   const classes = useStyles();
   const theme = useTheme();
+  const dispatch = useDispatch();
   const screenChange = useMediaQuery(theme.breakpoints.up('md'));
-  const open = useSelector((state) => state.DrawerReducer.open);
+
   const [animation, setanimation] = React.useState(true);
   const [size, setsize] = useState(window.innerWidth / 65.6);
   const [xPadding, setxPadding] = useState(window.innerHeight / 54);
@@ -207,9 +194,8 @@ function Education(props) {
   setanimationfunction(setanimation, setanimFlag, animFlag);
 
   return (
-    <div
-      className={clsx(open ? classes.drawerOpenCon : classes.drawerNotOpenCon)}
-    >
+    dispatch(currPageAction({ currPage: 'Education & Skill' })),
+    (
       <div
         className={clsx(
           screenChange ? classes.heightManager : classes.mobileHeightManager
@@ -231,18 +217,15 @@ function Education(props) {
                   screenChange ? classes.eduDetails : classes.mobileHeight
                 )}
               >
-                <div
-                  className={classes.title}
-                  style={{ marginTop: '1rem', marginBottom: '1rem' }}
-                >
-                  <Typography variant='h3' className={classes.titleText}>
-                    Education
-                  </Typography>
-                </div>
-                <NonClickableCard
-                  classes={{ root: classes.contentArea }}
-                  style={{ border: '0.2rem dotted #375970' }}
-                >
+                <NonClickableCard classes={{ root: classes.contentArea }}>
+                  {/* <div
+                      className={classes.title}
+                      style={{ marginTop: '1rem', marginBottom: '1rem' }}
+                    >
+                      <Typography variant='h3' className={classes.titleText}>
+                        Education
+                      </Typography>
+                    </div> */}
                   <div className={classes.eduTimeline}>
                     <Timeline
                       classes={{
@@ -328,33 +311,28 @@ function Education(props) {
                   screenChange ? classes.skillsArea : classes.mobileHeight
                 )}
               >
-                <div className={classes.title}>
-                  <Typography variant='h3' className={classes.titleText}>
-                    Skills
-                  </Typography>
-                </div>
-                <NonClickableCard style={{ border: '0.2rem dotted #375970' }}>
+                <NonClickableCard>
                   <MyHistogram
                     xAxisLabelStyles={xAxisLabelStyles}
                     xPadding={xPadding}
                     chartMargin={chartMargin}
                     animation={animation}
                     pointWidth={size}
-                    chartHeight='68vh'
+                    chartHeight='78vh'
                   />
                 </NonClickableCard>
               </div>
             </Grid>
           </Grid>
         </motion.div>
+        <Footer
+          prevPage='About Me'
+          nextPage='Project'
+          prevLink='/'
+          nextLink='/project'
+        />
       </div>
-      <Footer
-        prevPage='About Me'
-        nextPage='Project'
-        prevLink='/'
-        nextLink='/project'
-      />
-    </div>
+    )
   );
 }
 

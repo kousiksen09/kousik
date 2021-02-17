@@ -8,14 +8,14 @@ import combineStyles from './styles/combineStyles';
 
 const styles = (theme) => ({
   root: {
-    backgroundColor: '#151b21',
+    // backgroundColor: '#151b21',
     width: '100%',
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
     position: 'absolute',
     paddingTop: '0',
-    background: 'inherit',
+    background: 'linear-gradient(to right, #000000, #434343)',
     overflow: 'hidden',
   },
 

@@ -13,8 +13,8 @@ import CloseIcon from '@material-ui/icons/Close';
 import Header from './Header';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import Resume from '../../assets/Kousik_Resume.pdf';
-import { currPageAction } from './../../Redux/actions/CurrPageAction';
-import aboutBg from '../../assets/aboutBg.jpg';
+import { currPageAction } from '../../Redux/actions/CurrPageAction';
+import aboutBg from '../../assets/aboutBg.png';
 import Footer from './Footer';
 import { pageVariants, pageTransition } from '../../common/pageTrasition';
 
@@ -37,14 +37,15 @@ const useStyles = makeStyles((theme) => ({
 
     '&:before': {
       content: `""`,
-      background: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(${aboutBg})`,
+      background: `linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) ), url(${aboutBg})`,
       height: '100%',
       width: '100%',
       backgroundSize: 'cover',
-      backgroundPosition: 'center center',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
       backgroundAttachment: 'fixed',
       position: 'absolute',
-      opacity: '0.75',
+      opacity: '0.9',
     },
   },
   titleText: {
@@ -127,6 +128,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     fontSize: 'clamp(1.8rem, 12vw, 2.5rem)',
     color: '#FFFFFF',
+    padding: pxToRem(4),
   },
   resumeButton: {
     position: 'absolute',
@@ -191,7 +193,7 @@ function About() {
   const screenChange = useMediaQuery(theme.breakpoints.up('md'));
 
   return (
-    dispatch(currPageAction({ currPage: 'About' })),
+    dispatch(currPageAction({ currPage: 'About Me' })),
     (
       <div
         className={clsx(
