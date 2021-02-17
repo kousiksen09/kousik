@@ -77,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
 
     border: `0.1rem solid #d0d1d5`,
     borderRadius: '0.3rem',
-    width: '92%',
+    width: '93%',
     padding: '0.5rem',
     // marginBottom: '2vh',
     backdropFilter: 'blur(0.6rem)',
@@ -85,19 +85,23 @@ const useStyles = makeStyles((theme) => ({
   projectHeader: {
     display: 'flex',
     position: 'relative',
-    height: '10%',
+    height: '22%',
     width: '100%',
-    marginBottom: '3vh',
+    marginBottom: '1vh',
   },
   headerTxt: {
     display: 'inline-block',
     position: 'relative',
     overflow: 'hidden',
     justifyContent: 'center',
+    fontFamily: 'Noto Sans JP, sans-serif',
+    color: '#DFD3C3',
     textOverflow: 'ellipsis',
-    padding: '0 0 0 1.9rem',
+    left: '1.2rem',
+    top: '1rem',
+    alignItems: 'center',
     width: '100%',
-    fontSize: 'clamp(1.3rem, 12vw, 1.5rem)',
+    fontSize: '1.2rem',
   },
   trainingIns: {
     display: 'inline-block',
@@ -110,30 +114,34 @@ const useStyles = makeStyles((theme) => ({
     display: 'inline-block',
     position: 'relative',
     width: '100%',
-    height: '90%',
+    height: '78%',
   },
   crdBdyTxt: {
     position: 'relative',
     overflow: 'hidden',
+    fontFamily: 'Roboto, sans-serif',
     textOverflow: 'ellipsis',
     padding: '0 0 0 0.5rem',
     width: '100%',
     fontSize: 'clamp(1.2rem, 18vw, 1.35rem)',
-    color: '#e2dae6',
+    color: '#FFFFFF',
   },
   viewCertificate: {
     display: 'flex',
     justifyContent: 'center',
     position: 'relative',
-    top: '2rem',
+
     height: '10%',
   },
   showBtn: {
     width: 'auto',
     height: '3rem',
-    borderRadius: '2rem',
-    backgroundColor: '#20A4F3',
-    backgroundImage: 'linear-gradient(147deg, #20A4F3 0%, #182B3A 74%)',
+    backgroundColor: '#7123e2',
+    boxShadow: '0 2px 5px 0 rgb(0 0 0 / 10%)',
+    background: 'linear-gradient(-45deg ,#705aef, #9f69fe, #c827c8, #3f00b5)',
+    backgroundSize: '800% 400%',
+    animation:
+      'upgradeGradient 10s infinite cubic-bezier(.62,.28,.23,.99) both',
   },
 }));
 
@@ -186,7 +194,9 @@ function Training() {
                           style={{
                             height: '3rem',
                             width: '3rem',
+                            padding: '0.2rem',
                             borderRadius: '50%',
+                            border: '0.2rem solid #6f23e2',
                           }}
                         />
                       </div>
@@ -200,7 +210,7 @@ function Training() {
                           style={{
                             fontSize: 'clamp(1.4rem, 18vw, 1.5rem)',
                             fontWeight: '600',
-                            color: '#c29415',
+                            color: '#dfa72f',
                           }}
                         >
                           Skill Learn :{' '}
@@ -212,7 +222,7 @@ function Training() {
                           style={{
                             fontSize: 'clamp(1.4rem, 18vw, 1.5rem)',
                             fontWeight: '600',
-                            color: '#c29415',
+                            color: '#dfa72f',
                           }}
                         >
                           Trainer :{' '}
@@ -224,7 +234,7 @@ function Training() {
                           style={{
                             fontSize: 'clamp(1.4rem, 18vw, 1.5rem)',
                             fontWeight: '600',
-                            color: '#c29415',
+                            color: '#dfa72f',
                           }}
                         >
                           Duration :{' '}
@@ -277,7 +287,7 @@ function Training() {
                         style={{
                           fontSize: 'clamp(1.4rem, 18vw, 1.5rem)',
                           fontWeight: '600',
-                          color: '#c29415',
+                          color: '#dfa72f',
                         }}
                       >
                         Role :
@@ -289,7 +299,7 @@ function Training() {
                         style={{
                           fontSize: 'clamp(1.4rem, 18vw, 1.5rem)',
                           fontWeight: '600',
-                          color: '#c29415',
+                          color: '#dfa72f',
                         }}
                       >
                         Technology used :
@@ -301,7 +311,7 @@ function Training() {
                         style={{
                           fontSize: 'clamp(1.4rem, 18vw, 1.5rem)',
                           fontWeight: '600',
-                          color: '#c29415',
+                          color: '#dfa72f',
                         }}
                       >
                         Duration :{' '}

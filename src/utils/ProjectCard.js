@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: pxToVw(501),
 
     width: '92%',
-    minHeight: pxToVh(545),
+
     border: `${pxToRem(1)} solid #d0d1d5`,
     borderRadius: pxToRem(3),
     display: 'flex',
@@ -22,9 +22,9 @@ const useStyles = makeStyles((theme) => ({
   header: {
     display: 'flex',
     flexDirection: 'row',
-    marginBottom: pxToVw(17),
+    marginBottom: pxToVw(20),
     padding: pxToRem(4),
-    height: pxToVh(58),
+    height: '25%',
   },
   headerText: {
     position: 'relative',
@@ -33,21 +33,16 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     lineHeight: 1.38,
     color: '#DFD3C3',
-    marginBottom: pxToVh(2),
+    marginBottom: pxToRem(2),
     fontSize: pxToRem(28),
     paddingLeft: '1rem',
-
     width: '100%',
   },
-  subTitle: {
-    position: 'relative',
-    top: '-3vh',
-    left: '3.8vw',
-  },
+
   subTitleText: {
     fontFamily: 'Noto Sans JP, sans-serif',
     fontSize: pxToRem(22),
-    color: '#90949c',
+    color: '#c5c9d1',
   },
   content: {
     clear: 'both',
@@ -68,11 +63,12 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '2vh',
   },
   avatar: {
-    height: pxToRem(48),
-    width: pxToRem(48),
+    height: '4rem',
+    width: '4rem',
   },
   referenceThumb: {
     display: 'block',
+    cursor: 'pointer',
     width: '100%',
     height: pxToVh(290),
     border: '0.1rem solid #f84525 ',
@@ -119,19 +115,22 @@ function ProjectCard(props) {
     setmoreDisplayed(false);
   };
   return (
-    <Card className={classes.root} onClick={() => window.open(link)}>
+    <Card className={classes.root}>
       <div className={classes.header}>
         <Avatar
           alt={title}
           src={avatarImg ? avatarImg : avatarPj}
           className={classes.avatar}
         />
-        <Typography className={classes.headerText}>{title}</Typography>
+        <Typography className={classes.headerText}>
+          {title} <p className={classes.subTitleText}>{subtitle}</p>
+        </Typography>
+        {/* <div className={classes.subTitle}>
+          <Typography className={classes.subTitleText}>{subtitle}</Typography>
+        </div> */}
       </div>
-      <div className={classes.subTitle}>
-        <Typography className={classes.subTitleText}>{subtitle}</Typography>
-      </div>
-      <div style={{ marginTop: '-3vh', padding: pxToRem(16) }}>
+
+      <div style={{ padding: pxToRem(16) }}>
         <div className={classes.content}>
           {bodyContent && countWords(bodyContent) > 20 && !moreDisplayed ? (
             <>
@@ -166,7 +165,12 @@ function ProjectCard(props) {
         </div>
 
         <div className={classes.reference}>
-          <img src={bodyImage} alt={title} className={classes.referenceThumb} />
+          <img
+            src={bodyImage}
+            alt={title}
+            className={classes.referenceThumb}
+            onClick={() => window.open(link)}
+          />
         </div>
         <div className={classes.refContent}>
           <Typography className={classes.contentText}>

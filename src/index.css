@@ -29,3 +29,20 @@ a:-webkit-any-link {
   text-decoration: none;
   color: #ffffff;
 }
+
+.copyrightTxt {
+  color: #f35626;
+  background-image: -webkit-linear-gradient(92deg, #cc5500, #ccbb00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: hue 60s infinite linear;
+}
+
+@keyframes hue {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(-360deg);
+  }
+}

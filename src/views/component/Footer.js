@@ -2,11 +2,10 @@ import React from 'react';
 // import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { Button, Typography } from '@material-ui/core';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import { currPageAction } from '../../Redux/actions/CurrPageAction';
+
+import { Typography } from '@material-ui/core';
+
+import '../../index.css';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,85 +23,25 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     backgroundColor: 'transparent',
   },
-  nextPage: {
-    display: 'flex',
-    position: 'relative',
-    flexGrow: 1,
-    justifyContent: 'flex-end',
 
-    right: '1vw',
-  },
-  pageRoute: {
-    position: 'relative',
-
-    top: 0,
-  },
-  prevPage: {
-    display: 'flex',
-    position: 'relative',
-    flexGrow: 1,
-    justifyContent: 'flex-start',
-    left: '1vw',
-  },
-  nextPageBtn: {
-    height: '3rem',
-    width: '100%',
-    padding: '0.9rem',
-    backgroundColor: '#CB218E',
-    backgroundImage: 'linear-gradient(147deg, #CB218E 0%, #6617CB 74%)',
-    textDecoration: 'none',
-    color: '#FFFFFF',
-    borderRadius: '2rem',
-    '&:hover': {
-      opacity: 1,
-      backgroundColor: '#a80f4a',
-    },
-  },
-  prevPageBtn: {
-    height: '3rem',
-    width: '100%',
-    padding: '0.9rem',
-    backgroundColor: '#FE0944',
-    backgroundImage: 'linear-gradient(147deg, #FE0944 0%, #FEAE96 74%)',
-    textDecoration: 'none',
-    color: '#FFFFFF',
-    borderRadius: '2rem',
-    '&:hover': {
-      opacity: 1,
-      backgroundColor: '#bd4c0b',
-    },
-  },
-  btnTxt: {
-    fontSize: 'clamp(1.2rem, 3vw, 1.25rem)',
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-  },
   copyright: {
     display: 'flex',
     justifyContent: 'center',
     position: 'relative',
-    top: '1vh',
+    top: '2vh',
   },
   copyrightTxt: {
     display: 'inline-block',
     position: 'relative',
     fontSize: 'clamp(1.2rem, 7vw, 1.35rem)',
-    color: '#e4ecf2',
     textAlign: 'center',
     overflow: 'hidden',
+    color: '#f35626',
   },
 }));
 function Footer(props) {
   const classes = useStyles();
-  const dispatch = useDispatch();
-  function prevPageClick(props) {
-    console.log('prev calleed', props);
-    dispatch(currPageAction({ currPage: `${props.prevPage}` }));
-  }
 
-  function nextPageClick(props) {
-    dispatch(currPageAction({ currPage: `${props.nextPage}` }));
-  }
   return (
     <div className={classes.root}>
       <div className={classes.footerContainer}>
@@ -125,7 +64,10 @@ function Footer(props) {
             )}
           </div> */}
         <div className={classes.copyright}>
-          <Typography className={classes.copyrightTxt}>
+          <Typography
+            classes={{ body1: classes.copyrightTxt }}
+            className='copyrightTxt'
+          >
             © Copyright 2021 Kousik Sen. All Rights Reserved
           </Typography>
         </div>
