@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { pageVariants, pageTransition } from '../../common/pageTrasition';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { currPageAction } from '../../Redux/actions/CurrPageAction';
 import { Typography, Grid } from '@material-ui/core';
@@ -15,6 +15,7 @@ import NonClickableCard from '../../utils/NonClickableCard';
 import MyHistogram from '../../utils/component/Histogram';
 import Footer from './Footer';
 import { pxToRem } from '../../utils/theme';
+import aboutBg from '../../assets/aboutBg.png';
 
 const xAxisLabelStyles = {
   color: 'white',
@@ -24,6 +25,22 @@ const xAxisLabelStyles = {
 };
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    height: '100%',
+    width: '100%',
+    position: 'relative',
+    '&:before': {
+      content: `""`,
+      background: `linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(${aboutBg})`,
+      height: '100%',
+      width: '100%',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center center',
+      backgroundAttachment: 'fixed',
+      position: 'absolute',
+      opacity: '0.75',
+    },
+  },
   drawerOpenCon: {
     width: '82vw',
     left: '17vw',
@@ -196,29 +213,30 @@ function Education(props) {
   return (
     dispatch(currPageAction({ currPage: 'Education & Skill' })),
     (
-      <div
-        className={clsx(
-          screenChange ? classes.heightManager : classes.mobileHeightManager
-        )}
-      >
-        <Header />
-        <motion.div
-          className={classes.education}
-          initial='initial'
-          animate='in'
-          exit='out'
-          variants={pageVariants}
-          transition={pageTransition}
+      <div className={classes.root}>
+        <div
+          className={clsx(
+            screenChange ? classes.heightManager : classes.mobileHeightManager
+          )}
         >
-          <Grid container spacing={3}>
-            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-              <div
-                className={clsx(
-                  screenChange ? classes.eduDetails : classes.mobileHeight
-                )}
-              >
-                <NonClickableCard classes={{ root: classes.contentArea }}>
-                  {/* <div
+          <Header />
+          <motion.div
+            className={classes.education}
+            initial='initial'
+            animate='in'
+            exit='out'
+            variants={pageVariants}
+            transition={pageTransition}
+          >
+            <Grid container spacing={3}>
+              <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                <div
+                  className={clsx(
+                    screenChange ? classes.eduDetails : classes.mobileHeight
+                  )}
+                >
+                  <NonClickableCard classes={{ root: classes.contentArea }}>
+                    {/* <div
                       className={classes.title}
                       style={{ marginTop: '1rem', marginBottom: '1rem' }}
                     >
@@ -226,111 +244,112 @@ function Education(props) {
                         Education
                       </Typography>
                     </div> */}
-                  <div className={classes.eduTimeline}>
-                    <Timeline
-                      classes={{
-                        connectorLine: classes.connect,
-                        connectorLineRoot: classes.coonectRoot,
-                      }}
-                      labelIcon={<MenuBookIcon className={classes.eduIcon} />}
-                      label={
-                        <div className={classes.flex}>
-                          <Typography className={classes.eduLabel}>
-                            B.Tech in Elelctronics and Communication
-                          </Typography>
-                        </div>
-                      }
-                      body={
-                        <div className={classes.eduBody}>
-                          <Typography className={classes.eduBodytxt}>
-                            Kalinga Institute of Industrial Technology, Deemed
-                            to be University. <br /> Bhubneswar, Patia, Odisha,
-                            751024 <br /> (2017 - Present)
-                          </Typography>
-                        </div>
-                      }
-                    />
-                  </div>
+                    <div className={classes.eduTimeline}>
+                      <Timeline
+                        classes={{
+                          connectorLine: classes.connect,
+                          connectorLineRoot: classes.coonectRoot,
+                        }}
+                        labelIcon={<MenuBookIcon className={classes.eduIcon} />}
+                        label={
+                          <div className={classes.flex}>
+                            <Typography className={classes.eduLabel}>
+                              B.Tech in Elelctronics and Communication
+                            </Typography>
+                          </div>
+                        }
+                        body={
+                          <div className={classes.eduBody}>
+                            <Typography className={classes.eduBodytxt}>
+                              Kalinga Institute of Industrial Technology, Deemed
+                              to be University. <br /> Bhubneswar, Patia,
+                              Odisha, 751024 <br /> (2017 - Present)
+                            </Typography>
+                          </div>
+                        }
+                      />
+                    </div>
 
-                  <div className={classes.eduTimeline}>
-                    <Timeline
-                      classes={{
-                        connectorLine: classes.connect,
-                        connectorLineRoot: classes.coonectRoot,
-                      }}
-                      labelIcon={<MenuBookIcon className={classes.eduIcon} />}
-                      label={
-                        <div className={classes.flex}>
-                          <Typography className={classes.eduLabel}>
-                            Higher Secondary Education
-                          </Typography>
-                        </div>
-                      }
-                      body={
-                        <div className={classes.eduBody}>
-                          <Typography className={classes.eduBodytxt}>
-                            Kotulpur High School. <br /> Kotulpur, Bankura, West
-                            Bengal, 722141. <br /> (2014-2016)
-                          </Typography>
-                        </div>
-                      }
-                    />
-                  </div>
+                    <div className={classes.eduTimeline}>
+                      <Timeline
+                        classes={{
+                          connectorLine: classes.connect,
+                          connectorLineRoot: classes.coonectRoot,
+                        }}
+                        labelIcon={<MenuBookIcon className={classes.eduIcon} />}
+                        label={
+                          <div className={classes.flex}>
+                            <Typography className={classes.eduLabel}>
+                              Higher Secondary Education
+                            </Typography>
+                          </div>
+                        }
+                        body={
+                          <div className={classes.eduBody}>
+                            <Typography className={classes.eduBodytxt}>
+                              Kotulpur High School. <br /> Kotulpur, Bankura,
+                              West Bengal, 722141. <br /> (2014-2016)
+                            </Typography>
+                          </div>
+                        }
+                      />
+                    </div>
 
-                  <div className={classes.eduTimeline}>
-                    <Timeline
-                      classes={{
-                        connectorLine: classes.connect,
-                        connectorLineRoot: classes.coonectRoot,
-                      }}
-                      labelIcon={<MenuBookIcon className={classes.eduIcon} />}
-                      label={
-                        <div className={classes.flex}>
-                          <Typography className={classes.eduLabel}>
-                            Secondary Education
-                          </Typography>
-                        </div>
-                      }
-                      body={
-                        <div className={classes.eduBody}>
-                          <Typography className={classes.eduBodytxt}>
-                            Ramakrishna Mission Boys' Home. <br /> Rahara,
-                            Khardaha, West Bengal 700118 <br /> (2007-2014)
-                          </Typography>
-                        </div>
-                      }
+                    <div className={classes.eduTimeline}>
+                      <Timeline
+                        classes={{
+                          connectorLine: classes.connect,
+                          connectorLineRoot: classes.coonectRoot,
+                        }}
+                        labelIcon={<MenuBookIcon className={classes.eduIcon} />}
+                        label={
+                          <div className={classes.flex}>
+                            <Typography className={classes.eduLabel}>
+                              Secondary Education
+                            </Typography>
+                          </div>
+                        }
+                        body={
+                          <div className={classes.eduBody}>
+                            <Typography className={classes.eduBodytxt}>
+                              Ramakrishna Mission Boys' Home. <br /> Rahara,
+                              Khardaha, West Bengal 700118 <br /> (2007-2014)
+                            </Typography>
+                          </div>
+                        }
+                      />
+                    </div>
+                  </NonClickableCard>
+                </div>
+              </Grid>
+
+              <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                <div
+                  className={clsx(
+                    screenChange ? classes.skillsArea : classes.mobileHeight
+                  )}
+                >
+                  <NonClickableCard>
+                    <MyHistogram
+                      xAxisLabelStyles={xAxisLabelStyles}
+                      xPadding={xPadding}
+                      chartMargin={chartMargin}
+                      animation={animation}
+                      pointWidth={size}
+                      chartHeight='78vh'
                     />
-                  </div>
-                </NonClickableCard>
-              </div>
+                  </NonClickableCard>
+                </div>
+              </Grid>
             </Grid>
-
-            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-              <div
-                className={clsx(
-                  screenChange ? classes.skillsArea : classes.mobileHeight
-                )}
-              >
-                <NonClickableCard>
-                  <MyHistogram
-                    xAxisLabelStyles={xAxisLabelStyles}
-                    xPadding={xPadding}
-                    chartMargin={chartMargin}
-                    animation={animation}
-                    pointWidth={size}
-                    chartHeight='78vh'
-                  />
-                </NonClickableCard>
-              </div>
-            </Grid>
-          </Grid>
-        </motion.div>
-        <Footer
-          prevPage='About Me'
-          nextPage='Project'
-          prevLink='/'
-          nextLink='/project'
-        />
+          </motion.div>
+          <Footer
+            prevPage='About Me'
+            nextPage='Project'
+            prevLink='/'
+            nextLink='/project'
+          />
+        </div>
       </div>
     )
   );

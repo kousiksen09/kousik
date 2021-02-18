@@ -4,7 +4,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import { motion } from 'framer-motion';
 import { pageVariants, pageTransition } from '../../common/pageTrasition';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Grid, Button } from '@material-ui/core';
 import NonClickableCard from '../../utils/NonClickableCard';
@@ -13,18 +13,24 @@ import Footer from './Footer';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import { trainingData } from './../../data/trainingData';
 import { currPageAction } from '../../Redux/actions/CurrPageAction';
+import aboutBg from '../../assets/aboutBg.png';
 
-const useStyles = makeStyles((theme) => ({
-  drawerOpenCon: {
-    width: '82vw',
-    left: '17vw',
-    height: '100vh',
-    position: 'absolute',
-  },
-  drawerNotOpenCon: {
-    width: '100vw',
-    height: '100vh',
-    position: 'absolute',
+const useStyles = makeStyles(() => ({
+  root: {
+    height: '100%',
+    width: '100%',
+    position: 'relative',
+    '&:before': {
+      content: `""`,
+      background: `linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(${aboutBg})`,
+      height: '100%',
+      width: '100%',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center center',
+      backgroundAttachment: 'fixed',
+      position: 'absolute',
+      opacity: '0.75',
+    },
   },
   mobileHeightManager: {
     position: 'relative',
@@ -147,7 +153,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Training() {
   const classes = useStyles();
-  const open = useSelector((state) => state.DrawerReducer.open);
+
   const dispatch = useDispatch();
   const theme = useTheme();
   const screenChange = useMediaQuery(theme.breakpoints.up('md'));
@@ -155,11 +161,7 @@ function Training() {
   return (
     dispatch(currPageAction({ currPage: 'Training & Internship' })),
     (
-      <div
-        className={clsx(
-          open ? classes.drawerOpenCon : classes.drawerNotOpenCon
-        )}
-      >
+      <div className={classes.root}>
         <div
           className={clsx(
             screenChange ? classes.heightManager : classes.mobileHeightManager

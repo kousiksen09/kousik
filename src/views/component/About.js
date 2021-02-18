@@ -208,69 +208,60 @@ function About() {
           variants={pageVariants}
           transition={pageTransition}
         >
-          <div
-            className={clsx(
-              screenChange ? classes.heightManager : classes.mobileHeightManager
-            )}
-          >
-            <Header />
-            <div className={classes.imgPr}>
-              <img
-                src={prc}
-                alt='Kousik Sen'
-                className={classes.prImg}
-                onClick={() => handleModalOpen()}
-              />
-            </div>
-            <Modal
-              open={modalOpen}
-              onClose={handleModalClose}
-              aria-labelledby='simple-modal-title'
-              aria-describedby='simple-modal-description'
-            >
-              <>
-                <div className={classes.rightSection}>
-                  <CloseIcon
-                    onClick={() => handleModalClose()}
-                    className={classes.closeIcon}
-                  />
-                </div>
-                <div className={classes.zoomImageDiv}>
-                  <img
-                    src={prc}
-                    alt='Kousik Sen'
-                    className={classes.zoomImage}
-                  />
-                </div>
-              </>
-            </Modal>
-
-            <Typography variant='h3' className={classes.titleText}>
-              KOUSIK SEN
-            </Typography>
-
-            <div className={classes.objective}>
-              <Typography variant='h3' className={classes.subTitle}>
-                WEB DEVELOPER | IoT Architect
-              </Typography>
-              <Typography variant='h3' className={classes.tagLine}>
-                Inovation + Design + Develop make the world beautiful. Have 3
-                years of experience in responsive UI Design and 2 years of
-                experience in IoT.
-              </Typography>
-              <Button
-                variant='contained'
-                className={classes.resumeButton}
-                classes={{ label: classes.btnTxt }}
-                onClick={() => window.open(Resume)}
-                startIcon={
-                  <GetAppIcon style={{ height: '2rem', width: '2rem' }} />
-                }
-              >
-                Resume
-              </Button>
-            </div>
+          <Header />
+          <div className={classes.imgPr}>
+            <img
+              src={prc}
+              alt='Kousik Sen'
+              className={classes.prImg}
+              onClick={() => handleModalOpen()}
+            />
           </div>
+          <Modal
+            open={modalOpen}
+            onClose={handleModalClose}
+            aria-labelledby='simple-modal-title'
+            aria-describedby='simple-modal-description'
+          >
+            <>
+              <div className={classes.rightSection}>
+                <CloseIcon
+                  onClick={() => handleModalClose()}
+                  className={classes.closeIcon}
+                />
+              </div>
+              <div className={classes.zoomImageDiv}>
+                <img src={prc} alt='Kousik Sen' className={classes.zoomImage} />
+              </div>
+            </>
+          </Modal>
+
+          <Typography variant='h3' className={classes.titleText}>
+            KOUSIK SEN
+          </Typography>
+
+          <div className={classes.objective}>
+            <Typography variant='h3' className={classes.subTitle}>
+              WEB DEVELOPER | IoT Architect
+            </Typography>
+            <Typography variant='h3' className={classes.tagLine}>
+              Inovation + Design + Develop make the world beautiful. Have 3
+              years of experience in responsive UI Design and 2 years of
+              experience in IoT.
+            </Typography>
+            <Button
+              variant='contained'
+              className={classes.resumeButton}
+              classes={{ label: classes.btnTxt }}
+              onClick={() => window.open(Resume)}
+              startIcon={
+                <GetAppIcon style={{ height: '2rem', width: '2rem' }} />
+              }
+            >
+              Resume
+            </Button>
+          </div>
+
           <Footer nextPage='Education & Skill' nextLink='/education' />
         </motion.div>
       </div>

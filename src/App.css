@@ -18,11 +18,11 @@ html {
     radial-gradient(closest-side at 50% 50%, #1f2831 0%, #20232b 100%) 0% 0%
     no-repeat padding-box;
   height: 100vh;
-  background-image: url('../src/assets/aboutBg.png');
-  background-position: center;
+  /* background-image: url('../src/assets/aboutBg.png'); */
+  /* background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: fixed; */
   width: 100vw;
   overflow: hidden;
   font-size: calc(0.75vh + 0.75vw);
