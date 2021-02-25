@@ -5,8 +5,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import { pxToVw, pxToRem, pxToVh } from '../../utils/theme';
 import clsx from 'clsx';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
 import { Typography, Button } from '@material-ui/core';
 import prc from '../../assets/prc.jpg';
 import CloseIcon from '@material-ui/icons/Close';
@@ -18,7 +16,7 @@ import aboutBg from '../../assets/aboutBg.png';
 import Footer from './Footer';
 import { pageVariants, pageTransition } from '../../common/pageTrasition';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   drawerOpenCon: {
     width: '82vw',
     height: '100vh',
@@ -189,8 +187,6 @@ function About() {
     setModalOpen(false);
   };
   const classes = useStyles();
-  const theme = useTheme();
-  const screenChange = useMediaQuery(theme.breakpoints.up('md'));
 
   return (
     dispatch(currPageAction({ currPage: 'About Me' })),
