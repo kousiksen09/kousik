@@ -1,268 +1,250 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { motion } from 'framer-motion';
-import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import { pxToVw, pxToRem, pxToVh } from '../../utils/theme';
-import clsx from 'clsx';
-import { Typography, Button } from '@material-ui/core';
-import prc from '../../assets/prc.jpg';
-import CloseIcon from '@material-ui/icons/Close';
-import Header from './Header';
-import GetAppIcon from '@material-ui/icons/GetApp';
-import Resume from '../../assets/Kousik_Resume.pdf';
-import { currPageAction } from '../../Redux/actions/CurrPageAction';
-import aboutBg from '../../assets/aboutBg.png';
-import Footer from './Footer';
-import { pageVariants, pageTransition } from '../../common/pageTrasition';
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { motion } from "framer-motion";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import Modal from "@material-ui/core/Modal";
+import clsx from "clsx";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+
+import { Typography, Button } from "@material-ui/core";
+import CloseIcon from "@material-ui/icons/Close";
+import GetAppIcon from "@material-ui/icons/GetApp";
+import prc from "../../assets/prc.jpg";
+import Header from "./Header";
+import { pxToVw, pxToRem, pxToVh } from "../../utils/theme";
+import Resume from "../../assets/Kousik_Resume.pdf";
+import { currPageAction } from "../../Redux/actions/CurrPageAction";
+import Footer from "./Footer";
+import { pageVariants, pageTransition } from "../../common/pageTrasition";
 
 const useStyles = makeStyles(() => ({
-  drawerOpenCon: {
-    width: '82vw',
-    height: '100vh',
-    left: '17vw',
-    position: 'absolute',
-  },
-  drawerNotOpenCon: {
-    width: '100vw',
-    height: '100vh',
-    position: 'absolute',
-  },
-  about: {
-    height: '100%',
-    width: '100%',
-    position: 'relative',
+	drawerOpenCon: {
+		width: "82vw",
+		height: "100vh",
+		left: "17vw",
+		position: "absolute",
+	},
+	drawerNotOpenCon: {
+		width: "100vw",
+		height: "100vh",
+		position: "absolute",
+	},
+	about: {
+		height: "100%",
+		width: "100%",
+		position: "relative",
+	},
+	titleText: {
+		fontFamily: "'lato', sans-serif",
+		position: "relative",
+		letterSpacing: "1rem",
+		paddingTop: "2%",
+		fontWeight: "600",
+		display: "flex",
+		justifyContent: "center",
+		textAlign: "center",
+		fontSize: "clamp(3rem, 10vw, 3.8rem)",
+		background: "-webkit-linear-gradient(white, #38495a)",
+		"-webkit-background-clip": "text",
+		"-webkit-text-fill-color": "transparent",
+	},
+	imgPr: {
+		position: "relative",
+		display: "flex",
+		justifyContent: "center",
+		height: "30vh",
+	},
+	prImg: {
+		marginTop: pxToRem(50),
+		cursor: "pointer",
+		height: "25vh",
 
-    '&:before': {
-      content: `""`,
-      background: `linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) ), url(${aboutBg})`,
-      height: '100%',
-      width: '100%',
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center',
-      backgroundAttachment: 'fixed',
-      position: 'absolute',
-      opacity: '0.9',
-    },
-  },
-  titleText: {
-    fontFamily: "'Fondamento', cursive",
-    position: 'relative',
-    letterSpacing: '1rem',
-    paddingTop: '2%',
-    fontWeight: '600',
-    display: 'flex',
-    justifyContent: 'center',
-    textAlign: 'center',
-    fontSize: 'clamp(3rem, 10vw, 3.8rem)',
-    color: '#FFFFFF',
-  },
-  imgPr: {
-    position: 'relative',
-    display: 'flex',
-    justifyContent: 'center',
-    height: '30vh',
-  },
-  prImg: {
-    marginTop: pxToRem(50),
-    cursor: 'pointer',
-    height: '25vh',
-    borderRadius: '50%',
-    border: '0.3rem solid #3d3b3b',
-    transition: 'all ease 1s',
-  },
-  zoomImageDiv: {
-    position: 'relative',
-    display: 'flex',
-    flexGrow: 1,
-    height: '80%',
-    width: '82%',
-    left: '11vw',
-    justifyContent: 'center',
-  },
-  zoomImage: {
-    position: 'absolute',
-    margin: pxToRem(20),
-    height: '100%',
-    border: '0.3rem solid #3d3b3b',
-  },
-  closeIcon: {
-    position: 'relative',
-    cursor: 'pointer',
-    height: '4vh',
-    width: '4vw',
-    top: pxToVh(22),
-    right: pxToVw(22),
-    color: '#fff',
-    border: '0.2rem solid #fff',
-  },
-  rightSection: {
-    display: 'flex',
-    flexGrow: 1,
-    justifyContent: 'flex-end',
-  },
-  objective: {
-    position: 'relative',
-    display: 'flex',
-    flexGrow: 1,
-    justifyContent: 'center',
-    height: '40vh',
-  },
-  subTitle: {
-    fontFamily: " 'Yeon Sung', cursive",
-    position: 'absolute',
-    fontWeight: '500',
-    textAlign: 'center',
-    fontSize: 'clamp(2rem, 6vw, 2.8rem)',
-    color: '#FFFFFF',
-  },
-  tagLine: {
-    fontFamily: " 'Yeon Sung', cursive",
-    position: 'absolute',
-    top: '10vh',
-    margin: '0 2rem 2rem 0',
-    fontWeight: '500',
-    textAlign: 'center',
-    fontSize: 'clamp(1.8rem, 12vw, 2.5rem)',
-    color: '#FFFFFF',
-    padding: pxToRem(4),
-  },
-  resumeButton: {
-    position: 'absolute',
-    marginTop: '25vh',
-    height: '3rem',
-    width: 'auto',
-    background: '#ed8728',
-    color: '#FFFFFF',
-    borderRadius: '2rem',
-    '&:hover': {
-      opacity: 1,
-      backgroundColor: '#ba9013',
-    },
-  },
-  nextPage: {
-    display: 'flex',
-    position: 'relative',
-    flexGrow: 1,
-    justifyContent: 'flex-end',
-    top: '84vh',
-    right: '4vw',
-  },
-  nextPageBtn: {
-    height: '4rem',
-    width: '12rem',
-    background: '#9e1c66',
-    color: '#FFFFFF',
-    borderRadius: '2rem',
-    '&:hover': {
-      opacity: 1,
-      backgroundColor: '#a80f4a',
-    },
-  },
-  btnTxt: {
-    fontSize: 'clamp(1.4rem, 4vw, 1.8rem)',
-  },
-  heightManager: {
-    position: 'relative',
-    height: '92vh',
-    width: '100%',
-  },
-  mobileHeightManager: {
-    position: 'relative',
-    height: '86vh',
-    width: '100%',
-  },
+		borderRadius: "50%",
+		objectFit: "cover",
+		objectPosition: "center center",
+		border: "0.3rem solid #3d3b3b",
+	},
+	zoomImageDiv: {
+		position: "relative",
+		display: "flex",
+		flexGrow: 1,
+		height: "80%",
+		width: "82%",
+		left: "11vw",
+		justifyContent: "center",
+	},
+	zoomImage: {
+		position: "absolute",
+		margin: pxToRem(20),
+		height: "100%",
+		border: "0.3rem solid #3d3b3b",
+	},
+	closeIcon: {
+		position: "relative",
+		cursor: "pointer",
+		height: "4vh",
+		width: "4vw",
+		top: pxToVh(22),
+		right: pxToVw(22),
+		color: "#fff",
+		border: "0.2rem solid #fff",
+	},
+	rightSection: {
+		display: "flex",
+		flexGrow: 1,
+		justifyContent: "flex-end",
+	},
+	objective: {
+		position: "relative",
+		display: "flex",
+		flexGrow: 1,
+		justifyContent: "center",
+		height: "40vh",
+	},
+	subTitle: {
+		fontFamily: " 'Yeon Sung', cursive",
+		position: "absolute",
+		fontWeight: "500",
+		textAlign: "center",
+		fontSize: "2.5rem",
+		background: "-webkit-linear-gradient(white, #38495a)",
+		"-webkit-background-clip": "text",
+		"-webkit-text-fill-color": "transparent",
+	},
+	tagLine: {
+		fontFamily: " 'Yeon Sung', cursive",
+		position: "absolute",
+		top: "10vh",
+		margin: "0 2rem 2rem 0",
+		fontWeight: "500",
+		textAlign: "center",
+		fontSize: "clamp(1.8rem, 12vw, 2.5rem)",
+		padding: pxToRem(4),
+		background: "-webkit-linear-gradient(white, #38495a)",
+		"-webkit-background-clip": "text",
+		"-webkit-text-fill-color": "transparent",
+	},
+	resumeButton: {
+		position: "absolute",
+		marginTop: "25vh",
+		height: "3rem",
+		width: "auto",
+		background: "#ed8728",
+		color: "#FFFFFF",
+		borderRadius: "2rem",
+		"&:hover": {
+			opacity: 1,
+			backgroundColor: "#ba9013",
+		},
+	},
+
+	btnTxt: {
+		fontSize: "clamp(1.4rem, 4vw, 1.8rem)",
+	},
+	heightManager: {
+		position: "relative",
+		height: "92vh",
+		width: "100%",
+	},
+	mobileHeightManager: {
+		position: "relative",
+		height: "86vh",
+		width: "100%",
+	},
 }));
 
 function About() {
-  const open = useSelector((state) => state.DrawerReducer.open);
-  const [modalOpen, setModalOpen] = React.useState(false);
-  const dispatch = useDispatch();
-  const handleModalOpen = () => {
-    setModalOpen(true);
-  };
+	const open = useSelector((state) => state.DrawerReducer.open);
+	const [modalOpen, setModalOpen] = React.useState(false);
+	const dispatch = useDispatch();
+	const handleModalOpen = () => {
+		setModalOpen(true);
+	};
 
-  const handleModalClose = () => {
-    setModalOpen(false);
-  };
-  const classes = useStyles();
+	const handleModalClose = () => {
+		setModalOpen(false);
+	};
+	const classes = useStyles();
+	const theme = useTheme();
+	const screenChange = useMediaQuery(theme.breakpoints.up("md"));
 
-  return (
-    dispatch(currPageAction({ currPage: 'About Me' })),
-    (
-      <div
-        className={clsx(
-          open ? classes.drawerOpenCon : classes.drawerNotOpenCon
-        )}
-      >
-        <motion.div
-          className={classes.about}
-          initial={false}
-          animate='in'
-          exit='out'
-          variants={pageVariants}
-          transition={pageTransition}
-        >
-          <Header />
-          <div className={classes.imgPr}>
-            <img
-              src={prc}
-              alt='Kousik Sen'
-              className={classes.prImg}
-              onClick={() => handleModalOpen()}
-            />
-          </div>
-          <Modal
-            open={modalOpen}
-            onClose={handleModalClose}
-            aria-labelledby='simple-modal-title'
-            aria-describedby='simple-modal-description'
-          >
-            <>
-              <div className={classes.rightSection}>
-                <CloseIcon
-                  onClick={() => handleModalClose()}
-                  className={classes.closeIcon}
-                />
-              </div>
-              <div className={classes.zoomImageDiv}>
-                <img src={prc} alt='Kousik Sen' className={classes.zoomImage} />
-              </div>
-            </>
-          </Modal>
+	return (
+		dispatch(currPageAction({ currPage: "About Me" })),
+		(
+			<div className={clsx(open ? classes.drawerOpenCon : classes.drawerNotOpenCon)}>
+				<div id="stars"></div>
+				<div id="stars2"></div>
+				<div id="stars3"></div>
+				<motion.div
+					className={classes.about}
+					initial={false}
+					animate="in"
+					exit="out"
+					variants={pageVariants}
+					transition={pageTransition}
+				>
+					<div
+						className={clsx(
+							screenChange ? classes.heightManager : classes.mobileHeightManager
+						)}
+					>
+						<Header />
+						<div className={classes.imgPr}>
+							<img
+								src={prc}
+								alt="Kousik Sen"
+								className={classes.prImg}
+								onClick={() => handleModalOpen()}
+							/>
+						</div>
+						<Modal
+							open={modalOpen}
+							onClose={handleModalClose}
+							aria-labelledby="simple-modal-title"
+							aria-describedby="simple-modal-description"
+						>
+							<>
+								<div className={classes.rightSection}>
+									<CloseIcon
+										onClick={() => handleModalClose()}
+										className={classes.closeIcon}
+									/>
+								</div>
+								<div className={classes.zoomImageDiv}>
+									<img src={prc} alt="Kousik Sen" className={classes.zoomImage} />
+								</div>
+							</>
+						</Modal>
 
-          <Typography variant='h3' className={classes.titleText}>
-            KOUSIK SEN
-          </Typography>
+						<Typography variant="h3" className={classes.titleText}>
+							KOUSIK SEN
+						</Typography>
 
-          <div className={classes.objective}>
-            <Typography variant='h3' className={classes.subTitle}>
-              WEB DEVELOPER | IoT Architect
-            </Typography>
-            <Typography variant='h3' className={classes.tagLine}>
-              Inovation + Design + Develop make the world beautiful. Have 3
-              years of experience in responsive UI Design and 2 years of
-              experience in IoT.
-            </Typography>
-            <Button
-              variant='contained'
-              className={classes.resumeButton}
-              classes={{ label: classes.btnTxt }}
-              onClick={() => window.open(Resume)}
-              startIcon={
-                <GetAppIcon style={{ height: '2rem', width: '2rem' }} />
-              }
-            >
-              Resume
-            </Button>
-          </div>
-
-          <Footer nextPage='Education & Skill' nextLink='/education' />
-        </motion.div>
-      </div>
-    )
-  );
+						<div className={classes.objective}>
+							<Typography variant="h3" className={classes.subTitle}>
+								WEB DEVELOPER | IoT Architect
+							</Typography>
+							<Typography variant="h3" className={classes.tagLine}>
+								Inovation + Design + Develop make the world beautiful. Have 3 years
+								of experience in responsive UI Design and 2 years of experience in
+								IoT.
+							</Typography>
+							<Button
+								variant="contained"
+								className={classes.resumeButton}
+								classes={{ label: classes.btnTxt }}
+								onClick={() => window.open(Resume)}
+								startIcon={<GetAppIcon style={{ height: "2rem", width: "2rem" }} />}
+							>
+								Resume
+							</Button>
+						</div>
+					</div>
+					<Footer nextPage="Education & Skill" nextLink="/education" />
+				</motion.div>
+			</div>
+		)
+	);
 }
 
 export default About;

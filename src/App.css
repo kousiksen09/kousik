@@ -14,17 +14,9 @@
 }
 
 html {
-  background: transparent
-    radial-gradient(closest-side at 50% 50%, #1f2831 0%, #20232b 100%) 0% 0%
-    no-repeat padding-box;
-  height: 100vh;
-  /* background-image: url('../src/assets/aboutBg.png'); */
-  /* background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed; */
-  width: 100vw;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   overflow: hidden;
+  height: 100vh;
   font-size: calc(0.75vh + 0.75vw);
 }
 
