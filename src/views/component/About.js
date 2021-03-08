@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import clsx from "clsx";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-
+import Skeleton from "../../utils/component/Skeleton";
 import { Typography, Button } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import GetAppIcon from "@material-ui/icons/GetApp";
@@ -58,7 +58,6 @@ const useStyles = makeStyles(() => ({
 		marginTop: pxToRem(50),
 		cursor: "pointer",
 		height: "25vh",
-
 		borderRadius: "50%",
 		objectFit: "cover",
 		objectPosition: "center center",
@@ -156,6 +155,7 @@ const useStyles = makeStyles(() => ({
 function About() {
 	const open = useSelector((state) => state.DrawerReducer.open);
 	const [modalOpen, setModalOpen] = React.useState(false);
+	const [loading, setLoading] = useState(true);
 	const dispatch = useDispatch();
 	const handleModalOpen = () => {
 		setModalOpen(true);
@@ -168,67 +168,116 @@ function About() {
 	const theme = useTheme();
 	const screenChange = useMediaQuery(theme.breakpoints.up("md"));
 
+	useEffect(() => {
+		if (loading) {
+			setTimeout(() => {
+				setLoading(false);
+			}, 1000);
+		}
+	}, [loading]);
+
+	useEffect(() => {
+		dispatch(currPageAction({ currPage: "About Me" }));
+	}, [dispatch]);
+
 	return (
-		dispatch(currPageAction({ currPage: "About Me" })),
-		(
-			<div className={clsx(open ? classes.drawerOpenCon : classes.drawerNotOpenCon)}>
-				<div id="stars"></div>
-				<div id="stars2"></div>
-				<div id="stars3"></div>
-				<motion.div
-					className={classes.about}
-					initial={false}
-					animate="in"
-					exit="out"
-					variants={pageVariants}
-					transition={pageTransition}
+		<div className={clsx(open ? classes.drawerOpenCon : classes.drawerNotOpenCon)}>
+			<div id="stars"></div>
+			<div id="stars2"></div>
+			<div id="stars3"></div>
+
+			<motion.div
+				className={classes.about}
+				initial={false}
+				animate="in"
+				exit="out"
+				variants={pageVariants}
+				transition={pageTransition}
+			>
+				<div
+					className={clsx(
+						screenChange ? classes.heightManager : classes.mobileHeightManager
+					)}
 				>
-					<div
-						className={clsx(
-							screenChange ? classes.heightManager : classes.mobileHeightManager
-						)}
-					>
-						<Header />
-						<div className={classes.imgPr}>
+					<Header />
+					<div className={classes.imgPr}>
+						{!loading ? (
 							<img
 								src={prc}
 								alt="Kousik Sen"
 								className={classes.prImg}
 								onClick={() => handleModalOpen()}
 							/>
-						</div>
-						<Modal
-							open={modalOpen}
-							onClose={handleModalClose}
-							aria-labelledby="simple-modal-title"
-							aria-describedby="simple-modal-description"
-						>
-							<>
-								<div className={classes.rightSection}>
-									<CloseIcon
-										onClick={() => handleModalClose()}
-										className={classes.closeIcon}
-									/>
-								</div>
-								<div className={classes.zoomImageDiv}>
-									<img src={prc} alt="Kousik Sen" className={classes.zoomImage} />
-								</div>
-							</>
-						</Modal>
-
+						) : (
+							<Skeleton height={280} width={280} circle />
+						)}
+					</div>
+					<Modal
+						open={modalOpen}
+						onClose={handleModalClose}
+						aria-labelledby="simple-modal-title"
+						aria-describedby="simple-modal-description"
+					>
+						<>
+							<div className={classes.rightSection}>
+								<CloseIcon
+									onClick={() => handleModalClose()}
+									className={classes.closeIcon}
+								/>
+							</div>
+							<div className={classes.zoomImageDiv}>
+								<img src={prc} alt="Kousik Sen" className={classes.zoomImage} />
+							</div>
+						</>
+					</Modal>
+					{loading ? (
+						<Skeleton height={75} width={580} classes={{ parent: classes.titleText }} />
+					) : (
 						<Typography variant="h3" className={classes.titleText}>
 							KOUSIK SEN
 						</Typography>
+					)}
 
-						<div className={classes.objective}>
+					<div className={classes.objective}>
+						{loading ? (
+							<Skeleton
+								height={65}
+								width={723}
+								rx={5}
+								classes={{ parent: classes.subTitle }}
+							/>
+						) : (
 							<Typography variant="h3" className={classes.subTitle}>
 								WEB DEVELOPER | IoT Architect
 							</Typography>
+						)}
+						{loading ? (
+							<Skeleton
+								height={60}
+								width={1875}
+								rx={2}
+								left={12}
+								top={25}
+								count={2}
+								classes={{ parent: classes.tagLine }}
+							/>
+						) : (
 							<Typography variant="h3" className={classes.tagLine}>
 								Inovation + Design + Develop make the world beautiful. Have 3 years
 								of experience in responsive UI Design and 2 years of experience in
 								IoT.
 							</Typography>
+						)}
+
+						{loading ? (
+							<Skeleton
+								height={67}
+								width={246}
+								rx={25}
+								top={12}
+								classes={{ parent: classes.resumeButton }}
+							/>
+						) : (
 							<Button
 								variant="contained"
 								className={classes.resumeButton}
@@ -238,12 +287,12 @@ function About() {
 							>
 								Resume
 							</Button>
-						</div>
+						)}
 					</div>
-					<Footer nextPage="Education & Skill" nextLink="/education" />
-				</motion.div>
-			</div>
-		)
+				</div>
+				<Footer nextPage="Education & Skill" nextLink="/education" />
+			</motion.div>
+		</div>
 	);
 }
 
