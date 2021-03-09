@@ -9,7 +9,7 @@ import Skeleton from "../../utils/component/Skeleton";
 import { Typography, Button } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import GetAppIcon from "@material-ui/icons/GetApp";
-import prc from "../../assets/prc.jpg";
+import newDp from "../../assets/newDp.jpg";
 import Header from "./Header";
 import { pxToVw, pxToRem, pxToVh } from "../../utils/theme";
 import Resume from "../../assets/Kousik_Resume.pdf";
@@ -58,6 +58,7 @@ const useStyles = makeStyles(() => ({
 		marginTop: pxToRem(50),
 		cursor: "pointer",
 		height: "25vh",
+		width: "25vh",
 		borderRadius: "50%",
 		objectFit: "cover",
 		objectPosition: "center center",
@@ -99,6 +100,7 @@ const useStyles = makeStyles(() => ({
 		flexGrow: 1,
 		justifyContent: "center",
 		height: "40vh",
+		top: "2vh",
 	},
 	subTitle: {
 		fontFamily: " 'Yeon Sung', cursive",
@@ -203,7 +205,7 @@ function About() {
 					<div className={classes.imgPr}>
 						{!loading ? (
 							<img
-								src={prc}
+								src={newDp}
 								alt="Kousik Sen"
 								className={classes.prImg}
 								onClick={() => handleModalOpen()}
@@ -226,12 +228,12 @@ function About() {
 								/>
 							</div>
 							<div className={classes.zoomImageDiv}>
-								<img src={prc} alt="Kousik Sen" className={classes.zoomImage} />
+								<img src={newDp} alt="Kousik Sen" className={classes.zoomImage} />
 							</div>
 						</>
 					</Modal>
 					{loading ? (
-						<Skeleton height={75} width={580} classes={{ parent: classes.titleText }} />
+						<Skeleton height={55} width={580} classes={{ parent: classes.titleText }} />
 					) : (
 						<Typography variant="h3" className={classes.titleText}>
 							KOUSIK SEN
@@ -241,7 +243,7 @@ function About() {
 					<div className={classes.objective}>
 						{loading ? (
 							<Skeleton
-								height={65}
+								height={45}
 								width={723}
 								rx={5}
 								classes={{ parent: classes.subTitle }}
@@ -253,7 +255,7 @@ function About() {
 						)}
 						{loading ? (
 							<Skeleton
-								height={60}
+								height={50}
 								width={1875}
 								rx={2}
 								left={12}
@@ -271,7 +273,7 @@ function About() {
 
 						{loading ? (
 							<Skeleton
-								height={67}
+								height={57}
 								width={246}
 								rx={25}
 								top={12}

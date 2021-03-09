@@ -73,7 +73,7 @@ function Footer(props) {
             )}
           </div> */}
 				{loading ? (
-					<Skeleton height={46} width={630} classes={{ parent: classes.copyright }} />
+					<Skeleton height={36} width={630} classes={{ parent: classes.copyright }} />
 				) : (
 					<div className={classes.copyright}>
 						<Typography

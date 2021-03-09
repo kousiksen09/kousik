@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme, makeStyles } from "@material-ui/core/styles";
 import { useDispatch } from "react-redux";
-
+import Skeleton from "../../utils/component/Skeleton";
 import { Typography, Grid } from "@material-ui/core";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import { currPageAction } from "../../Redux/actions/CurrPageAction";
@@ -52,6 +52,22 @@ const useStyles = makeStyles((theme) => ({
 		height: "100%",
 		position: "absolute",
 	},
+	skeletonMainDiv: {
+		width: "100%",
+		height: "100%",
+		display: "flex",
+		flexDirection: "column",
+		justifyContent: "space-evenly",
+		alignItems: "baseline",
+		marginTop: "4vh",
+		marginLeft: "3vh",
+	},
+	skeletonParent: {
+		display: "flex",
+		justifyContent: "space-around",
+		flexDirection: "column",
+		alignItems: "baseline",
+	},
 	education: {
 		position: "relative",
 		display: "flex",
@@ -91,6 +107,8 @@ const useStyles = makeStyles((theme) => ({
 		width: "100%",
 		marginLeft: "0.80vw !important",
 		display: "flex",
+		position: "relative",
+		top: "2vh",
 	},
 	eduTimeline: {
 		position: "relative",
@@ -117,10 +135,11 @@ const useStyles = makeStyles((theme) => ({
 		},
 	},
 	eduLabel: {
-		fontSize: "clamp(1.8rem, 6vw, 2rem)",
+		fontSize: "1.6rem",
+		lineHeight: 1,
 		color: "#e2dae6",
 		fontWeight: "600",
-		fontFamily: " 'Yeon Sung', cursive",
+		fontFamily: " 'Roboto', sans-sarif",
 	},
 	eduBody: {
 		position: "relative",
@@ -194,7 +213,15 @@ function Education(props) {
 		setxPadding(window.innerHeight / 54);
 		setChartMargin([window.innerHeight / 12, 0, window.innerHeight / 54, 0]);
 	};
+	const [loading, setLoading] = useState(true);
 
+	useEffect(() => {
+		if (loading) {
+			setTimeout(() => {
+				setLoading(false);
+			}, 1000);
+		}
+	}, [loading]);
 	useEffect(() => {
 		resize();
 		window.addEventListener("resize", resize);
@@ -207,7 +234,7 @@ function Education(props) {
 			setanimFlag(false);
 		}
 	};
-
+	const widthData = [468, 360, 703, 718, 664, 687, 687, 554, 421];
 	setanimationfunction(setanimation, setanimFlag, animFlag);
 
 	return (
@@ -251,24 +278,45 @@ function Education(props) {
 													connectorLineRoot: classes.coonectRoot,
 												}}
 												labelIcon={
-													<MenuBookIcon className={classes.eduIcon} />
+													loading ? (
+														<Skeleton height={94} width={94} circle />
+													) : (
+														<MenuBookIcon className={classes.eduIcon} />
+													)
 												}
 												label={
-													<div className={classes.flex}>
-														<Typography className={classes.eduLabel}>
-															B.Tech in Elelctronics and Communication
-														</Typography>
-													</div>
+													loading ? (
+														<Skeleton height={84} width={734} />
+													) : (
+														<div className={classes.flex}>
+															<Typography
+																className={classes.eduLabel}
+															>
+																B.Tech in Elelctronics and
+																Communication
+															</Typography>
+														</div>
+													)
 												}
 												body={
-													<div className={classes.eduBody}>
-														<Typography className={classes.eduBodytxt}>
-															Kalinga Institute of Industrial
-															Technology, Deemed to be University.{" "}
-															<br /> Bhubneswar, Patia, Odisha, 751024{" "}
-															<br /> (2017 - Present)
-														</Typography>
-													</div>
+													loading ? (
+														<Skeleton
+															height={32}
+															width={734}
+															count={3}
+														/>
+													) : (
+														<div className={classes.eduBody}>
+															<Typography
+																className={classes.eduBodytxt}
+															>
+																Kalinga Institute of Industrial
+																Technology, Deemed to be University.{" "}
+																<br /> Bhubneswar, Patia, Odisha,
+																751024 <br /> (2017 - Present)
+															</Typography>
+														</div>
+													)
 												}
 											/>
 										</div>
@@ -280,23 +328,43 @@ function Education(props) {
 													connectorLineRoot: classes.coonectRoot,
 												}}
 												labelIcon={
-													<MenuBookIcon className={classes.eduIcon} />
+													loading ? (
+														<Skeleton height={94} width={94} circle />
+													) : (
+														<MenuBookIcon className={classes.eduIcon} />
+													)
 												}
 												label={
-													<div className={classes.flex}>
-														<Typography className={classes.eduLabel}>
-															Higher Secondary Education
-														</Typography>
-													</div>
+													loading ? (
+														<Skeleton height={84} width={734} />
+													) : (
+														<div className={classes.flex}>
+															<Typography
+																className={classes.eduLabel}
+															>
+																Higher Secondary Education
+															</Typography>
+														</div>
+													)
 												}
 												body={
-													<div className={classes.eduBody}>
-														<Typography className={classes.eduBodytxt}>
-															Kotulpur High School. <br /> Kotulpur,
-															Bankura, West Bengal, 722141. <br />{" "}
-															(2014-2016)
-														</Typography>
-													</div>
+													loading ? (
+														<Skeleton
+															height={32}
+															width={734}
+															count={3}
+														/>
+													) : (
+														<div className={classes.eduBody}>
+															<Typography
+																className={classes.eduBodytxt}
+															>
+																Kotulpur High School. <br />{" "}
+																Kotulpur, Bankura, West Bengal,
+																722141. <br /> (2014-2016)
+															</Typography>
+														</div>
+													)
 												}
 											/>
 										</div>
@@ -308,23 +376,43 @@ function Education(props) {
 													connectorLineRoot: classes.coonectRoot,
 												}}
 												labelIcon={
-													<MenuBookIcon className={classes.eduIcon} />
+													loading ? (
+														<Skeleton height={94} width={94} circle />
+													) : (
+														<MenuBookIcon className={classes.eduIcon} />
+													)
 												}
 												label={
-													<div className={classes.flex}>
-														<Typography className={classes.eduLabel}>
-															Secondary Education
-														</Typography>
-													</div>
+													loading ? (
+														<Skeleton height={84} width={734} />
+													) : (
+														<div className={classes.flex}>
+															<Typography
+																className={classes.eduLabel}
+															>
+																Secondary Education
+															</Typography>
+														</div>
+													)
 												}
 												body={
-													<div className={classes.eduBody}>
-														<Typography className={classes.eduBodytxt}>
-															Ramakrishna Mission Boys' Home. <br />{" "}
-															Rahara, Khardaha, West Bengal 700118{" "}
-															<br /> (2007-2014)
-														</Typography>
-													</div>
+													loading ? (
+														<Skeleton
+															height={32}
+															width={734}
+															count={3}
+														/>
+													) : (
+														<div className={classes.eduBody}>
+															<Typography
+																className={classes.eduBodytxt}
+															>
+																Ramakrishna Mission Boys' Home.{" "}
+																<br /> Rahara, Khardaha, West Bengal
+																700118 <br /> (2007-2014)
+															</Typography>
+														</div>
+													)
 												}
 											/>
 										</div>
@@ -339,14 +427,29 @@ function Education(props) {
 									)}
 								>
 									<NonClickableCard>
-										<MyHistogram
-											xAxisLabelStyles={xAxisLabelStyles}
-											xPadding={xPadding}
-											chartMargin={chartMargin}
-											animation={animation}
-											pointWidth={size}
-											chartHeight="78vh"
-										/>
+										{loading ? (
+											<div className={classes.skeletonMainDiv}>
+												{widthData.map((item) => (
+													<Skeleton
+														height={38}
+														width={item}
+														classes={{
+															parent: classes.skeletonParent,
+														}}
+														rx={5}
+													/>
+												))}
+											</div>
+										) : (
+											<MyHistogram
+												xAxisLabelStyles={xAxisLabelStyles}
+												xPadding={xPadding}
+												chartMargin={chartMargin}
+												animation={animation}
+												pointWidth={size}
+												chartHeight="78vh"
+											/>
+										)}
 									</NonClickableCard>
 								</div>
 							</Grid>

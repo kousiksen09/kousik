@@ -6,7 +6,7 @@ import { store } from "./Redux/store";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import "./App.css";
 import Kousik from "./views/Kousik";
-import { SemipolarLoading } from "react-loadingg";
+import LoadingComponent from "./views/component/LoadingComponent";
 
 const styles = () => ({
 	root: {
@@ -24,15 +24,13 @@ function App() {
 		if (loading) {
 			setTimeout(() => {
 				setLoading(false);
-			}, 1000);
+			}, 2000);
 		}
 	}, [loading]);
 
 	return (
 		<MuiThemeProvider theme={theme}>
-			<Provider store={store}>
-				{loading ? <SemipolarLoading size="large" color="#f0da16" /> : <Kousik />}
-			</Provider>
+			<Provider store={store}>{loading ? <LoadingComponent /> : <Kousik />}</Provider>
 		</MuiThemeProvider>
 	);
 }
