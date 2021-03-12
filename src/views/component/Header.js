@@ -98,6 +98,9 @@ const useStyles = makeStyles(() => ({
 		position: "relative",
 		display: "flex",
 		width: "80%",
+		height: "100%",
+		overflowX: "auto",
+		overflowY: "hidden",
 	},
 }));
 
