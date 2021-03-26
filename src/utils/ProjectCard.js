@@ -9,9 +9,7 @@ const useStyles = makeStyles((theme) => ({
 		minWidth: pxToVw(501),
 
 		width: "92%",
-
-		border: `${pxToRem(1)} solid #d0d1d5`,
-		borderRadius: pxToRem(3),
+		borderRadius: pxToRem(7),
 		display: "flex",
 		flexDirection: "column",
 		marginBottom: pxToVh(15),
@@ -19,6 +17,14 @@ const useStyles = makeStyles((theme) => ({
 		background: "linear-gradient(to right, #000000, #434343)",
 		overflow: "hidden",
 		boxShadow: "0 0 0.5rem rgba(0, 0, 0, .30)",
+
+		"&:hover": {
+			transition: "all 0.2s ease-out",
+			boxShadow: "0px 4px 8px rgba(38, 38, 38, 0.2)",
+			top: "-4px",
+			border: "1px solid #00838d",
+			backgroundColor: "white",
+		},
 	},
 	header: {
 		display: "flex",
@@ -54,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
 	contentText: {
 		fontFamily: "Roboto, sans-serif",
 		fontWeight: "400",
+		lineHeight: "1.4rem",
 		fontSize: pxToRem(24),
 		textAlign: "justify",
 		color: "#FFFFFF",
@@ -66,8 +73,14 @@ const useStyles = makeStyles((theme) => ({
 		position: "relative",
 	},
 	avatar: {
-		height: "4rem",
-		width: "4rem",
+		height: "3.2rem",
+		width: "3.2rem",
+		verticalAlign: "middle",
+		position: "relative",
+		boxShadow: "0 1px 3px 0 rgb(0 0 0 / 15%)",
+		border: "0.1rem solid #FFFFFF",
+		display: "inline-block",
+		zIndex: 11,
 	},
 	referenceThumb: {
 		display: "block",
@@ -98,7 +111,7 @@ const useStyles = makeStyles((theme) => ({
 		padding: "1rem 1.2rem 1rem 0rem",
 	},
 	more: {
-		color: "#5DAAE0",
+		color: "#FA1754",
 		fontSize: pxToRem(24),
 		fontFamily: "Roboto",
 		cursor: "pointer",
