@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
@@ -155,7 +155,6 @@ const useStyles = makeStyles(() => ({
 }));
 
 function About() {
-	const open = useSelector((state) => state.DrawerReducer.open);
 	const [modalOpen, setModalOpen] = React.useState(false);
 	const [loading, setLoading] = useState(true);
 	const dispatch = useDispatch();
@@ -183,7 +182,7 @@ function About() {
 	}, [dispatch]);
 
 	return (
-		<div className={clsx(open ? classes.drawerOpenCon : classes.drawerNotOpenCon)}>
+		<div>
 			<div id="stars"></div>
 			<div id="stars2"></div>
 			<div id="stars3"></div>

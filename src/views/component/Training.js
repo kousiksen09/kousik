@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import clsx from "clsx";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme, makeStyles } from "@material-ui/core/styles";
@@ -158,130 +158,52 @@ function Training() {
 	const dispatch = useDispatch();
 	const theme = useTheme();
 	const screenChange = useMediaQuery(theme.breakpoints.up("md"));
+	useEffect(() => {
+		dispatch(currPageAction({ currPage: "Training & Internship" }));
+	}, [dispatch]);
 
 	return (
-		dispatch(currPageAction({ currPage: "Training & Internship" })),
-		(
-			<div className={classes.root}>
-				<div
-					className={clsx(
-						screenChange ? classes.heightManager : classes.mobileHeightManager
-					)}
+		<div className={classes.root}>
+			<div
+				className={clsx(screenChange ? classes.heightManager : classes.mobileHeightManager)}
+			>
+				<Header />
+				<motion.div
+					className={classes.trainingContainer}
+					initial="initial"
+					animate="in"
+					exit="out"
+					variants={pageVariants}
+					transition={pageTransition}
 				>
-					<Header />
-					<motion.div
-						className={classes.trainingContainer}
-						initial="initial"
-						animate="in"
-						exit="out"
-						variants={pageVariants}
-						transition={pageTransition}
-					>
-						<Grid container justify="space-evenly" spacing={3}>
-							{trainingData.map((data, key) => (
-								<Grid
-									xs={6}
-									sm={6}
-									md={4}
-									lg={4}
-									xl={4}
-									key={key}
-									style={{ marginBottom: "4vh" }}
-								>
-									<NonClickableCard classes={{ root: classes.projectCard }}>
-										<div className={classes.projectHeader}>
-											<div className={classes.trainingIns}>
-												<img
-													src={data.traingIns}
-													alt={data.name}
-													style={{
-														height: "3rem",
-														width: "3rem",
-														padding: "0.2rem",
-														borderRadius: "50%",
-														border: "0.2rem solid #6f23e2",
-													}}
-												/>
-											</div>
-											<Typography className={classes.headerTxt}>
-												{data.title}
-											</Typography>
-										</div>
-										<div className={classes.cardBody}>
-											<Typography className={classes.crdBdyTxt}>
-												<span
-													style={{
-														fontSize: "clamp(1.4rem, 18vw, 1.5rem)",
-														fontWeight: "600",
-														color: "#dfa72f",
-													}}
-												>
-													Skill Learn :{" "}
-												</span>{" "}
-												{data.skills}
-											</Typography>
-											<Typography className={classes.crdBdyTxt}>
-												<span
-													style={{
-														fontSize: "clamp(1.4rem, 18vw, 1.5rem)",
-														fontWeight: "600",
-														color: "#dfa72f",
-													}}
-												>
-													Trainer :{" "}
-												</span>{" "}
-												{data.trainer}
-											</Typography>
-											<Typography className={classes.crdBdyTxt}>
-												<span
-													style={{
-														fontSize: "clamp(1.4rem, 18vw, 1.5rem)",
-														fontWeight: "600",
-														color: "#dfa72f",
-													}}
-												>
-													Duration :{" "}
-												</span>{" "}
-												{data.duration}
-											</Typography>
-											<div className={classes.viewCertificate}>
-												<Button
-													startIcon={
-														<VisibilityIcon
-															style={{
-																height: "1.5rem",
-																width: "1.5rem",
-																position: "relative",
-																left: "0.4rem",
-															}}
-														/>
-													}
-													className={classes.showBtn}
-												>
-													View Certificate
-												</Button>
-											</div>
-										</div>
-									</NonClickableCard>
-								</Grid>
-							))}
-
-							<Grid xs={6} sm={6} md={4} lg={4} xl={4}>
+					<Grid container justify="space-evenly" spacing={3}>
+						{trainingData.map((data, key) => (
+							<Grid
+								xs={6}
+								sm={6}
+								md={4}
+								lg={4}
+								xl={4}
+								key={key}
+								style={{ marginBottom: "4vh" }}
+							>
 								<NonClickableCard classes={{ root: classes.projectCard }}>
 									<div className={classes.projectHeader}>
 										<div className={classes.trainingIns}>
 											<img
-												src="https://zenprospect-production.s3.amazonaws.com/uploads/pictures/5f5fbc084df8500001b65083/picture"
-												alt="hrc"
+												src={data.traingIns}
+												alt={data.name}
 												style={{
 													height: "3rem",
 													width: "3rem",
+													padding: "0.2rem",
 													borderRadius: "50%",
+													border: "0.2rem solid #6f23e2",
 												}}
 											/>
 										</div>
 										<Typography className={classes.headerTxt}>
-											Internship at Highradius
+											{data.title}
 										</Typography>
 									</div>
 									<div className={classes.cardBody}>
@@ -293,9 +215,9 @@ function Training() {
 													color: "#dfa72f",
 												}}
 											>
-												Role :
+												Skill Learn :{" "}
 											</span>{" "}
-											Autonomous UI Developer
+											{data.skills}
 										</Typography>
 										<Typography className={classes.crdBdyTxt}>
 											<span
@@ -305,9 +227,9 @@ function Training() {
 													color: "#dfa72f",
 												}}
 											>
-												Technology used :
+												Trainer :{" "}
 											</span>{" "}
-											React Js, Redux, Saga, Asterisk
+											{data.trainer}
 										</Typography>
 										<Typography className={classes.crdBdyTxt}>
 											<span
@@ -319,7 +241,7 @@ function Training() {
 											>
 												Duration :{" "}
 											</span>{" "}
-											1 st June, 2020 - Present
+											{data.duration}
 										</Typography>
 										<div className={classes.viewCertificate}>
 											<Button
@@ -341,17 +263,88 @@ function Training() {
 									</div>
 								</NonClickableCard>
 							</Grid>
+						))}
+
+						<Grid xs={6} sm={6} md={4} lg={4} xl={4}>
+							<NonClickableCard classes={{ root: classes.projectCard }}>
+								<div className={classes.projectHeader}>
+									<div className={classes.trainingIns}>
+										<img
+											src="https://zenprospect-production.s3.amazonaws.com/uploads/pictures/5f5fbc084df8500001b65083/picture"
+											alt="hrc"
+											style={{
+												height: "3rem",
+												width: "3rem",
+												borderRadius: "50%",
+											}}
+										/>
+									</div>
+									<Typography className={classes.headerTxt}>
+										Internship at Highradius
+									</Typography>
+								</div>
+								<div className={classes.cardBody}>
+									<Typography className={classes.crdBdyTxt}>
+										<span
+											style={{
+												fontSize: "clamp(1.4rem, 18vw, 1.5rem)",
+												fontWeight: "600",
+												color: "#dfa72f",
+											}}
+										>
+											Role :
+										</span>{" "}
+										Autonomous UI Developer
+									</Typography>
+									<Typography className={classes.crdBdyTxt}>
+										<span
+											style={{
+												fontSize: "clamp(1.4rem, 18vw, 1.5rem)",
+												fontWeight: "600",
+												color: "#dfa72f",
+											}}
+										>
+											Technology used :
+										</span>{" "}
+										React Js, Redux, Saga, Asterisk
+									</Typography>
+									<Typography className={classes.crdBdyTxt}>
+										<span
+											style={{
+												fontSize: "clamp(1.4rem, 18vw, 1.5rem)",
+												fontWeight: "600",
+												color: "#dfa72f",
+											}}
+										>
+											Duration :{" "}
+										</span>{" "}
+										1 st June, 2020 - Present
+									</Typography>
+									<div className={classes.viewCertificate}>
+										<Button
+											startIcon={
+												<VisibilityIcon
+													style={{
+														height: "1.5rem",
+														width: "1.5rem",
+														position: "relative",
+														left: "0.4rem",
+													}}
+												/>
+											}
+											className={classes.showBtn}
+										>
+											View Certificate
+										</Button>
+									</div>
+								</div>
+							</NonClickableCard>
 						</Grid>
-					</motion.div>
-				</div>
-				<Footer
-					prevPage="Project"
-					nextPage="Contact"
-					prevLink="/project"
-					nextLink="/contact"
-				/>
+					</Grid>
+				</motion.div>
 			</div>
-		)
+			<Footer prevPage="Project" nextPage="Contact" prevLink="/project" nextLink="/contact" />
+		</div>
 	);
 }
 

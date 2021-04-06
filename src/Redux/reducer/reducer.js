@@ -1,9 +1,9 @@
-import { combineReducers } from 'redux';
-import DrawerReducer from './DrawerReducer';
-import CurrPageReducer from './CurrPageReducer';
+import { combineReducers } from "redux";
+import CurrPageReducer from "./CurrPageReducer";
+import NameReducer from "./NameReducer";
 
 const reducer = combineReducers({
-  DrawerReducer,
-  CurrPageReducer,
+	NameReducer,
+	CurrPageReducer,
 });
 export default reducer;

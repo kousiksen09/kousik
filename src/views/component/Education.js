@@ -227,6 +227,9 @@ function Education(props) {
 		window.addEventListener("resize", resize);
 		return () => window.removeEventListener("resize", resize);
 	}, []);
+	useEffect(() => {
+		dispatch(currPageAction({ currPage: "Education & Skill" }));
+	}, [dispatch]);
 	const [animFlag, setanimFlag] = React.useState(true);
 	const setanimationfunction = (open) => {
 		if (open && animFlag) {
@@ -238,32 +241,28 @@ function Education(props) {
 	setanimationfunction(setanimation, setanimFlag, animFlag);
 
 	return (
-		dispatch(currPageAction({ currPage: "Education & Skill" })),
-		(
-			<div className={classes.root}>
-				<div
-					className={clsx(
-						screenChange ? classes.heightManager : classes.mobileHeightManager
-					)}
+		<div className={classes.root}>
+			<div
+				className={clsx(screenChange ? classes.heightManager : classes.mobileHeightManager)}
+			>
+				<Header />
+				<motion.div
+					className={classes.education}
+					initial="initial"
+					animate="in"
+					exit="out"
+					variants={pageVariants}
+					transition={pageTransition}
 				>
-					<Header />
-					<motion.div
-						className={classes.education}
-						initial="initial"
-						animate="in"
-						exit="out"
-						variants={pageVariants}
-						transition={pageTransition}
-					>
-						<Grid container spacing={3}>
-							<Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-								<div
-									className={clsx(
-										screenChange ? classes.eduDetails : classes.mobileHeight
-									)}
-								>
-									<NonClickableCard classes={{ root: classes.contentArea }}>
-										{/* <div
+					<Grid container spacing={3}>
+						<Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+							<div
+								className={clsx(
+									screenChange ? classes.eduDetails : classes.mobileHeight
+								)}
+							>
+								<NonClickableCard classes={{ root: classes.contentArea }}>
+									{/* <div
                       className={classes.title}
                       style={{ marginTop: '1rem', marginBottom: '1rem' }}
                     >
@@ -271,199 +270,168 @@ function Education(props) {
                         Education
                       </Typography>
                     </div> */}
-										<div className={classes.eduTimeline}>
-											<Timeline
-												classes={{
-													connectorLine: classes.connect,
-													connectorLineRoot: classes.coonectRoot,
-												}}
-												labelIcon={
-													loading ? (
-														<Skeleton height={94} width={94} circle />
-													) : (
-														<MenuBookIcon className={classes.eduIcon} />
-													)
-												}
-												label={
-													loading ? (
-														<Skeleton height={84} width={734} />
-													) : (
-														<div className={classes.flex}>
-															<Typography
-																className={classes.eduLabel}
-															>
-																B.Tech in Elelctronics and
-																Communication
-															</Typography>
-														</div>
-													)
-												}
-												body={
-													loading ? (
-														<Skeleton
-															height={32}
-															width={734}
-															count={3}
-														/>
-													) : (
-														<div className={classes.eduBody}>
-															<Typography
-																className={classes.eduBodytxt}
-															>
-																Kalinga Institute of Industrial
-																Technology, Deemed to be University.{" "}
-																<br /> Bhubneswar, Patia, Odisha,
-																751024 <br /> (2017 - Present)
-															</Typography>
-														</div>
-													)
-												}
-											/>
-										</div>
+									<div className={classes.eduTimeline}>
+										<Timeline
+											classes={{
+												connectorLine: classes.connect,
+												connectorLineRoot: classes.coonectRoot,
+											}}
+											labelIcon={
+												loading ? (
+													<Skeleton height={94} width={94} circle />
+												) : (
+													<MenuBookIcon className={classes.eduIcon} />
+												)
+											}
+											label={
+												loading ? (
+													<Skeleton height={84} width={734} />
+												) : (
+													<div className={classes.flex}>
+														<Typography className={classes.eduLabel}>
+															B.Tech in Elelctronics and Communication
+														</Typography>
+													</div>
+												)
+											}
+											body={
+												loading ? (
+													<Skeleton height={32} width={734} count={3} />
+												) : (
+													<div className={classes.eduBody}>
+														<Typography className={classes.eduBodytxt}>
+															Kalinga Institute of Industrial
+															Technology, Deemed to be University.{" "}
+															<br /> Bhubneswar, Patia, Odisha, 751024{" "}
+															<br /> (2017 - Present)
+														</Typography>
+													</div>
+												)
+											}
+										/>
+									</div>
 
-										<div className={classes.eduTimeline}>
-											<Timeline
-												classes={{
-													connectorLine: classes.connect,
-													connectorLineRoot: classes.coonectRoot,
-												}}
-												labelIcon={
-													loading ? (
-														<Skeleton height={94} width={94} circle />
-													) : (
-														<MenuBookIcon className={classes.eduIcon} />
-													)
-												}
-												label={
-													loading ? (
-														<Skeleton height={84} width={734} />
-													) : (
-														<div className={classes.flex}>
-															<Typography
-																className={classes.eduLabel}
-															>
-																Higher Secondary Education
-															</Typography>
-														</div>
-													)
-												}
-												body={
-													loading ? (
-														<Skeleton
-															height={32}
-															width={734}
-															count={3}
-														/>
-													) : (
-														<div className={classes.eduBody}>
-															<Typography
-																className={classes.eduBodytxt}
-															>
-																Kotulpur High School. <br />{" "}
-																Kotulpur, Bankura, West Bengal,
-																722141. <br /> (2014-2016)
-															</Typography>
-														</div>
-													)
-												}
-											/>
-										</div>
+									<div className={classes.eduTimeline}>
+										<Timeline
+											classes={{
+												connectorLine: classes.connect,
+												connectorLineRoot: classes.coonectRoot,
+											}}
+											labelIcon={
+												loading ? (
+													<Skeleton height={94} width={94} circle />
+												) : (
+													<MenuBookIcon className={classes.eduIcon} />
+												)
+											}
+											label={
+												loading ? (
+													<Skeleton height={84} width={734} />
+												) : (
+													<div className={classes.flex}>
+														<Typography className={classes.eduLabel}>
+															Higher Secondary Education
+														</Typography>
+													</div>
+												)
+											}
+											body={
+												loading ? (
+													<Skeleton height={32} width={734} count={3} />
+												) : (
+													<div className={classes.eduBody}>
+														<Typography className={classes.eduBodytxt}>
+															Kotulpur High School. <br /> Kotulpur,
+															Bankura, West Bengal, 722141. <br />{" "}
+															(2014-2016)
+														</Typography>
+													</div>
+												)
+											}
+										/>
+									</div>
 
-										<div className={classes.eduTimeline}>
-											<Timeline
-												classes={{
-													connectorLine: classes.connect,
-													connectorLineRoot: classes.coonectRoot,
-												}}
-												labelIcon={
-													loading ? (
-														<Skeleton height={94} width={94} circle />
-													) : (
-														<MenuBookIcon className={classes.eduIcon} />
-													)
-												}
-												label={
-													loading ? (
-														<Skeleton height={84} width={734} />
-													) : (
-														<div className={classes.flex}>
-															<Typography
-																className={classes.eduLabel}
-															>
-																Secondary Education
-															</Typography>
-														</div>
-													)
-												}
-												body={
-													loading ? (
-														<Skeleton
-															height={32}
-															width={734}
-															count={3}
-														/>
-													) : (
-														<div className={classes.eduBody}>
-															<Typography
-																className={classes.eduBodytxt}
-															>
-																Ramakrishna Mission Boys' Home.{" "}
-																<br /> Rahara, Khardaha, West Bengal
-																700118 <br /> (2007-2014)
-															</Typography>
-														</div>
-													)
-												}
-											/>
-										</div>
-									</NonClickableCard>
-								</div>
-							</Grid>
-
-							<Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-								<div
-									className={clsx(
-										screenChange ? classes.skillsArea : classes.mobileHeight
-									)}
-								>
-									<NonClickableCard>
-										{loading ? (
-											<div className={classes.skeletonMainDiv}>
-												{widthData.map((item) => (
-													<Skeleton
-														height={38}
-														width={item}
-														classes={{
-															parent: classes.skeletonParent,
-														}}
-														rx={5}
-													/>
-												))}
-											</div>
-										) : (
-											<MyHistogram
-												xAxisLabelStyles={xAxisLabelStyles}
-												xPadding={xPadding}
-												chartMargin={chartMargin}
-												animation={animation}
-												pointWidth={size}
-												chartHeight="78vh"
-											/>
-										)}
-									</NonClickableCard>
-								</div>
-							</Grid>
+									<div className={classes.eduTimeline}>
+										<Timeline
+											classes={{
+												connectorLine: classes.connect,
+												connectorLineRoot: classes.coonectRoot,
+											}}
+											labelIcon={
+												loading ? (
+													<Skeleton height={94} width={94} circle />
+												) : (
+													<MenuBookIcon className={classes.eduIcon} />
+												)
+											}
+											label={
+												loading ? (
+													<Skeleton height={84} width={734} />
+												) : (
+													<div className={classes.flex}>
+														<Typography className={classes.eduLabel}>
+															Secondary Education
+														</Typography>
+													</div>
+												)
+											}
+											body={
+												loading ? (
+													<Skeleton height={32} width={734} count={3} />
+												) : (
+													<div className={classes.eduBody}>
+														<Typography className={classes.eduBodytxt}>
+															Ramakrishna Mission Boys' Home. <br />{" "}
+															Rahara, Khardaha, West Bengal 700118{" "}
+															<br /> (2007-2014)
+														</Typography>
+													</div>
+												)
+											}
+										/>
+									</div>
+								</NonClickableCard>
+							</div>
 						</Grid>
-					</motion.div>
-					<Footer
-						prevPage="About Me"
-						nextPage="Project"
-						prevLink="/"
-						nextLink="/project"
-					/>
-				</div>
+
+						<Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+							<div
+								className={clsx(
+									screenChange ? classes.skillsArea : classes.mobileHeight
+								)}
+							>
+								<NonClickableCard>
+									{loading ? (
+										<div className={classes.skeletonMainDiv}>
+											{widthData.map((item) => (
+												<Skeleton
+													height={38}
+													width={item}
+													classes={{
+														parent: classes.skeletonParent,
+													}}
+													rx={5}
+												/>
+											))}
+										</div>
+									) : (
+										<MyHistogram
+											xAxisLabelStyles={xAxisLabelStyles}
+											xPadding={xPadding}
+											chartMargin={chartMargin}
+											animation={animation}
+											pointWidth={size}
+											chartHeight="78vh"
+										/>
+									)}
+								</NonClickableCard>
+							</div>
+						</Grid>
+					</Grid>
+				</motion.div>
+				<Footer prevPage="About Me" nextPage="Project" prevLink="/" nextLink="/project" />
 			</div>
-		)
+		</div>
 	);
 }
 
