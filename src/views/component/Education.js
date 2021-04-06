@@ -93,7 +93,7 @@ const useStyles = makeStyles((theme) => ({
 		border: "0.2rem solid #db630d",
 		borderRadius: "50%",
 		padding: "0.6rem",
-		color: "#FFFFFF",
+		color: theme.palette.text.subTitle,
 	},
 	connect: {
 		marginLeft: "2rem",
@@ -137,7 +137,7 @@ const useStyles = makeStyles((theme) => ({
 	eduLabel: {
 		fontSize: "1.6rem",
 		lineHeight: 1,
-		color: "#e2dae6",
+		color: theme.palette.text.title,
 		fontWeight: "600",
 		fontFamily: " 'Roboto', sans-sarif",
 	},

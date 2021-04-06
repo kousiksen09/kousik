@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 		fontFamily: "Noto Sans JP, sans-serif",
 		fontWeight: "bold",
 		lineHeight: 1.38,
-		color: "#DFD3C3",
+		color: theme.palette.text.title,
 		marginBottom: pxToRem(2),
 		fontSize: pxToRem(28),
 		paddingLeft: "1rem",
@@ -49,7 +49,8 @@ const useStyles = makeStyles((theme) => ({
 	subTitleText: {
 		fontFamily: "Noto Sans JP, sans-serif",
 		fontSize: pxToRem(22),
-		color: "#c5c9d1",
+		marginTop: 0,
+		color: theme.palette.text.subTitle,
 	},
 	content: {
 		clear: "both",
@@ -111,7 +112,7 @@ const useStyles = makeStyles((theme) => ({
 		padding: "1rem 1.2rem 1rem 0rem",
 	},
 	more: {
-		color: "#FA1754",
+		color: "#EEE00B",
 		fontSize: pxToRem(24),
 		fontFamily: "Roboto",
 		cursor: "pointer",
@@ -124,10 +125,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function countWords(str) {
-	str = str.replace(/(^\s*)|(\s*$)/gi, "");
-	str = str.replace(/[ ]{2,}/gi, " ");
-	str = str.replace(/\n /, "\n");
-	return str.split(" ").length;
+	let wordCount = str.match(/(\w+)/g).length;
+
+	return wordCount;
 }
 
 function ProjectCard(props) {
@@ -186,24 +186,18 @@ function ProjectCard(props) {
 				) : (
 					<div className={classes.content}>
 						{bodyContent && countWords(bodyContent) > 20 && !moreDisplayed ? (
-							<>
-								<Typography className={classes.contentText}>
-									{bodyContent.split(".", 1).concat(".")}
-								</Typography>
-
-								<div
-									onClick={showMore}
-									className={classes.more}
-									role="presentation"
-								>
-									Show more ...
-								</div>
-							</>
+							<Typography className={classes.contentText}>
+								{bodyContent
+									.split(" ", 16)
+									.map((words) => words + " ")
+									.concat("... ")}
+								<b onClick={showMore} className={classes.more} role="presentation">
+									Show more.
+								</b>
+							</Typography>
 						) : (
-							<>
-								<Typography className={classes.contentText}>
-									{bodyContent}
-								</Typography>
+							<Typography className={classes.contentText}>
+								{bodyContent}
 								{moreDisplayed === true && (
 									<div
 										onClick={showLess}
@@ -213,7 +207,7 @@ function ProjectCard(props) {
 										Show Less
 									</div>
 								)}
-							</>
+							</Typography>
 						)}
 					</div>
 				)}

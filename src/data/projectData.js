@@ -10,7 +10,7 @@ export const projectData = [
 		subtitle: "Oct, 2019",
 		avatar: iccs,
 		content:
-			"Ic3s.kiit.ac.in , is an anual science conference website of School Of Electronics, KIIT.",
+			"Ic3s.kiit.ac.in, is an anual science conference website of School Of Electronics, KIIT.",
 		projectImg: iccs,
 		skills: " HTML, CSS, Javascript, PHP, SQL",
 		link: "https://ic3s.kiit.ac.in/",

@@ -14,6 +14,7 @@ import Footer from "./Footer";
 import { trainingData } from "../../data/trainingData";
 import { currPageAction } from "../../Redux/actions/CurrPageAction";
 import aboutBg from "../../assets/aboutBg.png";
+import theme from "../../utils/theme";
 
 const useStyles = makeStyles(() => ({
 	root: {
@@ -101,7 +102,7 @@ const useStyles = makeStyles(() => ({
 		overflow: "hidden",
 		justifyContent: "center",
 		fontFamily: "Noto Sans JP, sans-serif",
-		color: "#DFD3C3",
+		color: theme.palette.text.title,
 		textOverflow: "ellipsis",
 		left: "1.2rem",
 		top: "1rem",
@@ -121,6 +122,7 @@ const useStyles = makeStyles(() => ({
 		position: "relative",
 		width: "100%",
 		height: "78%",
+		marginTop: "1vh",
 	},
 	crdBdyTxt: {
 		position: "relative",
