@@ -165,6 +165,11 @@ const useStyles = makeStyles((theme) => ({
 		fontSize: "3rem",
 		color: "#fff",
 	},
+	nameModal: {
+		position: "relative",
+		top: "50%",
+		left: "50%",
+	},
 }));
 
 function Contact() {
@@ -299,7 +304,9 @@ function Contact() {
 							</li>
 						</ul>
 					</div>
-					<Modal open={isModalOpen} onClose={onModalClose} />
+					<div className={classes.nameModal}>
+						<Modal open={isModalOpen} onClose={onModalClose} />
+					</div>
 				</motion.div>
 			</div>
 			<Footer prevPage="Training" prevLink="/training" />

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { IconButton, makeStyles, Typography, TextField } from "@material-ui/core";
 import React from "react";
+
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -12,10 +13,17 @@ import { pxToVw, pxToRem } from "../theme";
 import nameAction from "../../Redux/actions/nameAction";
 
 const useStyles = makeStyles((theme) => ({
+	root: {
+		position: "absolute",
+	},
 	paper: {
-		// margin: "25% auto",
+		margin: "25% auto",
 		width: "50%",
 		height: "25%",
+	},
+	mobilePaper: {
+		width: "30vw",
+		height: "15vh",
 	},
 	paperWidthSm: {
 		maxWidth: pxToVw(600),
@@ -26,6 +34,9 @@ const useStyles = makeStyles((theme) => ({
 		justifyContent: "space-between",
 	},
 	reportTitle: {
+		display: "flex",
+		alignItems: "center",
+		justifyContent: "space-between",
 		overflow: "hidden",
 		fontSize: pxToRem(22),
 		color: theme.palette.text.primary,
@@ -36,8 +47,15 @@ const useStyles = makeStyles((theme) => ({
 		overflow: "hidden",
 		fontSize: pxToRem(20),
 		height: "5vh",
-		width: "70%",
+		width: "20vw",
+		fontWeight: "bold",
+		color: theme.palette.secondary.main,
+		margin: 0,
 		border: "0.1rem solid #FFFFFF",
+	},
+	backdrop: {
+		position: "absolute",
+		borderRadius: pxToRem(10),
 	},
 	submitBtn: {
 		position: "relative",
@@ -60,6 +78,7 @@ function Modal(props) {
 	const classes = useStyles();
 	const { open, onClose } = props;
 	const dispatch = useDispatch();
+
 	const viewerName = useSelector((state) => state.NameReducer.name);
 	const handleChange = (name) => {
 		dispatch(nameAction({ name: name.target.value }));
@@ -79,9 +98,11 @@ function Modal(props) {
 			onClose={onClose}
 			aria-labelledby="alert-dialog-title"
 			aria-describedby="alert-dialog-description"
-			classes={{ paper: classes.paper, paperWidthSm: classes.paperWidthSm }}
+			classes={{
+				root: classes.root,
+			}}
 		>
-			<DialogTitle id="alert-dialog-title" className={classes.dialogTitle} disableTypography>
+			<DialogTitle id="alert-dialog-title" className={classes.reportTitle} disableTypography>
 				<Typography variant="h5">What's your name?</Typography>
 				<IconButton onClick={handleOnCloseButton}>
 					<Close />
