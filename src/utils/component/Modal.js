@@ -28,10 +28,11 @@ const useStyles = makeStyles((theme) => ({
 	paperWidthSm: {
 		maxWidth: pxToVw(600),
 	},
-	dialogTitle: {
+	nameTitle: {
 		display: "flex",
 		alignItems: "center",
 		justifyContent: "space-between",
+		fontSize: pxToRem(26),
 	},
 	reportTitle: {
 		display: "flex",
@@ -45,11 +46,11 @@ const useStyles = makeStyles((theme) => ({
 
 	nameField: {
 		overflow: "hidden",
-		fontSize: pxToRem(20),
-		height: "5vh",
+		fontSize: pxToRem(26),
+
 		width: "20vw",
 		fontWeight: "bold",
-		color: theme.palette.secondary.main,
+		color: "#ffffff",
 		margin: 0,
 		border: "0.1rem solid #FFFFFF",
 	},
@@ -103,7 +104,9 @@ function Modal(props) {
 			}}
 		>
 			<DialogTitle id="alert-dialog-title" className={classes.reportTitle} disableTypography>
-				<Typography variant="h5">What's your name?</Typography>
+				<Typography className={classes.nameTitle} variant="h5">
+					What's your name?
+				</Typography>
 				<IconButton onClick={handleOnCloseButton}>
 					<Close />
 				</IconButton>

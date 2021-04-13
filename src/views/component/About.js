@@ -231,44 +231,20 @@ function About() {
 							</div>
 						</>
 					</Modal>
-					{loading ? (
-						<Skeleton height={55} width={580} classes={{ parent: classes.titleText }} />
-					) : (
-						<Typography variant="h3" className={classes.titleText}>
-							KOUSIK SEN
-						</Typography>
-					)}
+
+					<Typography variant="h3" className={classes.titleText}>
+						KOUSIK SEN
+					</Typography>
 
 					<div className={classes.objective}>
-						{loading ? (
-							<Skeleton
-								height={45}
-								width={723}
-								rx={5}
-								classes={{ parent: classes.subTitle }}
-							/>
-						) : (
-							<Typography variant="h3" className={classes.subTitle}>
-								WEB DEVELOPER | IoT Architect
-							</Typography>
-						)}
-						{loading ? (
-							<Skeleton
-								height={50}
-								width={1875}
-								rx={2}
-								left={12}
-								top={25}
-								count={2}
-								classes={{ parent: classes.tagLine }}
-							/>
-						) : (
-							<Typography variant="h3" className={classes.tagLine}>
-								Inovation + Design + Develop make the world beautiful. Have 3 years
-								of experience in responsive UI Design and 2 years of experience in
-								IoT.
-							</Typography>
-						)}
+						<Typography variant="h3" className={classes.subTitle}>
+							WEB DEVELOPER | IoT Architect
+						</Typography>
+
+						<Typography variant="h3" className={classes.tagLine}>
+							Inovation + Design + Develop make the world beautiful. Have 3 years of
+							experience in responsive UI Design and 2 years of experience in IoT.
+						</Typography>
 
 						{loading ? (
 							<Skeleton

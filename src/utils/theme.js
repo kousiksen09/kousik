@@ -240,7 +240,7 @@ export default createMuiTheme({
 		},
 		MuiInputBase: {
 			input: {
-				fontSize: pxToRem(20),
+				fontSize: pxToRem(24),
 				padding: `${pxToRem(6)} 0 ${pxToRem(7)}`,
 			},
 		},

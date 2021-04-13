@@ -145,11 +145,11 @@ const useStyles = makeStyles((theme) => ({
 		display: "flex",
 		justifyContent: "center",
 		alignItems: "center",
-		width: "6rem",
-		height: "6rem",
+		width: "5rem",
+		height: "5rem",
 
 		borderRadius: "50%",
-		fontSize: "3rem",
+		fontSize: "2.5rem",
 		color: "#fff",
 		transition: "0.5s",
 
@@ -159,8 +159,8 @@ const useStyles = makeStyles((theme) => ({
 	},
 	socialIconBtn: {
 		position: "relative",
-		height: "3rem",
-		width: "3rem",
+		height: "2.5rem",
+		width: "2.5rem",
 		borderRadius: "50%",
 		fontSize: "3rem",
 		color: "#fff",
