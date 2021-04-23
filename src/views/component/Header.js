@@ -55,7 +55,7 @@ const useStyles = makeStyles(() => ({
 		alignItems: "center",
 		width: pxToRem(48),
 		height: pxToRem(48),
-		color: "#F8BBD0",
+		color: "#FC7500",
 	},
 	deskTab: {
 		display: "flex",
@@ -91,7 +91,7 @@ const useStyles = makeStyles(() => ({
 		alignItems: "center",
 		fontSize: pxToRem(38),
 		paddingLeft: "1rem",
-		color: "#F8BBD0",
+		color: "#FC7500",
 		textAlign: "center",
 	},
 	trayList: {

@@ -157,6 +157,25 @@ function Training() {
 
 	const dispatch = useDispatch();
 	const theme = useTheme();
+	const today = new Date();
+	const dd = String(today.getDate()).padStart(2, "0");
+	const mm = String(today.getMonth() + 1); //January is 0!
+	const yyyy = today.getFullYear();
+	const monthNames = [
+		"January",
+		"February",
+		"March",
+		"April",
+		"May",
+		"June",
+		"July",
+		"August",
+		"September",
+		"October",
+		"November",
+		"December",
+	];
+
 	const screenChange = useMediaQuery(theme.breakpoints.up("md"));
 	useEffect(() => {
 		dispatch(currPageAction({ currPage: "Training & Internship" }));
@@ -212,7 +231,7 @@ function Training() {
 												style={{
 													fontSize: "clamp(1.4rem, 18vw, 1.5rem)",
 													fontWeight: "600",
-													color: "#dfa72f",
+													color: "#c7e87b",
 												}}
 											>
 												Skill Learn :{" "}
@@ -224,7 +243,7 @@ function Training() {
 												style={{
 													fontSize: "clamp(1.4rem, 18vw, 1.5rem)",
 													fontWeight: "600",
-													color: "#dfa72f",
+													color: "#c7e87b",
 												}}
 											>
 												Trainer :{" "}
@@ -236,7 +255,7 @@ function Training() {
 												style={{
 													fontSize: "clamp(1.4rem, 18vw, 1.5rem)",
 													fontWeight: "600",
-													color: "#dfa72f",
+													color: "#c7e87b",
 												}}
 											>
 												Duration :{" "}
@@ -289,7 +308,7 @@ function Training() {
 											style={{
 												fontSize: "clamp(1.4rem, 18vw, 1.5rem)",
 												fontWeight: "600",
-												color: "#dfa72f",
+												color: "#c7e87b",
 											}}
 										>
 											Role :
@@ -301,7 +320,7 @@ function Training() {
 											style={{
 												fontSize: "clamp(1.4rem, 18vw, 1.5rem)",
 												fontWeight: "600",
-												color: "#dfa72f",
+												color: "#c7e87b",
 											}}
 										>
 											Technology used :
@@ -313,12 +332,12 @@ function Training() {
 											style={{
 												fontSize: "clamp(1.4rem, 18vw, 1.5rem)",
 												fontWeight: "600",
-												color: "#dfa72f",
+												color: "#c7e87b",
 											}}
 										>
 											Duration :{" "}
 										</span>{" "}
-										1 st June, 2020 - Present
+										1 st July, 2020 - {dd} {monthNames[mm]} {yyyy} (Current)
 									</Typography>
 									<div className={classes.viewCertificate}>
 										<Button

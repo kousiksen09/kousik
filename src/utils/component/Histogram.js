@@ -53,7 +53,7 @@ class MyHistogram extends React.Component {
 				style: {
 					fontFamily: "'Fondamento', cursive",
 					fontSize: "clamp(1.8rem, 5vw, 2rem)",
-					color: "#E8EE0B",
+					color: "#8FD163",
 					fontWeight: "600",
 				},
 			},

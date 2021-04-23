@@ -44,8 +44,8 @@ export default createMuiTheme({
 		text: {
 			primary: "#FFFFFF",
 			secondary: "#5DAAE0",
-			title: "#E8EE0B",
-			subTitle: "#F2F6AC",
+			title: "#8FD163",
+			subTitle: "#c7e87b",
 		},
 		background: {
 			default: "#2C3E50",
