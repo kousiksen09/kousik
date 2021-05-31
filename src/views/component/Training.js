@@ -157,24 +157,6 @@ function Training() {
 
 	const dispatch = useDispatch();
 	const theme = useTheme();
-	const today = new Date();
-	const dd = String(today.getDate()).padStart(2, "0");
-	const mm = String(today.getMonth() + 1); //January is 0!
-	const yyyy = today.getFullYear();
-	const monthNames = [
-		"January",
-		"February",
-		"March",
-		"April",
-		"May",
-		"June",
-		"July",
-		"August",
-		"September",
-		"October",
-		"November",
-		"December",
-	];
 
 	const screenChange = useMediaQuery(theme.breakpoints.up("md"));
 	useEffect(() => {
@@ -284,7 +266,7 @@ function Training() {
 							</Grid>
 						))}
 
-						<Grid xs={6} sm={6} md={4} lg={4} xl={4}>
+						{/* <Grid xs={6} sm={6} md={4} lg={4} xl={4}>
 							<NonClickableCard classes={{ root: classes.projectCard }}>
 								<div className={classes.projectHeader}>
 									<div className={classes.trainingIns}>
@@ -358,7 +340,7 @@ function Training() {
 									</div>
 								</div>
 							</NonClickableCard>
-						</Grid>
+						</Grid> */}
 					</Grid>
 				</motion.div>
 			</div>

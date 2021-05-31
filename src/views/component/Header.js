@@ -61,8 +61,8 @@ const useStyles = makeStyles(() => ({
 		display: "flex",
 		flexDirection: "row",
 		height: "100%",
-		width: "30%",
-		padding: pxToRem(32),
+
+		padding: "1rem 1.8rem 0 0.8rem",
 		position: "relative",
 		bottom: "0.4rem",
 	},
@@ -102,16 +102,24 @@ const useStyles = makeStyles(() => ({
 		overflowX: "auto",
 		overflowY: "hidden",
 	},
+	profile: {
+		position: "relative",
+		top: "0.6rem",
+		left: "1rem",
+		display: "flex",
+		flexDirection: "row",
+		height: "100%",
+		width: "20%",
+		padding: pxToRem(32),
+		bottom: "0.4rem",
+	},
 }));
 
 const desktopView = (classes, currentPage) => {
 	console.log("cuur page about", currentPage === "About Me");
 	return (
 		<Toolbar className={classes.headerDesk}>
-			<div
-				className={classes.deskTab}
-				style={{ position: "relative", top: "0.6rem", left: "1rem" }}
-			>
+			<div className={classes.profile}>
 				<Avatar alt="Kousik" src={prc} className={classes.large} />
 				<Typography className={classes.headerText}>Kousik Sen</Typography>
 			</div>
@@ -150,7 +158,7 @@ const desktopView = (classes, currentPage) => {
 									: classes.headerText
 							)}
 						>
-							Education
+							Academic & Career
 						</Typography>
 					</div>
 				</Link>
@@ -245,7 +253,7 @@ const mobileView = (classes, currentPage) => (
 							: classes.headerText
 					)}
 				>
-					Education
+					Academic & Career
 				</Typography>
 			</div>
 		</Link>

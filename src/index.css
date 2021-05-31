@@ -3,15 +3,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 
+/* Track */
 ::-webkit-scrollbar-track {
-	background: transparent;
+	background: linear-gradient(to right, #000000, #434343);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-	background: treansparent;
+	background: linear-gradient(to right, #11998e, #38ef7d);
+
+	border-radius: 6px;
 }
 
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
+}
 body {
 	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",

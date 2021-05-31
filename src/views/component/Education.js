@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import Skeleton from "../../utils/component/Skeleton";
 import { Typography, Grid } from "@material-ui/core";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
+import WorkIcon from "@material-ui/icons/Work";
 import { currPageAction } from "../../Redux/actions/CurrPageAction";
 import Header from "./Header";
 import Timeline from "../../utils/Timeline";
@@ -131,7 +132,7 @@ const useStyles = makeStyles((theme) => ({
 		overflowX: "hidden",
 		overflowY: "auto",
 		"&::-webkit-scrollbar": {
-			width: "0",
+			width: "0.6rem",
 		},
 	},
 	eduLabel: {
@@ -143,14 +144,12 @@ const useStyles = makeStyles((theme) => ({
 	},
 	eduBody: {
 		position: "relative",
-		left: "1vw",
 		width: "96%",
 		paddingBottom: "0.5rem",
-
-		paddingTop: "0px",
 		paddingInlineStart: "2vw",
 		marginBlockStart: "0vh",
 		marginBlockEnd: "0vh",
+		margin: "0 0.5rem 0.5rem 0",
 	},
 	eduBodytxt: {
 		opacity: 0.9,
@@ -213,6 +212,25 @@ function Education(props) {
 		setxPadding(window.innerHeight / 54);
 		setChartMargin([window.innerHeight / 12, 0, window.innerHeight / 54, 0]);
 	};
+	const today = new Date();
+	const dd = String(today.getDate()).padStart(2, "0");
+	const mm = String(today.getMonth() + 1); //January is 0!
+	const yyyy = today.getFullYear();
+	const monthNames = [
+		"January",
+		"February",
+		"March",
+		"April",
+		"May",
+		"June",
+		"July",
+		"August",
+		"September",
+		"October",
+		"November",
+		"December",
+	];
+
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
@@ -280,6 +298,107 @@ function Education(props) {
 												loading ? (
 													<Skeleton height={94} width={94} circle />
 												) : (
+													<WorkIcon className={classes.eduIcon} />
+												)
+											}
+											label={
+												loading ? (
+													<Skeleton height={84} width={734} />
+												) : (
+													<div className={classes.flex}>
+														<Typography className={classes.eduLabel}>
+															Programme Analyst Trainee at{" "}
+															<b
+																style={{
+																	fontWeight: 800,
+																	fontSize: "1.8rem",
+																}}
+															>
+																Cognizant
+															</b>
+														</Typography>
+													</div>
+												)
+											}
+											body={
+												loading ? (
+													<Skeleton height={32} width={734} count={3} />
+												) : (
+													<div className={classes.eduBody}>
+														<Typography className={classes.eduBodytxt}>
+															Techno Complex Plot GN-34/3, Sector-V
+															Saltlake Electronic Complex Kolkata 700
+															091
+															<br /> (July' 2021 - {dd}{" "}
+															{monthNames[mm]} {yyyy} (Current))
+														</Typography>
+													</div>
+												)
+											}
+										/>
+									</div>
+
+									<div className={classes.eduTimeline}>
+										<Timeline
+											classes={{
+												connectorLine: classes.connect,
+												connectorLineRoot: classes.coonectRoot,
+											}}
+											labelIcon={
+												loading ? (
+													<Skeleton height={94} width={94} circle />
+												) : (
+													<WorkIcon className={classes.eduIcon} />
+												)
+											}
+											label={
+												loading ? (
+													<Skeleton height={84} width={734} />
+												) : (
+													<div className={classes.flex}>
+														<Typography className={classes.eduLabel}>
+															UI Developer Intern at{" "}
+															<b
+																style={{
+																	fontWeight: 800,
+																	fontSize: "1.8rem",
+																}}
+															>
+																HighRadius Corp.
+															</b>
+														</Typography>
+													</div>
+												)
+											}
+											body={
+												loading ? (
+													<Skeleton height={32} width={734} count={3} />
+												) : (
+													<div className={classes.eduBody}>
+														<Typography className={classes.eduBodytxt}>
+															Kalinga Institute of Industrial
+															Technology, New building, HighRadius
+															Technologies Pvt. Ltd., 4th Floor,
+															Campus 3, Chandaka Industrial Estate,
+															Patia, Bhubaneswar, Odisha 751024
+															<br /> (June' 2020 - May' 2021)
+														</Typography>
+													</div>
+												)
+											}
+										/>
+									</div>
+
+									<div className={classes.eduTimeline}>
+										<Timeline
+											classes={{
+												connectorLine: classes.connect,
+												connectorLineRoot: classes.coonectRoot,
+											}}
+											labelIcon={
+												loading ? (
+													<Skeleton height={94} width={94} circle />
+												) : (
 													<MenuBookIcon className={classes.eduIcon} />
 												)
 											}
@@ -303,7 +422,7 @@ function Education(props) {
 															Kalinga Institute of Industrial
 															Technology, Deemed to be University.{" "}
 															<br /> Bhubneswar, Patia, Odisha, 751024{" "}
-															<br /> (2017 - Present)
+															<br /> (2017 - 2021)
 														</Typography>
 													</div>
 												)
