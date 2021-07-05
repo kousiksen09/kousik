@@ -307,7 +307,8 @@ function Education(props) {
 												) : (
 													<div className={classes.flex}>
 														<Typography className={classes.eduLabel}>
-															Programme Analyst Trainee at{" "}
+															. Net Developer | Full Stack Developer
+															at{" "}
 															<b
 																style={{
 																	fontWeight: 800,
